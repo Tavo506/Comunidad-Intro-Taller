@@ -1,0 +1,1123 @@
+
+[
+   {
+      "call":"cantidadDeDigitos (num)",
+      "creator":"Natalia Vargas",
+      "code":"00001",
+      "examples":[
+         {
+            "call":"cantidadDeDigitos(12345)",
+            "result":"5",
+            "comment":""
+         },
+         {
+            "call":"cantidadDeDigitos(0)",
+            "result":"1",
+            "comment":"Cero tiene un digito"
+         },
+         {
+            "call":"cantidadDeDigitos(9)",
+            "result":"1",
+            "comment":""
+         }
+      ],
+      "solution":{
+         "outputs":[
+            {
+               "name":"resultado",
+               "type":"numero entero"
+            }
+         ],
+         "code":"def cantidadDigitos (num):\n\n    if num == 0: # El 0 es una excepción\n        return 1\n    num = abs(num) #lo hace positivo siempre\n    contador = 0\n    while num > 0:\n        contador = contador + 1\n        num = num \/\/ 10\n    return contador",
+         "inputs":[
+            {
+               "name":"num",
+               "type":"numero entero positivo o cero"
+            }
+         ]
+      },
+      "level":"1",
+      "created":"2021-04-03",
+      "name":"Cantidad de digitos",
+      "section":"Algoritmos numéricos",
+      "details":"Realice un programa que determine cuantos dígitos decimales tiene un número entero positivo o cero"
+   },
+   {
+      "call":"cantidadPares(num)",
+      "creator":"Natalia Vargas",
+      "code":"00002",
+      "examples":[
+         {
+            "call":"cantidadPares(16890742)",
+            "result":"4",
+            "comment":""
+         },
+         {
+            "call":"cantidadPares(912345678)",
+            "result":"4",
+            "comment":""
+         },
+         {
+            "call":"cantidadPares(0712304488)",
+            "result":"5",
+            "comment":"Cero se toma como impar"
+         }
+      ],
+      "solution":{
+         "outputs":[
+            {
+               "name":"resultado",
+               "type":"numero entero positivo"
+            }
+         ],
+         "code":"def cantidadPares (num):\n\n    num = abs(num)\n    contador = 0\n    iteracion = 1\n    while num > 0:\n        print ('iteracion no. ', iteracion, '     contador = ', contador, 'numero = ', num)\n        if num%2 == 0 and num%10 != 0:\n            contador = contador + 1\n\n        num = num \/\/ 10\n        iteracion +=1\n    return contador",
+         "inputs":[
+            {
+               "name":"num",
+               "type":"numero entero positivo"
+            }
+         ]
+      },
+      "level":"1",
+      "created":"2021-05-01",
+      "name":"Cantidad de pares",
+      "section":"Algoritmos numéricos",
+      "details":"Realice un programa que determine la cantidad de dígitos pares de un número entero positivo, considerando 0 como no par"
+   },
+   {
+   "call":"sumaDigitos(num)",
+   "creator":"Diego Mora",
+   "code":"00003",
+   "examples":[
+      {
+         "call":"sumaDigitos(12345)",
+         "result":"15",
+         "comment":""
+      },
+      {
+         "call":"sumaDigitos(6661)",
+         "result":"19",
+         "comment":""
+      },
+      {
+         "call":"sumaDigitos(010)",
+         "result":"1",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"resultado",
+            "type":"Un numero entero"
+         }
+      ],
+      "code":"def sumaDigitos(num):\n\n    resultado = 0\n    while  num > 0 :\n        resultado = resultado + num%10\n        num = num\/\/10\n\n    return resultado",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un numero entero postivo o cero"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-05",
+   "name":"Suma dígitos",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que sume todos los digitos de un número entero positivo"
+   },
+   {
+   "call":"sumaDigitosConSigno(num)",
+   "creator":"Diego Mora",
+   "code":"00004",
+   "examples":[
+      {
+         "call":"sumaDigitosConSigno (169304)",
+         "result":"-3",
+         "comment":"(-1+6-9-3+0+4 = -3)"
+      },
+      {
+         "call":"sumaDigitosConSigno (457101)",
+         "result":"-10",
+         "comment":"(+4-5-7-1+0-1 = -10)"
+      },
+      {
+         "call":"sumaDigitosConSigno (12683)",
+         "result":"13",
+         "comment":"(+2+6+8-3 = 13)"
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"resultado",
+            "type":"Un número"
+         }
+      ],
+      "code":"def sumaDigitosConSigno(num):\n\n    resultado = 0\n    while  num > 0 :\n        if num % 2 == 0:\n            resultado = resultado + num%10\n        else:\n            resultado = resultado - num%10\n        num = num\/\/10\n    return resultado",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un numero entero positivo o cero"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-04-03",
+   "name":"Suma dígitos con signo",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que dé el resultado de la suma de los dígitos pares (incluyendo el cero) y la resta de los impares."
+   },
+   {
+   "call":"esBinario(num)",
+   "creator":"Diego Mora",
+   "code":"00005",
+   "examples":[
+      {
+         "call":"esBinario (101002)",
+         "result":"False",
+         "comment":""
+      },
+      {
+         "call":"esBinario (111001110)",
+         "result":"True",
+         "comment":""
+      },
+      {
+         "call":"esBinario (101001000)",
+         "result":"True",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"True o False",
+            "type":"Booleano"
+         }
+      ],
+      "code":"def esBinario(num):\n    \n    while num > 0:\n        if num % 10 == 1 or  num%10 == 0:\n            num = num \/\/10\n        else:        \n            return False\n    return True",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-04-03",
+   "name":"Es binario",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que diga si un número es binario o no."
+  },
+  {
+   "call":"sumaImpares(num)",
+   "creator":"Diego Mora",
+   "code":"00006",
+   "examples":[
+      {
+         "call":"sumaImpares(8532)",
+         "result":"8",
+         "comment":""
+      },
+      {
+         "call":"sumaImpares(13372)",
+         "result":"14",
+         "comment":""
+      },
+      {
+         "call":"sumaImpares(246822)",
+         "result":"0",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"resultado",
+            "type":"Un número"
+         }
+      ],
+      "code":"def sumaImpares(num):\n\n    resultado = 0\n    while  num > 0 :\n        if num % 2 == 1:\n            resultado += num%10\n        num = num\/\/10\n    return resultado",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-15",
+   "name":"Suma de impares",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que sume los dígitos impares de un número."
+  },
+  {
+   "call":"sumaPares(num)",
+   "creator":"Diego Mora",
+   "code":"00007",
+   "examples":[
+      {
+         "call":"sumaPares(8532)",
+         "result":"10",
+         "comment":""
+      },
+      {
+         "call":"sumaPares (13372)",
+         "result":"2",
+         "comment":""
+      },
+      {
+         "call":"sumaPares (246822)",
+         "result":"24",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"resultado",
+            "type":"Un número"
+         }
+      ],
+      "code":"def sumaPares(num):\n\n    resultado = 0\n    while  num > 0 :\n        if num % 2 == 0:\n            resultado += num%10\n        num = num\/\/10\n    return resultado",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-15",
+   "name":"Suma de pares",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que sume los dígitos impares de un número."
+  },
+  {
+   "call":"todosPares(num)",
+   "creator":"Diego Mora",
+   "code":"00008",
+   "examples":[
+      {
+         "call":"todosPares(8532) ",
+         "result":"False",
+         "comment":""
+      },
+      {
+         "call":"todosPares (402)",
+         "result":"True",
+         "comment":"Se toma 0 como par"
+      },
+      {
+         "call":"todosPares (246822)",
+         "result":"True",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"True o False",
+            "type":"Booleano"
+         }
+      ],
+      "code":"def todosPares(num):\n\n    if num == 0:\n        return False\n\n    while  num > 0 :\n        if num%2 == 1 or num%10 == 0:\n            return False\n        num = num\/\/10\n    return True\n",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-15",
+   "name":"Todos pares",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que diga si todos los dígitos de un número son pares o no."
+  },
+  {
+   "call":"estanOrdenados(num)",
+   "creator":"Diego Mora",
+   "code":"00009",
+   "examples":[
+      {
+         "call":"estanOrdenados(8532)",
+         "result":"True",
+         "comment":""
+      },
+      {
+         "call":"estanOrdenados(13372)",
+         "result":"False",
+         "comment":""
+      },
+      {
+         "call":"estanOrdenados(864322)",
+         "result":"True",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"True o False",
+            "type":"Booleano"
+         }
+      ],
+      "code":"\ndef estanOrdenados(num):\n\n    digitoAnterior = num % 10\n    while num > 0:\n        if num%10 < digitoAnterior:\n            return False\n        digitoAnterior = num%10\n        num = num \/\/ 10\n    return True",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-15",
+   "name":"Números ordenados",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que verifique si los dígitos de un número están ordenados de mayor a menor."
+  },
+  {
+   "call":"enPosicionesPares(num)",
+   "creator":"Diego Mora",
+   "code":"00010",
+   "examples":[
+      {
+         "call":"enPosicionesPares(94322)",
+         "result":"True",
+         "comment":""
+      },
+      {
+         "call":"enPosicionesPares(23296689)",
+         "result":"True",
+         "comment":""
+      },
+      {
+         "call":"enPosicionesPares(963422)",
+         "result":"False",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"True o False",
+            "type":"Booleano"
+         }
+      ],
+      "code":"def enPosicionesPares(num):\n\n    pos = 1\n    while num > 0:\n        #si estoy en posicion par y el numero no es par\n        if pos % 2 == 0 and num % 2 != 0:  \n            return False\n        pos = pos + 1   #incrementa la posicion\n        num = num\/\/10\n\n    return True\n",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-15",
+   "name":"En posiciones pares",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que verifique si todos los dígitos en posiciones pares del número, empezando en 1 de derecha a izquierda, son digitos pares."
+  },
+  {
+   "call":"weirdSum(num)",
+   "creator":"Diego Mora",
+   "code":"00011",
+   "examples":[
+      {
+         "call":"weirdSum(1234)",
+         "result":"26",
+         "comment":""
+      },
+      {
+         "call":"weirdSum(6700234)",
+         "result":"50",
+         "comment":""
+      },
+      {
+         "call":"weirdSum(963422)",
+         "result":"1",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"acumulador",
+            "type":"Número"
+         }
+      ],
+      "code":"def weirdSum(num):\n\n    acumulador = 0\n    while num > 0:\n        digito = num%10\n        if digito == 0 or digito == 1:\n            acumulador += 20\n        elif digito % 3 == 0 :\n            acumulador += -3\n        elif digito % 4 == 0 :\n            acumulador += digito * 2\n        elif digito > 3 and (digito == 5 or digito == 7):\n            acumulador += digito\n        else:\n            acumulador += 1\n        num = num \/\/ 10\n    #fuera del while retorna lo que acumulo\n    return acumulador",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-15",
+   "name":"Suma con condiciones",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que recorra cada dígito de un múmero y sume 20 si es un 1 o un 0, reste 3 si es multiplo de 3, sume la multiplicación del dígito con 2 solo si es multiplo de 4, sume el dígito si este es 5 o 7, en otro caso sume 1.."
+  },
+  {
+   "call":"cantidadDivisiblesPor(num, divisor)",
+   "creator":"Diego Mora",
+   "code":"00012",
+   "examples":[
+      {
+         "call":"antidadDivisiblesPor(66, 6)",
+         "result":"2",
+         "comment":""
+      },
+      {
+         "call":"cantidadDivisiblesPor(84265, 2)",
+         "result":"4",
+         "comment":""
+      },
+      {
+         "call":"cantidadDivisiblesPor(649610, 3)",
+         "result":"4",
+         "comment":"El dígito cero se toma como divisible"
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"contador",
+            "type":"Un número entero"
+         }
+      ],
+      "code":"def cantidadDivisiblesPor(num, divisor):\n\n    if divisor == 0 or divisor > 9:\n        return 0\n    contador = 0\n    while num > 0:\n        digito = num%10\n        if digito % divisor == 0:  #si el dígito es divisible\n            contador += 1\n        num = num \/\/ 10\n\n    return contador",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         },
+         {
+            "name":"divisor",
+            "type":"Un número entero positivo"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-15",
+   "name":"Cantidad de divisibles",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que indique la cantidad de dígitos divibles por un divisor (entero positivo menor a 10) dado para un número dado"
+  },
+  {
+   "call":"ceroIntercalados(num)",
+   "creator":"Diego Mora",
+   "code":"00013",
+   "examples":[
+      {
+         "call":"ceroIntercalados(908040) ",
+         "result":"True",
+         "comment":""
+      },
+      {
+         "call":"ceroIntercalados(918040)",
+         "result":"False",
+         "comment":""
+      },
+      {
+         "call":"ceroIntercalados(010504020)",
+         "result":"Error",
+         "comment":"Un entero decimal no puede empezar con cero en python"
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"True o False",
+            "type":"Booleano"
+         }
+      ],
+      "code":"def ceroIntercalados(num):\n\n    mustBeZero = num % 10 == 0\n    while num > 0:\n        if mustBeZero == True and num % 10 != 0:\n            return False\n        mustBeZero = not mustBeZero\n        num = num \/\/10\n\n    return True",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-15",
+   "name":"Ceros intercalados",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que verifique si un número tiene ceros intercalados."
+  },
+{
+   "call":"countDivisores(num)",
+   "creator":"Diego Mora",
+   "code":"00014",
+   "examples":[
+      {
+         "call":"countDivisores(5)",
+         "result":"2",
+         "comment":""
+      },
+      {
+         "call":"countDivisores(30)",
+         "result":"8",
+         "comment":""
+      },
+      {
+         "call":"countDivisores(67)",
+         "result":"2",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"resultado",
+            "type":"Un número entero positivo "
+         }
+      ],
+      "code":"def countDivisores(num):\n\n    resultado = 0\n    divisor = 1\n\n    while divisor <= num :\n        if num % divisor == 0:\n            print(divisor,\"es divisor de\",num)\n            resultado += 1\n        divisor += 1\n    return resultado",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-15",
+   "name":"Contar divisores",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que cuente los divisores de un número dado."
+  },
+{
+   "call":"sumaParImpar(num)",
+   "creator":"Diego Mora",
+   "code":"00015",
+   "examples":[
+      {
+         "call":"sumaParImpar(32982)",
+         "result":"True",
+         "comment":""
+      },
+      {
+         "call":"sumaParImpar(1113)",
+         "result":"True",
+         "comment":""
+      },
+      {
+         "call":"sumaParImpar(67125342)",
+         "result":"False",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"True o False",
+            "type":"Booleano"
+         }
+      ],
+      "code":"def sumaParImpar(num):\n\n    sumaPares = 0\n    sumaImpares = 0\n    while num > 0:\n        if num % 2 == 0:\n            sumaPares += num%10\n        else:\n            sumaImpares += num%10\n        num = num \/\/ 10\n\n    return sumaPares == sumaImpares",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-15",
+   "name":"Sumar pares e impares",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que sume los dígitos pares e impares de un dígito y diga si ambas sumas dan lo mismo"
+  },
+{
+   "call":"quitarPares(num)",
+   "creator":"Diego Mora",
+   "code":"00016",
+   "examples":[
+      {
+         "call":"quitarPares(12345678)",
+         "result":"1357 ",
+         "comment":""
+      },
+      {
+         "call":"quitarPares(9852156)",
+         "result":"9515",
+         "comment":""
+      },
+      {
+         "call":"quitarPares(392403581)",
+         "result":"39351",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"resultado",
+            "type":"Un número compuesto solo por dígitos impares"
+         }
+      ],
+      "code":"def quitarPares (num):\n\n    resultado = 0\n    exponente = 0\n    while num > 0:\n        if num % 2 == 1:\n            print (\"Exponente es :\", exponente, \"     num = \", num, \"     r+= \", (num%10)*(10**exponente))\n            resultado += (num%10)*(10**exponente)\n            exponente += 1\n        else:\n            print (\"Exponente es :\", exponente, \"     num = \", num, \"     NO SUMA\")\n        num = num \/\/ 10\n\n    return resultado",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo"
+         }
+      ]
+   },
+   "level":"2",
+   "created":"2021-05-15",
+   "name":"Quitar pares",
+   "section":"Algoritmos numéricos",
+   "details":" Realice un programa quite los dígitos pares de número y devuelva solo los impares"
+  },
+  {
+   "call":"eliminar(dig, num)",
+   "creator":"Diego Mora",
+   "code":"00017",
+   "examples":[
+      {
+         "call":"eliminar(0,1280138104)",
+         "result":"12813814",
+         "comment":""
+      },
+      {
+         "call":"eliminar(1,231412831)",
+         "result":"234283",
+         "comment":""
+      },
+      {
+         "call":"eliminar(9,937292699)",
+         "result":"37226",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"resultado",
+            "type":"Un número entero positivo"
+         }
+      ],
+      "code":"def eliminar(dig, num):    \n\n    exponente = 0\n    resultado = 0\n    while num > 0:\n        if num%10 != dig:\n            resultado += (num%10) * (10**exponente)\n            exponente += 1\n        num = num \/\/ 10\n    return resultado",
+      "inputs":[
+         {
+            "name":"dig",
+            "type":"Un dígito decimal"
+         },
+         {
+            "name":"num",
+            "type":"Un número entero positivo"
+         }
+      ]
+   },
+   "level":"2",
+   "created":"2021-05-15",
+   "name":"Eliminar dígitos",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que elimine todas las apariciones de un dígito en un número."
+  },
+  {
+   "call":"eliminarPrimera(dig, num)",
+   "creator":"Diego Mora",
+   "code":"00018",
+   "examples":[
+      {
+         "call":"eliminarPrimera(4,94344234)",
+         "result":"9434423",
+         "comment":""
+      },
+      {
+         "call":"eliminarPrimera(8,2834748)",
+         "result":"283474",
+         "comment":""
+      },
+      {
+         "call":"eliminarPrimera(0,1240300)",
+         "result":"124030",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"resultado",
+            "type":"Un número"
+         }
+      ],
+      "code":"def eliminarPrimera(dig, num):    \n\n    exponente = 0\n    resultado = 0\n\n    while num > 0:\n        if num%10 != dig:\n            resultado += (num%10) * (10**exponente)\n            exponente += 1\n        else:\n            return (num\/\/10)*(10**exponente) + resultado\n\n        num = num \/\/ 10\n        \n    return resultado",
+      "inputs":[
+         {
+            "name":"dig",
+            "type":"Un dígito decimal"
+         },
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"2",
+   "created":"2021-05-15",
+   "name":"Elimina primera aparición",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que elimine la primera aparición de dígito en el número, de derecha a izquierda."
+  },
+  {
+   "call":"apariciones(dig, num)",
+   "creator":"Diego Mora",
+   "code":"00019",
+   "examples":[
+      {
+         "call":"apariciones(5,9554356)",
+         "result":"3",
+         "comment":""
+      },
+      {
+         "call":"apariciones(4,9554356)",
+         "result":"1",
+         "comment":""
+      },
+      {
+         "call":"apariciones(0,1323)",
+         "result":"0",
+         "comment":"El dígito no aparece ninguna vez"
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"resultado",
+            "type":"Un número"
+         }
+      ],
+      "code":"def apariciones(dig, num):\n\n    num = abs(num)\n    if dig ==  num:\n        return 1\n    resultado = 0\n    \n    while num > 0:\n        if num%10 == dig:\n            resultado += 1\n        num = num \/\/ 10\n\n    return resultado",
+      "inputs":[
+         {
+            "name":"dig",
+            "type":"Un dígito decimal"
+         },
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-15",
+   "name":"Apariciones",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que cuente la cantidad de apariciones de un dígito en un número."
+  },
+  {
+   "call":"maximoDigito(num)",
+   "creator":"Diego Mora",
+   "code":"00020",
+   "examples":[
+      {
+         "call":"maximoDigito (823546)",
+         "result":"8",
+         "comment":""
+      },
+      {
+         "call":"maximoDigito (7539)",
+         "result":"9",
+         "comment":""
+      },
+      {
+         "call":"maximoDigito (10)",
+         "result":"1",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"maxActual",
+            "type":"Un número"
+         }
+      ],
+      "code":"def maximoDigito (num):\n\n    maxActual = 0 \n    while num > 0:\n        if num%10 > maxActual:\n            maxActual = num%10\n        num = num \/\/ 10\n\n    return maxActual",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-15",
+   "name":"Máximo dígito",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que dé el dígito mayor de un número."
+  },
+  {
+   "call":"sustituir(digOriginal, digNuevo, num)",
+   "creator":"Diego Mora",
+   "code":"00021",
+   "examples":[
+      {
+         "call":"sustituir(1,2,12891)",
+         "result":"22892",
+         "comment":""
+      },
+      {
+         "call":"sustituir(2,4,21246291)",
+         "result":"41446491",
+         "comment":""
+      },
+      {
+         "call":"sustituir(1,0,21246291)",
+         "result":"20246290",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"True o False",
+            "type":"Booleano"
+         }
+      ],
+      "code":"def sustituir(digOriginal, digNuevo, num):\n\n    signo = 1\n    if num < 0:\n        signo = -1\n    num = abs(num)\n\n    exponente = 0\n    resultado = 0\n    \n    while num > 0:\n        if num%10 == digOriginal:\n            resultado += digNuevo * (10**exponente)\n        else:\n            resultado += (num%10) * (10**exponente)\n        exponente += 1\n        num = num \/\/ 10\n\n    return resultado * signo",
+      "inputs":[
+         {
+            "name":"digOriginal",
+            "type":"Un dígito decimal"
+         },
+         {
+            "name":"digNuevo",
+            "type":"Un dígito decimal"
+         },
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"2",
+   "created":"2021-05-15",
+   "name":"Sustituir dígito",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que dado un dígito a sustituir, un dígito sustituyente y número, sustituya el nuevo por el dado."
+  },
+  {
+   "call":"invertir (num)",
+   "creator":"Diego Mora",
+   "code":"00022",
+   "examples":[
+      {
+         "call":"invertir(1232)",
+         "result":"2321",
+         "comment":""
+      },
+      {
+         "call":"invertir(456891)",
+         "result":"198654",
+         "comment":""
+      },
+      {
+         "call":"invertir(129010)",
+         "result":"10921",
+         "comment":"El primero cero lo omite pues un numero entero no puede empezar con cero"
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"resultado",
+            "type":"Un número"
+         }
+      ],
+      "code":"def invertir (num):\n\n    resultado = 0\n    exponente = cantidadDigitos(num) - 1  # Se hace uso de un función ya existente\n    while num > 0:\n        resultado += (num%10)*(10**exponente)\n        exponente -= 1\n        num = num \/\/ 10\n    return resultado",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"2",
+   "created":"2021-05-15",
+   "name":"Invertir número",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que invierta los dígitos de un número."
+  },
+  {
+   "call":"esPalindromo(num)",
+   "creator":"Diego Mora",
+   "code":"00023",
+   "examples":[
+      {
+         "call":"esPalindromo(1234321)",
+         "result":"True",
+         "comment":""
+      },
+      {
+         "call":"esPalindromo(6754576)",
+         "result":"True",
+         "comment":""
+      },
+      {
+         "call":"esPalindromo(6752454)",
+         "result":"False",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"True o False",
+            "type":"Booleano"
+         }
+      ],
+      "code":"#Solución 1\ndef esPalindromo(num):\n\n    expMayor = cantidadDigitos(num) - 1   # Se hace uso de un función ya existente\n    expMenor = 0\n\n    while expMayor > -1:\n        digitoDerecha = (num \/\/ (10**expMayor)) % 10\n        digitoIzquierda = (num \/\/ (10**expMenor)) % 10\n\n        if  digitoDerecha !=  digitoIzquierda:\n            return False\n        \n        expMayor -= 1\n        expMenor += 1\n        \n    return True\n\n#Solución 2\ndef esPalindromo2(num):\n\n    while num > 0:\n        divisionEntera = cantidadDigitos(num) - 1\n        if num%10 != (num\/\/10**divisionEntera) % 10:\n            return False\n        num = num%(10**divisionEntera) #quitar mas significativo\n        num = num \/\/ 10   #quitar el menos significativo\n    return True",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"2",
+   "created":"2021-05-15",
+   "name":"Es palíndromo",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que verifique si un número es palíndromo, es decir que se sea el mismo de izquierda a derecha y viceversa."
+  },
+  {
+   "call":"esPrimo(num)",
+   "creator":"Diego Mora",
+   "code":"00024",
+   "examples":[
+      {
+         "call":"esPrimo(18)",
+         "result":"False",
+         "comment":""
+      },
+      {
+         "call":"esPrimo(23)",
+         "result":"True",
+         "comment":""
+      },
+      {
+         "call":"esPrimo(97)",
+         "result":"True",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"True o False",
+            "type":"Booleano"
+         }
+      ],
+      "code":"def esPrimo(num):\n\n    divisor = 2\n    while divisor < num:\n        print (num, \"%\",divisor)\n        if num % divisor == 0:\n            return False\n        divisor += 1\n\n    return True\n",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-15",
+   "name":"Es primo",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que diga si un número es primo."
+  },
+  {
+   "call":"esConjunto(num)",
+   "creator":"Diego Mora",
+   "code":"00025",
+   "examples":[
+      {
+         "call":"esConjunto(12356)",
+         "result":"True",
+         "comment":""
+      },
+      {
+         "call":"esConjunto(815429)",
+         "result":"True",
+         "comment":""
+      },
+      {
+         "call":"esConjunto(3742857)",
+         "result":"False",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"True o False",
+            "type":"Booleano"
+         }
+      ],
+      "code":"def esConjunto(num):\n\n    while num >= 10:\n        if esta(num%10, num\/\/10):\n            return False\n        num = num \/\/ 10\n\n    return True\n\n\n# Verificar si el dígito está en el número\n# después de haberlo sacado\ndef esta(dig, num):\n\n    if dig == num:\n        return True\n    while num > 0:\n        if dig == num%10:\n            return True\n        num = num \/\/ 10\n\n    return False",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"1",
+   "created":"2021-05-15",
+   "name":"Es conjunto",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que verifique si un número no tiene dígitos repetidos, es decir, que sea conjunto."
+  },
+  {
+   "call":"borrarPosicion(num, pos)",
+   "creator":"Diego Mora",
+   "code":"00026",
+   "examples":[
+      {
+         "call":"borrarPosicion(348528, 6)",
+         "result":"48528 ",
+         "comment":""
+      },
+      {
+         "call":"borrarPosicion(324342, 3)",
+         "result":"32442",
+         "comment":""
+      },
+      {
+         "call":"borrarPosicion(10, 1)",
+         "result":"1",
+         "comment":""
+      }
+   ],
+   "solution":{
+      "outputs":[
+         {
+            "name":"resultado",
+            "type":"Un número"
+         }
+      ],
+      "code":"def borrarPosicion(num, pos):\n\n    exp = 0\n    resultado = 0\n    while num > 0:\n        print (num, pos, resultado, exp)\n        if pos == 1:\n            return resultado + (num\/\/10)* (10**exp)\n\n        resultado += (num%10) * (10**exp)\n        pos = pos - 1\n        exp = exp + 1\n        num = num \/\/ 10\n\n    return resultado\n",
+      "inputs":[
+         {
+            "name":"num",
+            "type":"Un número entero positivo o cero"
+         },
+         {
+            "name":"pos",
+            "type":"Un número entero positivo o cero"
+         }
+      ]
+   },
+   "level":"2",
+   "created":"2021-05-15",
+   "name":"Borrar en posición",
+   "section":"Algoritmos numéricos",
+   "details":"Realice un programa que borre el dígito de un número en una posición dada, de derecha a izquierda comenzando en la posición 1, y retorne el nuevo número."
+  }
+]
