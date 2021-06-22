@@ -1,0 +1,80 @@
+.busqueda{
+    margin-bottom: 20px;
+}
+
+.busqueda input{
+    font-size: 32px;
+}
+
+.busqueda input, button{
+    height: 64px;
+    border-radius: 20px;
+}
+
+.busqueda button{
+    width: 64px;
+}
+
+.dropdown{
+    width: 100%;
+}
+
+.drop-elem{
+    font-size: 25px;
+}
+
+.drop-elem button{
+    border-radius: 0%;
+    height: 50px;
+}
+
+.drop-elem .row div{
+    padding: 0%;
+}
+
+
+.div-cantidad{
+    border: 1px solid black;
+    text-align: center;
+    background: rgb(238, 238, 238);
+    font-weight: 500;
+    width: 100px;
+}
+
+
+.selected{
+    background: rgb(194, 194, 194);
+    
+}
+
+
+
+.resultados{
+    margin-top: 50px;
+}
+
+
+
+// Mobil
+
+@media screen and (max-width: 575px){
+    .no-mobile{
+        visibility: hidden;
+        display: none;
+    }
+
+    .dropdown{
+        margin-top: 10px;
+    }
+
+    .busqueda input{
+        font-size: 20px;
+    }
+
+    .star{
+        font-size: 10px;
+    }
+}
+
+
+

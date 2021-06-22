@@ -2,3 +2,57 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+
+// Paleta de colores globales
+
+$bodybg : #007DB2;
+$myWhite : #FAFCFD;
+$myWhiteShadow : #ebebeb;
+$navGray : #535353;
+$pagebg : #D2EDFB;
+$elembg : #6CC5EB;
+$headerbg : #61B1D3;
+$textGray : #464646;
+
+
+body{
+    background: $bodybg;
+}
+
+.navbar-gray{
+    background: $navGray;
+}
+
+.font-mywhite{
+    color: $myWhite;
+}
+
+.font-mygray{
+    color: $textGray;
+}
+
+.bg-mywhite{
+    background: $myWhite;
+}
+
+.bg-elem{
+    background: $elembg;
+}
+
+.bg-page{
+    background: $pagebg;
+}
+
+.btn-mywhite{
+    background: $myWhite;
+    color: $textGray;
+    transition: 0.2s;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.btn-mywhite:hover{
+    color: $textGray;
+    background: $myWhiteShadow;
+}

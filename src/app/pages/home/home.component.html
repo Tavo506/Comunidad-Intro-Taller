@@ -1,1 +1,132 @@
-<p>home works!</p>
+<div>
+
+    <div class="row busqueda">
+        <div class="col-sm-10 col-12">
+            <input type="text" class="form-control" placeholder="Categoría, nombre, o descripción">
+        </div>
+        <div class="col-sm-2 col-12 no-mobile">
+            <button class="btn btn-mywhite"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-5 col-12 text-left">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-mywhite btn-block dropdown" id="dropdownBasic1" ngbDropdownToggle>Categorías</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="drop-elem">
+                    <button ngbDropdownItem (click)="filterCategoria('', 0)">
+                        Cualquier Categoría
+                    </button>
+                    <button ngbDropdownItem [ngClass]="{'selected': categoria===1}" (click)="filterCategoria('', 1)">
+                        <div class="row">
+                            <div class="col-8">
+                                <span>[Categoría]</span>
+                            </div>
+                            <div class="col-4 text-center div-cantidad">
+                                <span>###</span>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5 col-12 text-right">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-mywhite btn-block dropdown" id="dropdownBasic2" ngbDropdownToggle>Dificultad</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="drop-elem">
+                    <button ngbDropdownItem (click)="filterDificultad(0)">
+                        Cualquier Dificultad
+                    </button>
+                    <button ngbDropdownItem [ngClass]="{'selected': dificultad===1}" (click)="filterDificultad(1)">
+                        <div class="row">
+                            <div class="col-8 stars">
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div class="col-4 text-center div-cantidad">
+                                <span class="cant">###</span>
+                            </div>
+                        </div>
+                    </button>
+                    <button ngbDropdownItem [ngClass]="{'selected': dificultad===2}" (click)="filterDificultad(2)">
+                        <div class="row">
+                            <div class="col-8 stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div class="col-4 text-center div-cantidad">
+                                <span class="cant">###</span>
+                            </div>
+                        </div>
+                    </button>
+                    <button ngbDropdownItem [ngClass]="{'selected': dificultad===3}" (click)="filterDificultad(3)">
+                        <div class="row">
+                            <div class="col-8 stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div class="col-4 text-center div-cantidad">
+                                <span class="cant">###</span>
+                            </div>
+                        </div>
+                    </button>
+                    <button ngbDropdownItem [ngClass]="{'selected': dificultad===4}" (click)="filterDificultad(4)">
+                        <div class="row">
+                            <div class="col-8 stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div class="col-4 text-center div-cantidad">
+                                <span class="cant">###</span>
+                            </div>
+                        </div>
+                    </button>
+                    <button ngbDropdownItem [ngClass]="{'selected': dificultad===5}" (click)="filterDificultad(5)">
+                        <div class="row">
+                            <div class="col-8 stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="col-4 text-center div-cantidad">
+                                <span class="cant">###</span>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="resultados bg-page">
+        <ul>
+            <li *ngFor="let ejercicio of ejercicios">
+                <p>{{ejercicio.call}}</p>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+</div>
