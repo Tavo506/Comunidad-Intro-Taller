@@ -1,17 +1,26 @@
 <div>
 
+    <!-- Buscador -->
+
+    <form (ngSubmit)="buscar(busqueda.value)">
     <div class="row busqueda">
-        <div class="col-sm-10 col-12">
-            <input type="text" class="form-control" placeholder="Categoría, nombre, o descripción">
+            <div class="col-sm-10 col-12">
+                <input type="text" #busqueda class="form-control" placeholder="Categoría, nombre, o descripción">
+            </div>
+            <div class="col-sm-2 no-mobile text-right">
+                <button type="submit" class="btn btn-mywhite"><i class="fas fa-search"></i></button>
+            </div>
         </div>
-        <div class="col-sm-2 no-mobile text-right">
-            <button class="btn btn-mywhite"><i class="fas fa-search"></i></button>
-        </div>
-    </div>
+    </form>
+
+
+
+
+    <!-- Filtros de categoría y dificultad -->
 
     <div class="row">
 
-        <div class="col-sm-5 col-12 text-left">
+        <div class="col-sm-6 col-12 text-left">
             <div ngbDropdown class="d-inline-block">
                 <button class="btn btn-mywhite btn-block dropdown" id="dropdownBasic1" ngbDropdownToggle>Categoría</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="drop-elem">
@@ -26,7 +35,7 @@
                         >
                         <div class="row">
                             <div class="col-8">
-                                <span>{{categoria}}</span>
+                                <span class="categoria">{{categoria}}</span>
                             </div>
                             <div class="col-4 text-center div-cantidad">
                                 <span>{{cantCategorias[i]}}</span>
@@ -37,7 +46,7 @@
             </div>
         </div>
 
-        <div class="col-sm-5 col-12 text-right">
+        <div class="col-sm-6 col-12 text-right">
             <div ngbDropdown class="d-inline-block">
                 <button class="btn btn-mywhite btn-block dropdown" id="dropdownBasic2" ngbDropdownToggle>Dificultad</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="drop-elem">

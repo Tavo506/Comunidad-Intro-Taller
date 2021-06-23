@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
 
   filtroDificultad : number = 0;
   filtroCategoria : number = -1;
+  filtroBusqueda : string = "";
 
   saltos : number = 10;
   pagina : number = 1;
@@ -55,7 +56,6 @@ export class HomeComponent implements OnInit {
       }
 
     });
-    console.log(this.cantNiveles);
     
   }
 
@@ -67,25 +67,32 @@ export class HomeComponent implements OnInit {
 
   filterDificultad(num:number){
     this.filtroDificultad = num;
-    this.filtrar(this.filtroCategoria, num);
+    this.filtrar(this.filtroCategoria, num, this.filtroBusqueda);
     // this.ejercicios = num != 0 ? this.listaInicial.filter(e => e.level == num) : this.listaInicial;
   }
 
   filterCategoria(num:number){
     this.filtroCategoria = num;
-    this.filtrar(num, this.filtroDificultad);
+    this.filtrar(num, this.filtroDificultad, this.filtroBusqueda);
     // this.ejercicios = num != -1 ? this.listaInicial.filter(e => e.section === this.categorias[num]) : this.listaInicial;
   }
 
+  buscar(busqueda:string){
+    this.filtroBusqueda = busqueda.toLowerCase();
+    this.filtrar(this.filtroCategoria, this.filtroDificultad, busqueda.toLowerCase())
+  }
 
-  filtrar(categoria : number, dificultad : number){
+
+  filtrar(categoria : number, dificultad : number, busqueda : string){
     this.primeraPagina();
 
     this.ejercicios = this.listaInicial.filter(e => 
       (categoria == -1 || e.section === this.categorias[categoria]) &&
-      (dificultad == 0 || e.level == dificultad)
+      (dificultad == 0 || e.level == dificultad) &&
+      (e.name.toLowerCase().includes(busqueda) || e.details.toLowerCase().includes(busqueda) || e.section.toLowerCase().includes(busqueda))
     );
   }
+
 
   siguiente(){
     if (this.fin < this.ejercicios.length) {
