@@ -73,13 +73,18 @@
 }
 
 .descripcion{
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .no-star{
     color: rgb(255, 255, 255);
     -webkit-text-stroke-width: 1.5px;
     -webkit-text-stroke-color: rgb(0, 0, 0);
+}
+
+.dificultad{
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 
@@ -136,7 +141,14 @@
 
     .btn-tabla{
         width: 50px;
+    }
 
+    .dificultad{
+        margin-left: -20px;
+    }
+
+    .descripcion{
+        font-size: 14px;
     }
 }
 
