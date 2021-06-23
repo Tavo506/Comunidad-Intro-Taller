@@ -4,7 +4,7 @@
         <div class="col-sm-10 col-12">
             <input type="text" class="form-control" placeholder="Categoría, nombre, o descripción">
         </div>
-        <div class="col-sm-2 col-12 no-mobile">
+        <div class="col-sm-2 no-mobile text-right">
             <button class="btn btn-mywhite"><i class="fas fa-search"></i></button>
         </div>
     </div>
@@ -13,7 +13,7 @@
 
         <div class="col-sm-5 col-12 text-left">
             <div ngbDropdown class="d-inline-block">
-                <button class="btn btn-mywhite btn-block dropdown" id="dropdownBasic1" ngbDropdownToggle>Categorías</button>
+                <button class="btn btn-mywhite btn-block dropdown" id="dropdownBasic1" ngbDropdownToggle>Categoría</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="drop-elem">
                     <button ngbDropdownItem (click)="filterCategoria('', 0)">
                         Cualquier Categoría
@@ -118,12 +118,48 @@
 
 
 
+
     <div class="resultados bg-page">
-        <ul>
-            <li *ngFor="let ejercicio of ejercicios">
-                <p>{{ejercicio.call}}</p>
-            </li>
-        </ul>
+        
+        <div class="bg-elem ejercicio" *ngFor="let ejercicio of ejercicios | slice:inicio:fin; let i=index">
+            
+            <div class="row">
+                <div class="col">
+                    <span class="font-weight-bold">{{ejercicio.name}}</span>
+                </div>
+                <div class="col text-right">
+                    <span class="font-mygray">{{ejercicio.section}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <span class="descripcion">{{ejercicio.details}}</span>
+                </div>
+                <div class="col-4 text-right difficultad">
+                    <span class="level">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star" [ngClass]="{'no-star': ejercicio.level==1}"></i>
+                        <i class="fas fa-star" [ngClass]="{'no-star': ejercicio.level<3}"></i>
+                        <i class="fas fa-star" [ngClass]="{'no-star': ejercicio.level<4}"></i>
+                        <i class="fas fa-star" [ngClass]="{'no-star': ejercicio.level<5}"></i>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row nav-tabla mx-2">
+            <div class="col-2 text-left">
+                <button class="btn btn-myblue btn-tabla" (click)="anterior()"><i class="fas fa-angle-left"></i></button>
+            </div>
+            <div class="col-8  text-center paginacion">
+                <span>Página {{pagina}} de {{cantPaginas}}</span>
+            </div>
+            <div class="col-2 text-right">
+                <button class="btn btn-myblue btn-tabla" (click)="siguiente()"><i class="fas fa-angle-right"></i></button>
+            </div>
+        </div>
+
     </div>
 
 

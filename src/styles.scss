@@ -8,7 +8,7 @@
 
 $bodybg : #007DB2;
 $myWhite : #FAFCFD;
-$myWhiteShadow : #ebebeb;
+$myWhiteShadow : #f1f1f1;
 $navGray : #535353;
 $pagebg : #D2EDFB;
 $elembg : #6CC5EB;
@@ -55,4 +55,21 @@ body{
 .btn-mywhite:hover{
     color: $textGray;
     background: $myWhiteShadow;
+}
+
+.btn-myblue{
+    background: $elembg;
+    color: $textGray;
+    transition: 0.2s;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.btn-myblue:hover{
+    color: $textGray;
+    background: $myWhiteShadow;
+}
+
+.btn:focus{
+    box-shadow: none;
 }
