@@ -1,6 +1,6 @@
 <div class="ejercicio-div" *ngIf="ejercicio">
 
-    <div class="row nombre bg-elem">
+    <div class="nombre bg-elem">
         <h1>{{ejercicio.name}}</h1>
     </div>
 
@@ -50,19 +50,30 @@
 
         <br>
 
+        TODO Seguir buscando otro highlight
         <div>
             <h2 class="ejemplo">Ejemplos</h2>
-            <!-- <pre>
-                <code data-language="python">
-                   def openFile(path):
-                     file = open(path, "r")
-                     content = file.read()
-                     file.close()
-                     return content
-                 </code>
-             </pre> -->
             <pre><code data-language="python" >{{ejemplos}}</code></pre>
         </div>
+
+
+        <div class="mt-2 mb-4 text-center">
+            <button (click)="mostrarSolucion()" class="btn btn-solucion" [ngClass]="{'btn-success': !solucion, 'btn-danger':solucion}">{{solucion ? 'Ocultar Solución' : 'Ver Solución'}}</button>
+        </div>
+    </div>   
     
-    </div>        
+
+    
+    <div class="solucion-div bg-page" *ngIf="solucion">
+    
+        <div class="nombre bg-elem">
+            <h1>Solución</h1>
+        </div>
+
+        <div class="solucion">
+            <pre><code data-language="python">{{ejercicio.solution.code}}</code></pre>
+        </div>
+
+    </div>
+
 </div>

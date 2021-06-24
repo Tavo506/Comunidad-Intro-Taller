@@ -1,12 +1,14 @@
 .nombre h1{
     font-size: 36px;
-    padding: 0px 20px;
+    padding: 2px 20px;
+    margin-bottom: 0%;
 }
 
 
 .contenido{
     padding: 0px 20px;
     padding-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 
@@ -63,6 +65,30 @@
     font-size: 18px;
 }
 
+.btn-solucion{
+    font-size: 18px;
+    font-weight: 500;
+    width: 40%;
+}
+
+
+
+.solucion-div{
+    transform: 1s;
+}
+
+.solucion{
+    padding: 15px;
+}
+
+.solucion pre{
+    margin: 0%;
+}
+
+
+
+
+
 // Mobil
 
 @media screen and (max-width: 575px){
@@ -72,5 +98,9 @@
 
     .categoria{
         font-size: 20px;
+    }
+
+    .btn-solucion{
+        width: 75%;
     }
 }

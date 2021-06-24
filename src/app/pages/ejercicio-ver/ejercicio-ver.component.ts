@@ -7,12 +7,15 @@ import { EjerciciosService } from 'src/app/services/ejercicios.service';
 @Component({
   selector: 'app-ejercicio-ver',
   templateUrl: './ejercicio-ver.component.html',
-  styleUrls: ['./ejercicio-ver.component.scss']
+  styleUrls: ['./ejercicio-ver.component.scss'],
+  
 })
 export class EjercicioVerComponent implements OnInit {
 
   ejercicio!: Ejercicio;
   ejemplos: string = "";
+  solucion: boolean = false;
+  yaSeMostro: boolean = false;
 
   constructor(
     private ejercicioService : EjerciciosService,
@@ -55,5 +58,20 @@ export class EjercicioVerComponent implements OnInit {
   descargar(){
     alert("Descarga...")
   }
+
+
+  mostrarSolucion(){
+    this.solucion = !this.solucion;
+    
+    if (!this.yaSeMostro) {
+      this.yaSeMostro = true;
+      
+      setTimeout(() => {
+        this.highlights.renderCode();
+      }, 250);
+    }
+
+  }
+
 
 }
