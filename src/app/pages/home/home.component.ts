@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import  {Ejercicio}  from 'src/app/model/Ejercicio';
+import { AuthService } from 'src/app/services/auth.service';
 import { EjerciciosService } from 'src/app/services/ejercicios.service';
 
 @Component({
@@ -28,7 +30,9 @@ export class HomeComponent implements OnInit {
   categorias : string[] = [];
 
   constructor(
-    private ejerciciosServices : EjerciciosService
+    private ejerciciosServices : EjerciciosService,
+    private authServices : AuthService,
+    private router : Router
   ) {
     this.ejerciciosServices.getEjercicios().subscribe(res => {
       this.listaInicial = res.reverse();
@@ -99,6 +103,7 @@ export class HomeComponent implements OnInit {
       this.fin += this.saltos;
       this.inicio += this.saltos;
       this.pagina++;
+      window.scroll(0,0);
     } else {
       alert("No hay más resultados");
     }
@@ -112,10 +117,16 @@ export class HomeComponent implements OnInit {
     } else {
       this.primeraPagina();
     }
+    window.scroll(0,0);
   }
 
   get cantPaginas() : number{
     return Math.ceil(this.ejercicios.length / this.saltos);
+  }
+
+
+  verEjercicio(id:any){
+    this.router.navigate(["/ejercicioVer", id])
   }
 
 }

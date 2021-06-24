@@ -12,6 +12,7 @@ $myWhiteShadow : #f1f1f1;
 $navGray : #535353;
 $pagebg : #D2EDFB;
 $elembg : #6CC5EB;
+$elemShadow : #61b5da;
 $headerbg : #61B1D3;
 $textGray : #464646;
 
@@ -67,7 +68,7 @@ body{
 
 .btn-myblue:hover{
     color: $textGray;
-    background: $myWhiteShadow;
+    background: $elemShadow;
 }
 
 .btn:focus{
@@ -78,5 +79,10 @@ body{
 @media screen and (max-width: 575px){
     .container{
         padding: 0%;
+    }
+
+    .no-mobile{
+        visibility: hidden;
+        display: none;
     }
 }

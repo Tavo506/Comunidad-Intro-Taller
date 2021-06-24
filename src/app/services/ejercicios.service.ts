@@ -30,4 +30,16 @@ export class EjerciciosService {
     );
   }
 
+
+  getEjercicio(id:string) : Observable<any[]>{
+    return this.ejerciciosDB.snapshotChanges().pipe(
+      map((changes) => {
+        return changes.map((c) => ({
+          $key: c.payload.key,
+          ...c.payload.val(),
+        })).filter(e => e.$key == id);
+      })
+    );
+  }
+
 }

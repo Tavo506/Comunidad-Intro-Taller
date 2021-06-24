@@ -131,11 +131,11 @@
 
 
 
-
+    <!-- Resultados de las búsquedas de ejercicios -->
 
     <div class="resultados bg-page">
         
-        <div class="bg-elem ejercicio" *ngFor="let ejercicio of ejercicios | slice:inicio:fin; let i=index">
+        <div class="bg-elem ejercicio" *ngFor="let ejercicio of ejercicios | slice:inicio:fin" (click)="verEjercicio(ejercicio.$key)">
             
             <div class="row">
                 <div class="col">
@@ -164,14 +164,14 @@
 
         <div class="row nav-tabla mx-2">
             <div class="col-2 text-left">
-                <button class="btn btn-myblue btn-tabla" (click)="anterior()"><i class="fas fa-angle-left"></i></button>
+                <button class="btn btn-myblue btn-tabla" *ngIf="pagina != 1" (click)="anterior()"><i class="fas fa-angle-left"></i></button>
             </div>
             <div class="col-8  text-center paginacion">
                 <span *ngIf="cantPaginas > 0">Página {{pagina}} de {{cantPaginas}}</span>
                 <span *ngIf="cantPaginas == 0">No hay resultados</span>
             </div>
             <div class="col-2 text-right">
-                <button class="btn btn-myblue btn-tabla" (click)="siguiente()"><i class="fas fa-angle-right"></i></button>
+                <button class="btn btn-myblue btn-tabla" *ngIf="pagina < cantPaginas" (click)="siguiente()"><i class="fas fa-angle-right"></i></button>
             </div>
         </div>
 

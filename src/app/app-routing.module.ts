@@ -17,10 +17,10 @@ const routes: Routes = [
     path : "register", component:RegisterComponent
   },
   {
-    path : "ejercicioVer", component:EjercicioVerComponent
+    path : "ejercicioVer/:id", component:EjercicioVerComponent
   },
   {
-    path : "ejercicioMod", component:EjercicioModComponent
+    path : "ejercicioMod/:id", component:EjercicioModComponent
   },
   {
     path : "**", redirectTo : "home"

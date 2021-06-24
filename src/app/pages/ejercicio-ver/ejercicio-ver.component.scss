@@ -1,0 +1,76 @@
+.nombre h1{
+    font-size: 36px;
+    padding: 0px 20px;
+}
+
+
+.contenido{
+    padding: 0px 20px;
+    padding-bottom: 10px;
+}
+
+
+.row{
+    margin: 0%;
+}
+
+.no-star{
+    color: rgb(255, 255, 255);
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: rgb(0, 0, 0);
+}
+
+.dificultad{
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0%;
+}
+
+.level{
+    font-size: 26px;
+}
+
+.categoria{
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.descripcion{
+    font-size: 18px;
+}
+
+
+.btn-myblue{
+    font-size: 20px;
+    display: block;
+    height: 36px;
+    line-height: 0px;
+}
+
+.entrada{
+    color: rgb(0, 60, 150);
+}
+
+.salida{
+    color: rgb(0, 107, 54);
+}
+
+.ejemplo{
+    color: rgb(80, 0, 100);
+}
+
+.io{
+    font-size: 18px;
+}
+
+// Mobil
+
+@media screen and (max-width: 575px){
+    .level{
+        font-size: 22px;
+    }
+
+    .categoria{
+        font-size: 20px;
+    }
+}

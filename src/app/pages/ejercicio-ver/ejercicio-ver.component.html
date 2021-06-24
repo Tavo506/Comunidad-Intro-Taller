@@ -1,1 +1,60 @@
-<p>ejercicio-ver works!</p>
+<div class="ejercicio-div" *ngIf="ejercicio">
+
+    <div class="row nombre bg-elem">
+        <h1>{{ejercicio.name}}</h1>
+    </div>
+
+    <div class="contenido bg-page">
+
+        <div class="row mb-2">
+            <div class="col-5 dificultad mt-1">
+                <span class="level">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star" [ngClass]="{'no-star': ejercicio.level==1}"></i>
+                    <i class="fas fa-star" [ngClass]="{'no-star': ejercicio.level<3}"></i>
+                    <i class="fas fa-star" [ngClass]="{'no-star': ejercicio.level<4}"></i>
+                    <i class="fas fa-star" [ngClass]="{'no-star': ejercicio.level<5}"></i>
+                </span>
+            </div>
+            <div class="col-7 text-right mt-1">
+                <h2 class="categoria">{{ejercicio.section}}</h2>
+            </div>    
+        </div>
+        
+        
+        <div class="descripcion">
+            <span>{{ejercicio.details}}</span>
+        </div>
+        
+        <div class="mt-2 mb-4">
+            <button (click)="descargar()" class="btn btn-myblue">Archivo Adjunto <i class="fas fa-download"></i></button>
+        </div>
+
+        <div>
+            <h2 class="entrada">Entradas</h2>
+            <div *ngFor="let entrada of ejercicio.solution.inputs" class="ml-3 io">
+                <span class="font-weight-bold">{{entrada.name}}: </span>
+                <span>{{entrada.type}}</span>
+            </div>
+        </div>
+
+        <br>
+        
+        <div>
+            <h2 class="salida">Salidas</h2>
+            <div *ngFor="let salida of ejercicio.solution.outputs" class="ml-3 io">
+                <span class="font-weight-bold">{{salida.name}}: </span>
+                <span>{{salida.type}}</span>
+            </div>
+        </div>
+
+        <div>
+            <h2 class="ejemplo">Ejemplos</h2>
+            <div *ngFor="let ejemplo of ejercicio.examples" class="ml-3 io">
+                <span >{{ejemplo.call}} == </span>
+                <span>{{ejemplo.result}}</span>
+            </div>
+        </div>
+    
+    </div>        
+</div>
