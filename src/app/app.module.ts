@@ -13,6 +13,10 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 
 
+// Highlights
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+
+
 // Components
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -39,8 +43,15 @@ import { EjerciciosService } from './services/ejercicios.service';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
+    HighlightModule
   ],
-  providers: [EjerciciosService],
+  providers: [EjerciciosService, 
+    {
+    provide: HIGHLIGHT_OPTIONS,
+    useValue: {
+      fullLibraryLoader: () => import('highlight.js'),
+    }
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
