@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-gray navbar-dark">
-    <a class="navbar-brand font-mywhite" [routerLink]="['/home']">IC</a>
+<nav class="navbar navbar-expand-lg navbar-gray navbar-dark fixed-top">
+    <a class="navbar-brand font-mywhite" [routerLink]="['/home']" (click)="scroll()">IC</a>
   
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link font-mywhite nav-elem" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link font-mywhite nav-elem" (click)="scroll()" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
         </li>
       </ul>
       <div>

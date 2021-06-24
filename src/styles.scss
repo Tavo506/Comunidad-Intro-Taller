@@ -84,10 +84,15 @@ body{
     box-shadow: none;
 }
 
+.container{
+    padding-top: 50px;
+}
+
 
 @media screen and (max-width: 575px){
     .container{
-        padding: 0%;
+        padding-right: 0%;
+        padding-left: 0%;
     }
 
     .no-mobile{

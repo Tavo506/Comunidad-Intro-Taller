@@ -15,7 +15,6 @@ export class EjercicioVerComponent implements OnInit {
   ejercicio!: Ejercicio;
   ejemplos: string = "";
   solucion: boolean = false;
-  yaSeMostro: boolean = false;
 
   constructor(
     private ejercicioService : EjerciciosService,
@@ -40,7 +39,7 @@ export class EjercicioVerComponent implements OnInit {
           setTimeout(() => {
             this.highlights.renderCode();
             
-          }, 500);
+          }, 1);
           
            
             
@@ -62,14 +61,11 @@ export class EjercicioVerComponent implements OnInit {
 
   mostrarSolucion(){
     this.solucion = !this.solucion;
-    
-    if (!this.yaSeMostro) {
-      this.yaSeMostro = true;
       
-      setTimeout(() => {
-        this.highlights.renderCode();
-      }, 250);
-    }
+    setTimeout(() => {
+      this.highlights.renderCode();
+    }, 1);
+  
 
   }
 
