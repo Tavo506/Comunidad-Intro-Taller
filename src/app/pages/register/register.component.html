@@ -1,1 +1,21 @@
-<p>register works!</p>
+<div class="register text-center bg-page">
+    <h1 class="title">REGISTER</h1>
+
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div>
+            <input class="form-input" type="text" placeholder="Nombre">
+
+            <input class="form-input" type="text" placeholder="Correo">
+
+            <input class="form-input" type="password" placeholder="Contraseña">
+        </div>
+        
+        <div class="mb-4 text-right">
+
+            <a class="crear-existe" [routerLink]="['/login']">¿Ya tienes cuenta? / Ingresar</a>
+               
+        </div>
+        <button class="btn btn-myblue" type="submit">Registrarse</button>
+    </form>
+
+</div>

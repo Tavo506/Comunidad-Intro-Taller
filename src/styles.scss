@@ -89,6 +89,41 @@ body{
 }
 
 
+// Login / register
+
+.form-input{
+    width: 100%;
+    margin: 10px 0px;
+    margin-top: 25px;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: sans-serif;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    color: #495057;
+}
+
+
+.form-input:focus{
+    outline-width: 0;
+}
+
+
+.crear-existe{
+    color: rgb(19, 19, 19);
+    font-weight: 500;
+    font-size: 18px;
+    
+}
+
+.crear-existe:hover{
+    color: rgb(9, 101, 177);
+    text-decoration: none;
+}
+
+
 @media screen and (max-width: 575px){
     .container{
         padding-right: 0%;
