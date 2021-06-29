@@ -69,12 +69,14 @@
                         <input  type="text"
                                 class="form-control"
                                 formControlName ="call"
+                                [class.is-invalid]="exampleCallInvalido(i)"
                         >
                     </td>
                     <td>
                         <input  type="text"
                                 class="form-control"
                                 formControlName ="result"
+                                [class.is-invalid]="exampleResultInvalido(i)"
                         >
                     </td>
                     <td>
@@ -118,6 +120,7 @@
                                 <input  type="text"
                                 class="form-control"
                                 formControlName ="name"
+                                [class.is-invalid]="inputNameInvalido(i)"
                                 >
                             </td>
                             
@@ -125,6 +128,7 @@
                                 <input  type="text"
                                 class="form-control"
                                 formControlName ="type"
+                                [class.is-invalid]="inputTypeInvalido(i)"
                                 >
                             </td>
                             <td>
@@ -156,6 +160,7 @@
                                 <input  type="text"
                                 class="form-control"
                                 formControlName ="name"
+                                [class.is-invalid]="outputNameInvalido(i)"
                                 >
                             </td>
                             
@@ -163,6 +168,7 @@
                                 <input  type="text"
                                 class="form-control"
                                 formControlName ="type"
+                                [class.is-invalid]="outputTypeInvalido(i)"
                                 >
                             </td>
                             <td>
@@ -182,6 +188,12 @@
                 <textarea class="form-control" rows="10" formControlName="code" [class.is-invalid]="codeInvalido"></textarea>
             </div>
             
+        </div>
+        
+        <div class="error mb-4">
+            <small *ngIf="form.invalid && revisado" class="text-danger">
+               Faltan campos por llenar
+            </small>
         </div>
 
         <div class="text-center">

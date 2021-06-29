@@ -16,6 +16,7 @@ export class EjercicioModComponent implements OnInit {
   ejercicio!: Ejercicio;
   esNuevo!: boolean;
   form!: FormGroup;
+  revisado: Boolean = false;
 
   newEjercicio(): Ejercicio {
     var today = new Date();
@@ -68,7 +69,7 @@ export class EjercicioModComponent implements OnInit {
   ) {
     this.form = this.fb.group({
       call: [, [Validators.required]],
-      code: [, [Validators.required]],
+      code: [],
       created: [, [Validators.required]],
       creator: [, [Validators.required]],
       details: [, [Validators.required]],
@@ -232,6 +233,35 @@ export class EjercicioModComponent implements OnInit {
   }
 
 
+  exampleCallInvalido(num:number) : Boolean{
+    return  (this.examples.controls[num] as FormGroup).controls.call.invalid && 
+            (this.examples.controls[num] as FormGroup).controls.call.touched;
+  }
+
+  exampleResultInvalido(num:number) : Boolean{
+    return  (this.examples.controls[num] as FormGroup).controls.result.invalid && 
+            (this.examples.controls[num] as FormGroup).controls.result.touched;
+  }
+
+  inputNameInvalido(num:number) : Boolean{
+    return  ((this.form.get("solution.inputs") as FormArray).controls[num] as FormGroup).controls.name.invalid && 
+            ((this.form.get("solution.inputs") as FormArray).controls[num] as FormGroup).controls.name.touched;
+  }
+
+  inputTypeInvalido(num:number) : Boolean{
+    return  ((this.form.get("solution.inputs") as FormArray).controls[num] as FormGroup).controls.type.invalid && 
+            ((this.form.get("solution.inputs") as FormArray).controls[num] as FormGroup).controls.type.touched;
+  }
+
+  outputNameInvalido(num:number) : Boolean{
+    return  ((this.form.get("solution.outputs") as FormArray).controls[num] as FormGroup).controls.name.invalid && 
+            ((this.form.get("solution.outputs") as FormArray).controls[num] as FormGroup).controls.name.touched;
+  }
+
+  outputTypeInvalido(num:number) : Boolean{
+    return  ((this.form.get("solution.outputs") as FormArray).controls[num] as FormGroup).controls.type.invalid && 
+            ((this.form.get("solution.outputs") as FormArray).controls[num] as FormGroup).controls.type.touched;
+  }
 
 
   // Fin validadores
@@ -245,6 +275,7 @@ export class EjercicioModComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form);
+    this.revisado = true;
 
     if (this.form.invalid) {
       Object.values(this.form.controls).forEach(control => {
