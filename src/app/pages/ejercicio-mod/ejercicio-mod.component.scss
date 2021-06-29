@@ -108,6 +108,49 @@ label{
     font-weight: 500;
 }
 
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #6CC5EB;
+}
+
+.btn-mywhite{
+    line-height: 0%;
+    border: 1px solid rgb(0, 21, 49);
+}
+
+
+table, th, td {
+    border: 1px solid rgb(0, 21, 49) !important;
+}
+
+table{
+    margin-bottom: 10px;
+    // margin-bottom: 0%;
+}
+
+// td{
+//     padding: 0%;
+// }
+
+thead{
+    background: #007DB2;
+    color: #FAFCFD;
+    text-align: center;
+    font-size: 20px;
+}
+
+tbody{
+    background: #FAFCFD;
+}
+
+
 // Mobil
 
 @media screen and (max-width: 575px){

@@ -14,7 +14,7 @@ export class EjerciciosService {
 
   constructor(private db : AngularFireDatabase) {
     this.ejerciciosDB = this.db.list(this.dbPath, (ref) =>
-      ref.orderByChild('created')
+      ref.orderByChild('code')
     );
   }
 
@@ -41,5 +41,31 @@ export class EjerciciosService {
       })
     );
   }
+
+
+  getNewCode() : Observable<any>{
+    return this.ejerciciosDB.snapshotChanges().pipe(
+      map((changes) => {
+        if (changes.length == 0) {
+          return "0"
+        }
+        return changes[changes.length-1].payload.key;
+      })
+    );
+  }
+
+
+  addEjercicio(ejercicio : Ejercicio){
+    var codigo;
+    this.getNewCode().subscribe(res => {
+      codigo = "00000" + (+res + 1);
+      codigo = codigo.slice(-5);
+      
+      ejercicio.code = codigo;
+      // return this.ejerciciosDB.set(codigo, ejercicio)
+    });
+    
+  }
+
 
 }

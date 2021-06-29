@@ -2,7 +2,7 @@ export interface Ejercicio{
     $key? : string;
     call : string;
     code : string;
-    created : Date;
+    created : Date | string;
     creator : string;
     details : string;
     examples : Ejemplo[];

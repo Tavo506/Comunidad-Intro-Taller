@@ -2,26 +2,26 @@
 
     <div class="contenido bg-page">
 
+        
+        <div class="row">
+            <label class="col-3">Creador</label>
+            <input type="text" readonly class="form-control col-9 f-22" value="{{form.get('creator')?.value}}">
+
+        </div>
+
         <div class="row">
             <label class="col-3">Nombre</label>
-            <input type="text" class="form-control col-9 f-22" formControlName="name">
+            <input type="text" class="form-control col-9 f-22" formControlName="name" [class.is-invalid]="nameInvalido">
+
         </div>
-        
         
         <div class="row">
             <label class="col-3">Categoría</label>
-            <input type="text" class="form-control col-9 f-22" formControlName="section">
+            <input type="text" class="form-control col-9 f-22" formControlName="section" [class.is-invalid]="sectionInvalido">
         </div>
         
         <div class="row">
             <label class="col-3">Nivel</label>
-            <!-- <select type="text" class="form-control col-9" formControlName="level">
-                <option value=1>1</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-            </select> -->
             <span class="level">
                 <i (click)="setNivel(1)" class="fas fa-star" [ngClass]="{'clickeable' : esNuevo}"></i>
                 <i (click)="setNivel(2)" class="fas fa-star" [ngClass]="{'no-star': nivel==1, 'clickeable' : esNuevo}"></i>
@@ -33,18 +33,159 @@
         
         <div class="row">
             <label class="col-3">Descripción</label>
-            <textarea type="text" class="form-control col-9" formControlName="details"></textarea>
+            <textarea type="text" class="form-control col-9" formControlName="details" [class.is-invalid]="detailsInvalido"></textarea>
         </div>
         
         <div class="row">
             <label class="col-3">Llamada</label>
-            <input type="text" class="form-control col-9 f-22" formControlName="call">
+            <input type="text" class="form-control col-9 f-22" formControlName="call" [class.is-invalid]="callInvalido">
         </div>
         
+        <div class="row">
+            <label class="col-3">Archivo</label>
+            
+            <label class="custom-file-upload f-22">
+                <input type="file"/>
+                <i class="fa fa-cloud-upload"></i> Subir Archivo
+            </label>
+            
+        </div>
+
         
+        
+        <!-- tabla de ejemplos -->
+        <label>Ejemplos</label>
+        
+        <table class="table table-striped ">
+            <thead>
+                <th>Llamada</th>
+                <th>Resultado</th>
+                <th>Comentario</th>
+                <th>Eliminar</th>
+            </thead>
+            <tbody formArrayName="examples">
+                <tr *ngFor="let example of examples.controls; let i=index" [formGroupName]="i">
+                    <td>
+                        <input  type="text"
+                                class="form-control"
+                                formControlName ="call"
+                        >
+                    </td>
+                    <td>
+                        <input  type="text"
+                                class="form-control"
+                                formControlName ="result"
+                        >
+                    </td>
+                    <td>
+                        <input  type="text"
+                                class="form-control"
+                                formControlName ="comment"
+                        >
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btn-block"(click)="borrarExample(i)">Borrar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button type="button" class="btn btn-block btn-mywhite" (click)="agregarExample()"><i class="fas fa-plus"></i></button>
+
+
+
+        <hr class="my-5">
+
+
+        <div formGroupName="solution">
+
+            <!-- tabla de inputs -->
+
+            <div class="row">
+
+                
+                <label>Inputs</label>
+                
+                <table class="table table-striped">
+                    <thead>
+                        <th>Entrada</th>
+                        <th>Tipo</th>
+                        <th>Eliminar</th>
+                    </thead>
+                    <tbody formArrayName="inputs">
+                        <tr *ngFor="let input of inputs.controls; let i=index" [formGroupName]="i">
+                            <td>
+                                <input  type="text"
+                                class="form-control"
+                                formControlName ="name"
+                                >
+                            </td>
+                            
+                            <td>
+                                <input  type="text"
+                                class="form-control"
+                                formControlName ="type"
+                                >
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-block"(click)="borrarInput(i)">Borrar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-block btn-mywhite" (click)="agregarInput()"><i class="fas fa-plus"></i></button>
+                
+            </div>
+            
+
+            <!-- tabla de outputs -->
+
+            <div class="row">
+
+                <label>Outputs</label>
+                
+                <table class="table table-striped">
+                    <thead>
+                        <th>Entrada</th>
+                        <th>Tipo</th>
+                        <th>Eliminar</th>
+                    </thead>
+                    <tbody formArrayName="outputs">
+                        <tr *ngFor="let input of outputs.controls; let i=index" [formGroupName]="i">
+                            <td>
+                                <input  type="text"
+                                class="form-control"
+                                formControlName ="name"
+                                >
+                            </td>
+                            
+                            <td>
+                                <input  type="text"
+                                class="form-control"
+                                formControlName ="type"
+                                >
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-block"(click)="borrarOutput(i)">Borrar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-block btn-mywhite " (click)="agregarOutput()"><i class="fas fa-plus"></i></button>
+                
+            </div>
+            
+            
+            <label >Código</label>
+            
+            <div class="row">
+                <textarea class="form-control" rows="10" formControlName="code" [class.is-invalid]="codeInvalido"></textarea>
+            </div>
+            
+        </div>
 
         <div class="text-center">
-            <button type="button" class="btn btn-accion btn-danger">Eliminar</button>
+            <button type="button" class="btn btn-accion btn-danger" (click)="eliminar()">Eliminar</button>
             <button type="submit" class="btn btn-accion btn-success">Guardar</button>
         </div>
 
