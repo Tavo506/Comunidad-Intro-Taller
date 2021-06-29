@@ -126,7 +126,11 @@ export class HomeComponent implements OnInit {
 
 
   verEjercicio(id:any){
-    this.router.navigate(["/ejercicioVer", id])
+    if (this.authServices.estaAutenticado()) {
+      this.router.navigate(["/ejercicioMod", id]);
+    }else{
+      this.router.navigate(["/ejercicioVer", id]);
+    }
   }
 
 }

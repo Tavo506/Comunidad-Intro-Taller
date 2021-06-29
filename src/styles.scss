@@ -13,6 +13,7 @@
 // @import '~highlight.js/styles/atom-one-light.css';
 @import 'assets/css/theme.css';
 
+
 // Paleta de colores globales
 
 $bodybg : #007DB2;
@@ -126,6 +127,11 @@ body{
 .error{
     margin-top: -10px;
     height: 10px;
+}
+
+
+.clickeable{
+    cursor: pointer;
 }
 
 

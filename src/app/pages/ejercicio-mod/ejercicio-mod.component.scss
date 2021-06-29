@@ -1,0 +1,125 @@
+.nombre h1{
+    font-size: 36px;
+    padding: 2px 20px;
+    margin-bottom: 0%;
+}
+
+
+.contenido{
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+
+.row{
+    margin: 0%;
+    margin-bottom: 25px;
+}
+
+.no-star{
+    color: rgb(255, 255, 255);
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: rgb(0, 0, 0);
+}
+
+.dificultad{
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0%;
+}
+
+.level{
+    font-size: 26px;
+}
+
+.categoria{
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.descripcion{
+    font-size: 18px;
+}
+
+
+.btn-myblue{
+    font-size: 20px;
+    display: block;
+    height: 36px;
+    line-height: 0px;
+}
+
+.entrada{
+    color: rgb(0, 60, 150);
+}
+
+.salida{
+    color: rgb(0, 107, 54);
+}
+
+.ejemplo{
+    color: rgb(80, 0, 100);
+}
+
+.io{
+    font-size: 18px;
+}
+
+.btn-solucion{
+    font-size: 18px;
+    font-weight: 500;
+    width: 40%;
+}
+
+
+
+.solucion-div{
+    transform: 1s;
+}
+
+.solucion{
+    padding: 15px;
+}
+
+.solucion pre{
+    margin: 0%;
+}
+
+
+
+label{
+    padding: 0%;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.f-22{
+    font-size: 22px;
+}
+
+.f-16{
+    font-size: 16px !important;
+}
+
+.btn-accion{
+    margin: 0% 10px;
+    width: 25%;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+// Mobil
+
+@media screen and (max-width: 575px){
+    .level{
+        font-size: 22px;
+    }
+
+    .categoria{
+        font-size: 20px;
+    }
+
+    .btn-solucion{
+        width: 75%;
+    }
+}

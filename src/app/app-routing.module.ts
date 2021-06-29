@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 import { EjercicioModComponent } from './pages/ejercicio-mod/ejercicio-mod.component';
 import { EjercicioVerComponent } from './pages/ejercicio-ver/ejercicio-ver.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -20,7 +21,7 @@ const routes: Routes = [
     path : "ejercicioVer/:id", component:EjercicioVerComponent
   },
   {
-    path : "ejercicioMod/:id", component:EjercicioModComponent
+    path : "ejercicioMod/:id", component:EjercicioModComponent, canActivate:[AuthGuard]
   },
   {
     path : "**", redirectTo : "home"

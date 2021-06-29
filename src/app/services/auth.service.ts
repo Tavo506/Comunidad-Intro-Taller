@@ -83,7 +83,7 @@ export class AuthService {
         return changes.map((c) => ({
           $key: c.payload.key,
           ...c.payload.val(),
-        })).filter(e => e.$key == id)[0];
+        })).filter(e => e.$key == id)[0].nombre;
       })
     );
   }
@@ -126,7 +126,7 @@ export class AuthService {
     this.userToken = usuario.token;
 
     let hoy = new Date();
-    hoy.setSeconds( 3600 );
+    hoy.setSeconds( 7200 );
     usuario.expira = hoy.getTime().toString()
 
     localStorage.setItem('comunidadIT_user', JSON.stringify(usuario) );
