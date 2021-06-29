@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { HttpClientModule } from '@angular/common/http';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -25,6 +25,7 @@ import { EjercicioVerComponent } from './pages/ejercicio-ver/ejercicio-ver.compo
 import { EjercicioModComponent } from './pages/ejercicio-mod/ejercicio-mod.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { EjerciciosService } from './services/ejercicios.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -41,11 +42,13 @@ import { EjerciciosService } from './services/ejercicios.service';
     AppRoutingModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    HighlightModule
+    HighlightModule,
+    HttpClientModule
   ],
-  providers: [EjerciciosService, 
+  providers: [EjerciciosService, AuthService,
     {
     provide: HIGHLIGHT_OPTIONS,
     useValue: {

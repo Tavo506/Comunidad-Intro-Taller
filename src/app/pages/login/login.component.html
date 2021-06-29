@@ -1,11 +1,11 @@
 <div class="login text-center bg-page">
     <h1 class="title">LOGIN</h1>
 
-    <form (ngSubmit)="login(f)" #f="ngForm">
+    <form (ngSubmit)="login()" [formGroup]="form">
         <div>
-            <input class="form-input" type="text" placeholder="Correo" >
+            <input class="form-input" type="text" placeholder="Correo" formControlName="correo">
 
-            <input class="form-input" type="password" placeholder="Contraseña">
+            <input class="form-input" type="password" placeholder="Contraseña" formControlName="pass">
         </div>
         
         <div class="mb-4 text-right">

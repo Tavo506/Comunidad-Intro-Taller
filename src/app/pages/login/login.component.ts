@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/model/Usuario';
 import { AuthService } from 'src/app/services/auth.service';
@@ -16,9 +18,14 @@ export class LoginComponent implements OnInit {
   //Model usuario
   usuario: Usuario = this.Usuario();
   recordarme: boolean = false;
+  form = this.fb.group({
+    correo: ['', [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]],
+    pass: ['', [Validators.required, Validators.minLength(6)]]
+  });
 
   constructor( private auth: AuthService,
-               private router: Router ) {}
+               private router: Router,
+               private fb: FormBuilder ) {}
 
   ngOnInit() {
     // en el LS hay un email
@@ -36,9 +43,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login( form: NgForm ) {
+  login(  ) {
     // si el form está ok
-    if (  form.invalid ) { return; }
+    // if (  this.form.invalid ) { return; }
+
+    this.usuario.email = this.form?.get('correo')?.value;
+    this.usuario.password = this.form?.get('pass')?.value;
 
     //alert de loading
     Swal.fire({
@@ -47,29 +57,25 @@ export class LoginComponent implements OnInit {
       text: 'Espere por favor...'
     });
     Swal.showLoading();
-    setTimeout(() => {
-      Swal.close();
-    }, 500);
 
-    // //hace el login con el servicio
-    // this.auth.login( this.usuario )
-    //   .subscribe( resp => {
-    //     console.log(resp);
-    //     Swal.close();
 
-    //     if ( this.recordarme ) {
-    //       localStorage.setItem('email', this.usuario.email);
-    //     }
-    //     this.router.navigateByUrl('/home');
-    //     // si da error
-    //   }, (err) => {
-    //     console.log(err.error.error.message);
-    //     Swal.fire({
-    //       type: 'error',
-    //       title: 'Error al autenticar',
-    //       text: err.error.error.message
-    //     });
-    //   });
+    //hace el login con el servicio
+    this.auth.login( this.usuario )
+      .subscribe( resp => {
+        Swal.close();
+
+        // if ( this.recordarme ) {
+        //   localStorage.setItem('email', this.usuario.email);
+        // }
+        this.router.navigateByUrl('/home');
+        // si da error
+      }, (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al autenticar',
+          text: err.error.error.message
+        });
+      });
 
   }
 

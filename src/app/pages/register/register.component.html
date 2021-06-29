@@ -1,21 +1,40 @@
-<div class="register text-center bg-page">
-    <h1 class="title">REGISTER</h1>
+<div class="register bg-page">
+    
+    <h1 class="title text-center">REGISTER</h1>
 
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
         <div>
-            <input class="form-input" type="text" placeholder="Nombre">
+            <input class="form-input form-control" type="text" placeholder="Nombre" formControlName="nombre" [class.is-invalid]="nombreInvalido">
+            <div class="text-right error">
+                <small *ngIf="nombreInvalido" class="text-danger text-right">
+                    Debe escribir un nombre
+                </small>
+            </div>
 
-            <input class="form-input" type="text" placeholder="Correo">
+            <input class="form-input form-control" type="text" placeholder="Correo" formControlName="correo" [class.is-invalid]="correoInvalido">
+            <div class="text-right error">
+                <small *ngIf="correoInvalido" class="text-danger text-right">
+                    Correo inválido
+                </small>
+            </div>
 
-            <input class="form-input" type="password" placeholder="Contraseña">
+            <input class="form-input form-control" type="password" placeholder="Contraseña" formControlName="pass" [class.is-invalid]="passInvalido">
+            <div class="text-right error">
+                <small *ngIf="passInvalido" class="text-danger text-right">
+                    Debe ser de al menos 6 caracteres
+                </small>
+            </div>
         </div>
         
-        <div class="mb-4 text-right">
+        <div class="mt-3 mb-4 text-right">
 
             <a class="crear-existe" [routerLink]="['/login']">¿Ya tienes cuenta? / Ingresar</a>
                
         </div>
-        <button class="btn btn-myblue" type="submit">Registrarse</button>
-    </form>
+        <div class="text-center">
+            <button class="btn btn-myblue" type="submit">Registrarse</button>
+        </div>
+            
+        </form>
 
 </div>
