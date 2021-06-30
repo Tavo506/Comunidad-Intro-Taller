@@ -28,7 +28,8 @@ $textGray : #464646;
 
 
 body{
-    background: $bodybg;
+    background: $bodybg url("assets/fondo.png") no-repeat fixed left;
+    // background: $bodybg;
 }
 
 .navbar-gray{
