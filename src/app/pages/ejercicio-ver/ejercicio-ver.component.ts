@@ -61,12 +61,18 @@ export class EjercicioVerComponent implements OnInit {
   }
 
 
-  descargar(){
-    if (this.ejercicio.fileUrl) {
-      const blob = new Blob([this.ejercicio.fileUrl], { type: 'text/txt' });
-      const url= window.URL.createObjectURL(blob);
-      window.open(url);
-      
+  async descargar(){
+    if (this.ejercicio.fileUrl && this.ejercicio.fileName) {
+      const file = await fetch(this.ejercicio.fileUrl)
+      const fileBlog = await file.blob()
+      const fileURL = URL.createObjectURL(fileBlog)
+
+      const link = document.createElement('a')
+      link.href = fileURL
+      link.download = this.ejercicio.fileName;
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
     }
   }
 
