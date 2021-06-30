@@ -24,6 +24,8 @@ export class EjercicioModComponent implements OnInit {
   cambioFile : Boolean = false;
   primera : Boolean = true;
 
+  categorias:string[] = [];
+
   newEjercicio(): Ejercicio {
     var today = new Date();
     var dd = String(today.getDate() + 1).padStart(2, '0');
@@ -90,6 +92,16 @@ export class EjercicioModComponent implements OnInit {
         inputs: this.fb.array([]),
         outputs: this.fb.array([])
       })
+    });
+
+    this.ejercicioService.getEjercicios().subscribe((res:Ejercicio[]) => {
+      res.forEach(e => {
+        
+        if (!this.categorias.includes(e.section)) {
+          this.categorias.push(e.section); 
+        }
+  
+      });
     });
 
     this.activatedRouter.params.subscribe(params => {

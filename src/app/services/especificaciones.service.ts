@@ -54,6 +54,7 @@ export class EspecificacionesService {
       })
     );
   }
+  
 
 
   addEspecificacionF(especificacion: Especificacion): Observable<any> {

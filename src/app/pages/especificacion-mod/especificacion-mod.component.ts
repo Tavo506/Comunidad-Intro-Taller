@@ -24,6 +24,8 @@ export class EspecificacionModComponent implements OnInit {
   cambioFile : Boolean = false;
   primera : Boolean = true;
 
+  categorias:string[] = [];
+
   newEspecificacion(): Especificacion {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -73,6 +75,16 @@ export class EspecificacionModComponent implements OnInit {
       file: [],
       name: [, [Validators.required]],
       section: [, [Validators.required]],
+    });
+
+    this.especificacionService.getEspecificaciones().subscribe((res:Especificacion[]) => {
+      res.forEach(e => {
+        
+        if (!this.categorias.includes(e.section)) {
+          this.categorias.push(e.section); 
+        }
+  
+      });
     });
 
     this.activatedRouter.params.subscribe(params => {
