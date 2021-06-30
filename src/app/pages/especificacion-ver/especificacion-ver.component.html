@@ -1,0 +1,29 @@
+<div class="especificacion-div" *ngIf="especificacion">
+
+    <div class="nombre bg-elem">
+        <h1>{{especificacion.name}}</h1>
+    </div>
+
+    <div class="contenido bg-page">
+
+
+            
+        <div class="text-right">
+            <h2 class="categoria">{{especificacion.section}}</h2>
+        </div>    
+
+        
+        <div class="mt-2 mb-4">
+            <button (click)="descargar()" [disabled]="!tieneArchivo" class="btn btn-myblue">Archivo Adjunto <i class="fas fa-download"></i></button>
+        </div>
+
+        
+        <div class="descripcion">
+            <span>{{especificacion.content}}</span>
+        </div>
+        
+        
+
+        
+
+</div>

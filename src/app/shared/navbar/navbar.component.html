@@ -11,10 +11,16 @@
     
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active" >
-        <a class="nav-link font-mywhite nav-elem" (click)="scroll()" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link font-mywhite nav-elem" (click)="scroll()" [routerLink]="['/home']">Ejercicios <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" >
+        <a class="nav-link font-mywhite nav-elem" (click)="scroll()" [routerLink]="['/homeEspecificaciones']"><span >Especificaciones</span></a>
       </li>
       <li class="nav-item active" *ngIf="logueado" >
         <a class="nav-link font-mywhite nav-elem" (click)="scroll()" [routerLink]="['/ejercicioMod', 'new']"><span >Crear ejercicio</span></a>
+      </li>
+      <li class="nav-item active" *ngIf="logueado" >
+        <a class="nav-link font-mywhite nav-elem" (click)="scroll()" [routerLink]="['/especificacionMod', 'new']"><span >Crear especificación</span></a>
       </li>
     </ul>
     <div>

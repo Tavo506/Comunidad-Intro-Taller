@@ -1,0 +1,62 @@
+<form class="especificacion-div" *ngIf="especificacion" (ngSubmit)="onSubmit()" [formGroup]="form">
+
+    <div class="contenido bg-page">
+
+        
+        <div class="row">
+            <label class="col-3">Creador</label>
+            <input type="text" readonly class="form-control col-9 f-22" value="{{form.get('creator')?.value}}">
+        </div>
+
+        <div class="row">
+            <label class="col-3">Nombre</label>
+            <input type="text" class="form-control col-9 f-22" formControlName="name" [class.is-invalid]="nameInvalido">
+
+        </div>
+        
+        <div class="row">
+            <label class="col-3">Categoría</label>
+            <input type="text" class="form-control col-9 f-22" formControlName="section" [class.is-invalid]="sectionInvalido">
+        </div>
+        
+        <div class="row">
+            <label class="col-3">Contenido</label>
+            <textarea type="text" class="form-control col-9" formControlName="content" rows="10" [class.is-invalid]="contenidoInvalido"></textarea>
+        </div>
+
+        
+        <div class="row">
+            <label class="col-3">Archivo</label>
+            
+            <label class="custom-file-upload f-22">
+                <input formControlName="file" type="file" (change)="selectFile($event)"/>
+                <i class="fa fa-cloud-upload"></i> Subir Archivo
+            </label>
+            <div class="file-msg">
+                <span *ngIf="especificacion.fileName && !cambioFile && !fileUploaded">{{especificacion.fileName}}</span>
+                <span *ngIf="fileUploaded">{{fileUploaded.name}}</span>
+                <span *ngIf="(!especificacion.fileName || cambioFile) && !fileUploaded">Archivo no seleccionado</span>
+            </div>
+
+            <button class="btn btn-danger eliminar" type="button" *ngIf="(especificacion.fileName && !cambioFile) || fileUploaded" (click)="cambioFile=true; resetFile(undefined)"><i class="fas fa-times"></i></button>
+            
+        </div>
+
+        
+
+        
+        <div class="error mb-4">
+            <small *ngIf="form.invalid && revisado" class="text-danger">
+               Faltan campos por llenar
+            </small>
+        </div>
+
+        <div class="text-center">
+            <button type="button" class="btn btn-accion btn-danger" (click)="eliminar()">Eliminar</button>
+            <button type="submit" class="btn btn-accion btn-success">Guardar</button>
+        </div>
+
+    
+    </div>   
+    
+</form>

@@ -59,7 +59,7 @@ export class EjerciciosService {
   addEjercicioF(ejercicio: Ejercicio): Observable<any> {
 
   
-    const filePath = `${ejercicio.code}/${ejercicio.file?.name}`;
+    const filePath = `${this.dbPath}/${ejercicio.code}/${ejercicio.file?.name}`;
     const storageRef = this.storage.ref(filePath);
     const uploadTask = this.storage.upload(filePath, ejercicio.file);
 
@@ -126,7 +126,7 @@ export class EjerciciosService {
     
     ejercicio.fileName = ejercicio.file?.name;
 
-    const filePath = `${ejercicio.code}/${ejercicio.file?.name}`;
+    const filePath = `${this.dbPath}/${ejercicio.code}/${ejercicio.file?.name}`;
     const storageRef = this.storage.ref(filePath);
     const uploadTask = this.storage.upload(filePath, ejercicio.file);
 
@@ -145,7 +145,7 @@ export class EjerciciosService {
 
 
   private deleteFileStorage(id: string, name: string): void {
-    const storageRef = this.storage.ref(`/${id}`);
+    const storageRef = this.storage.ref(`${this.dbPath}/${id}`);
     storageRef.child(name).delete();
   }
 

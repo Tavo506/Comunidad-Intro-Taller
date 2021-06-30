@@ -26,6 +26,10 @@ import { EjercicioModComponent } from './pages/ejercicio-mod/ejercicio-mod.compo
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { EjerciciosService } from './services/ejercicios.service';
 import { AuthService } from './services/auth.service';
+import { HomeEspecificacionesComponent } from './pages/home-especificaciones/home-especificaciones.component';
+import { EspecificacionVerComponent } from './pages/especificacion-ver/especificacion-ver.component';
+import { EspecificacionModComponent } from './pages/especificacion-mod/especificacion-mod.component';
+import { EspecificacionesService } from './services/especificaciones.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,10 @@ import { AuthService } from './services/auth.service';
     RegisterComponent,
     EjercicioVerComponent,
     EjercicioModComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeEspecificacionesComponent,
+    EspecificacionVerComponent,
+    EspecificacionModComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +56,7 @@ import { AuthService } from './services/auth.service';
     HttpClientModule,
     AngularFireStorageModule
   ],
-  providers: [EjerciciosService, AuthService,
+  providers: [EjerciciosService, AuthService, EspecificacionesService,
     {
     provide: HIGHLIGHT_OPTIONS,
     useValue: {

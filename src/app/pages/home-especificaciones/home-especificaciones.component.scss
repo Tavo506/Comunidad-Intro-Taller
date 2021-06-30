@@ -1,0 +1,174 @@
+
+// Opciones de búsqueda
+
+
+.busqueda{
+    margin-bottom: 20px;
+}
+
+.busqueda input{
+    font-size: 32px;
+}
+
+.busqueda input, button{
+    height: 64px;
+    border-radius: 20px;
+}
+
+.busqueda button{
+    width: 64px;
+}
+
+// .busqueda div, .filtros div{
+//     padding-right: 0%;
+// }
+
+.dropdown{
+    width: 100%;
+}
+
+.drop-elem{
+    font-size: 25px;
+}
+
+.drop-elem button{
+    border-radius: 0%;
+    height: 50px;
+}
+
+.drop-elem .row div{
+    padding: 0%;
+}
+
+
+.div-cantidad{
+    border: 1px solid black;
+    text-align: center;
+    background: rgb(238, 238, 238);
+    font-weight: 500;
+    width: 100px;
+}
+
+
+.selected{
+    background: rgb(194, 194, 194);
+}
+
+.categoria{
+    overflow: hidden;
+    font-size: 18px;
+}
+
+
+
+// Resultados de búsqueda
+
+.resultados{
+    margin-top: 50px;
+    padding: 20px;
+    // padding-bottom: 1px;
+}
+
+.especificacion{
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.font-mygray{
+    font-weight: 500;
+}
+
+.descripcion{
+    font-size: 15px;
+}
+
+.no-star{
+    color: rgb(255, 255, 255);
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: rgb(0, 0, 0);
+}
+
+.dificultad{
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.btn-primary{
+    height: 40px;
+    border-radius: 5px;
+}
+
+.edit-div{
+    margin-left: 40px;
+}
+
+
+// Navegación de la tabla
+
+.nav-tabla div{
+    padding: 0%;
+}
+
+
+.btn-tabla{
+    font-size: 45px;
+    padding-top:0px;
+    height: 50px;
+    line-height: 0px;
+    width: 100%;
+    margin-right: 0px !important;
+}
+
+.paginacion{
+    font-size: 28px;
+}
+
+
+// Mobil
+
+@media screen and (max-width: 767px){
+    .busqueda input{
+        font-size: 25px;
+    }
+
+    .edit-div{
+        margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 575px){
+
+    .dropdown{
+        margin-top: 10px;
+    }
+
+    .busqueda input{
+        font-size: 20px;
+    }
+
+    .star{
+        font-size: 10px;
+    }
+
+    .paginacion{
+        font-size: 24px;
+    }
+
+    .btn-tabla{
+        width: 50px;
+    }
+
+    .dificultad{
+        margin-left: -20px;
+    }
+
+    .descripcion{
+        font-size: 14px;
+    }
+}
+
+
+
