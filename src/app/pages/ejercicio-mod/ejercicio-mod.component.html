@@ -45,9 +45,13 @@
             <label class="col-3">Archivo</label>
             
             <label class="custom-file-upload f-22">
-                <input type="file"/>
+                <input formControlName="file" type="file" (change)="selectFile($event)"/>
                 <i class="fa fa-cloud-upload"></i> Subir Archivo
             </label>
+            <div class="file-msg">
+                <span *ngIf="fileUploaded">{{fileUploaded.name}}</span>
+                <span *ngIf="!fileUploaded">Archivo no seleccionado</span>
+            </div>
             
         </div>
 
@@ -93,7 +97,11 @@
         </table>
 
         <button type="button" class="btn btn-block btn-mywhite" (click)="agregarExample()"><i class="fas fa-plus"></i></button>
-
+        <div class="error mt-1 mb-4">
+            <small *ngIf="sinEjemplos && revisado" class="text-danger">
+               Es recomendado poner al menos un ejemplo
+            </small>
+        </div>
 
 
         <hr class="my-5">
@@ -178,7 +186,11 @@
                     </tbody>
                 </table>
                 <button type="button" class="btn btn-block btn-mywhite " (click)="agregarOutput()"><i class="fas fa-plus"></i></button>
-                
+                <div class="error mt-1 mb-4">
+                    <small *ngIf="sinSalidas && revisado" class="text-danger">
+                       Debe tener al menos una salida
+                    </small>
+                </div>
             </div>
             
             

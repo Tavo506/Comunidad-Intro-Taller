@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
-
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 // Highlights
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
@@ -46,7 +46,8 @@ import { AuthService } from './services/auth.service';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     HighlightModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireStorageModule
   ],
   providers: [EjerciciosService, AuthService,
     {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Ejercicio } from 'src/app/model/Ejercicio';
 import { CodeHighlightService } from 'src/app/services/code-highlight.service';
 import { EjerciciosService } from 'src/app/services/ejercicios.service';
@@ -17,6 +17,8 @@ export class EjercicioModComponent implements OnInit {
   esNuevo!: boolean;
   form!: FormGroup;
   revisado: Boolean = false;
+  fileUploaded!: File;
+  id!: string;
 
   newEjercicio(): Ejercicio {
     var today = new Date();
@@ -63,9 +65,9 @@ export class EjercicioModComponent implements OnInit {
   // }
 
   constructor(private ejercicioService: EjerciciosService,
-    private highlights: CodeHighlightService,
     private activatedRouter: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {
     this.form = this.fb.group({
       call: [, [Validators.required]],
@@ -73,18 +75,15 @@ export class EjercicioModComponent implements OnInit {
       created: [, [Validators.required]],
       creator: [, [Validators.required]],
       details: [, [Validators.required]],
-      examples: this.fb.array([
-
-      ]),
+      examples: this.fb.array([]),
+      file: [],
       level: [, [Validators.required]],
       name: [, [Validators.required]],
       section: [, [Validators.required]],
       solution: this.fb.group({
         code: [, [Validators.required]],
-        inputs: this.fb.array([
-        ]),
-        outputs: this.fb.array([
-        ])
+        inputs: this.fb.array([]),
+        outputs: this.fb.array([])
       })
     });
 
@@ -93,6 +92,7 @@ export class EjercicioModComponent implements OnInit {
 
       if (params["id"] != "new") {
         this.esNuevo = false;
+        this.id = params["id"];
 
         this.ejercicioService.getEjercicio(params["id"]).subscribe((e: Ejercicio[]) => {
           this.ejercicio = e[0];
@@ -120,9 +120,6 @@ export class EjercicioModComponent implements OnInit {
     this.form.setControl('examples', new FormArray([]));
     (this.form.get('solution') as FormGroup).setControl('inputs', new FormArray([]));
     (this.form.get('solution') as FormGroup).setControl('outputs', new FormArray([]));
-
-
-
   }
 
 
@@ -134,7 +131,7 @@ export class EjercicioModComponent implements OnInit {
         comment: [valor.comment]
       }
     )));
-    ejercicio.solution.inputs.forEach(valor => (this.form.get('solution.inputs') as FormArray).push(this.fb.group(valor)));
+    ejercicio.solution.inputs?.forEach(valor => (this.form.get('solution.inputs') as FormArray).push(this.fb.group(valor)));
     ejercicio.solution.outputs.forEach(valor => (this.form.get('solution.outputs') as FormArray).push(this.fb.group(valor)));
   }
 
@@ -232,49 +229,81 @@ export class EjercicioModComponent implements OnInit {
     return this.form?.get('solution.code')?.invalid && this.form?.get('solution.code')?.touched;
   }
 
-
-  exampleCallInvalido(num:number) : Boolean{
-    return  (this.examples.controls[num] as FormGroup).controls.call.invalid && 
-            (this.examples.controls[num] as FormGroup).controls.call.touched;
+  get sinEjemplos() {
+    return this.examples.controls.length == 0;
   }
 
-  exampleResultInvalido(num:number) : Boolean{
-    return  (this.examples.controls[num] as FormGroup).controls.result.invalid && 
-            (this.examples.controls[num] as FormGroup).controls.result.touched;
+  get sinSalidas() {
+    return (this.form.get("solution.outputs") as FormArray).controls.length == 0;
   }
 
-  inputNameInvalido(num:number) : Boolean{
-    return  ((this.form.get("solution.inputs") as FormArray).controls[num] as FormGroup).controls.name.invalid && 
-            ((this.form.get("solution.inputs") as FormArray).controls[num] as FormGroup).controls.name.touched;
+
+  exampleCallInvalido(num: number): Boolean {
+    return (this.examples.controls[num] as FormGroup).controls.call.invalid &&
+      (this.examples.controls[num] as FormGroup).controls.call.touched;
   }
 
-  inputTypeInvalido(num:number) : Boolean{
-    return  ((this.form.get("solution.inputs") as FormArray).controls[num] as FormGroup).controls.type.invalid && 
-            ((this.form.get("solution.inputs") as FormArray).controls[num] as FormGroup).controls.type.touched;
+  exampleResultInvalido(num: number): Boolean {
+    return (this.examples.controls[num] as FormGroup).controls.result.invalid &&
+      (this.examples.controls[num] as FormGroup).controls.result.touched;
   }
 
-  outputNameInvalido(num:number) : Boolean{
-    return  ((this.form.get("solution.outputs") as FormArray).controls[num] as FormGroup).controls.name.invalid && 
-            ((this.form.get("solution.outputs") as FormArray).controls[num] as FormGroup).controls.name.touched;
+  inputNameInvalido(num: number): Boolean {
+    return ((this.form.get("solution.inputs") as FormArray).controls[num] as FormGroup).controls.name.invalid &&
+      ((this.form.get("solution.inputs") as FormArray).controls[num] as FormGroup).controls.name.touched;
   }
 
-  outputTypeInvalido(num:number) : Boolean{
-    return  ((this.form.get("solution.outputs") as FormArray).controls[num] as FormGroup).controls.type.invalid && 
-            ((this.form.get("solution.outputs") as FormArray).controls[num] as FormGroup).controls.type.touched;
+  inputTypeInvalido(num: number): Boolean {
+    return ((this.form.get("solution.inputs") as FormArray).controls[num] as FormGroup).controls.type.invalid &&
+      ((this.form.get("solution.inputs") as FormArray).controls[num] as FormGroup).controls.type.touched;
+  }
+
+  outputNameInvalido(num: number): Boolean {
+    return ((this.form.get("solution.outputs") as FormArray).controls[num] as FormGroup).controls.name.invalid &&
+      ((this.form.get("solution.outputs") as FormArray).controls[num] as FormGroup).controls.name.touched;
+  }
+
+  outputTypeInvalido(num: number): Boolean {
+    return ((this.form.get("solution.outputs") as FormArray).controls[num] as FormGroup).controls.type.invalid &&
+      ((this.form.get("solution.outputs") as FormArray).controls[num] as FormGroup).controls.type.touched;
   }
 
 
   // Fin validadores
 
 
-  eliminar() {
-    console.log(this.form.get("solution.code"));
+  selectFile(event: any) {
+    this.fileUploaded = event.target.files.item(0);
 
   }
 
 
+  eliminar() {
+    if (!this.esNuevo) {
+      Swal.fire({
+        allowOutsideClick: false,
+        icon: 'question',
+        text: '¿Eliminar Ejercicio?',
+        showCancelButton: true,
+        confirmButtonText: 'Eliminar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.ejercicioService.deleteEjercicio(this.id);
+          this.router.navigate(["/home"]);
+          Swal.fire(
+            '¡Ejercicio eliminado!'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+        }
+      })
+    }else{
+      this.router.navigate(["/home"]);
+    }
+  }
+
+
   onSubmit() {
-    console.log(this.form);
     this.revisado = true;
 
     if (this.form.invalid) {
@@ -313,33 +342,73 @@ export class EjercicioModComponent implements OnInit {
       icon: 'info',
       text: 'Espere por favor...'
     });
-    // Swal.showLoading();
+    Swal.showLoading();
+
+
+
+    this.ejercicio.call = this.form.get("call")?.value;
+    this.ejercicio.created = this.form.get("created")?.value;
+    this.ejercicio.details = this.form.get("details")?.value;
+    this.ejercicio.name = this.form.get("name")?.value;
+    this.ejercicio.section = this.form.get("section")?.value;
+
+    this.ejercicio.examples = this.form.get("examples")?.value;
+    this.ejercicio.solution = this.form.get("solution")?.value;
+
+
 
     if (this.esNuevo) {
+      this.ejercicio.creator = this.form.get("creator")?.value;
+      this.ejercicio.level = this.form.get("level")?.value;
+      console.log(this.ejercicio);
 
-      this.ejercicioService.addEjercicio(this.ejercicio)
-      // .subscribe( resp => {
+      var codigo;
+      var aux = this.ejercicioService.getNewCode().subscribe(res => {
+        codigo = "00000" + (+res + 1);
+        codigo = codigo.slice(-5);
+        this.ejercicio.code = codigo;
+        aux.unsubscribe();
 
-      //   Swal.close();
 
-      //   // if ( this.recordarme ) {
-      //   //   localStorage.setItem('email', this.usuario.email);
-      //   // }
+      if (this.fileUploaded) {
+        this.ejercicio.file = this.fileUploaded;
 
-      //   this.router.navigateByUrl('/home');
+        this.ejercicioService.addEjercicioF(this.ejercicio)
+          .subscribe(resp => {
 
-      // }, (err) => {
-      //   Swal.fire({
-      //     icon: 'error',
-      //     title: 'Error al autenticar',
-      //     text: err.error.error.message
-      //   });
-      // });
+            if (resp == 100) {
+              Swal.close();
+              this.router.navigateByUrl('/home');
+            }
 
-    }else{
+          }, (err) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error al crear el ejercicio',
+              text: err.error.error.message
+            });
+          });
+
+      } else {
+        this.ejercicioService.addEjercicio(this.ejercicio)
+          .then((resp: any) => {
+
+            Swal.close();
+            this.router.navigateByUrl('/home');
+
+          }, (err: any) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error al crear el ejercicio',
+              text: err.error.error.message
+            });
+          });
+      }
+    });
+
+    } else {
 
     }
   }
-
 
 }

@@ -120,6 +120,14 @@ input[type="file"] {
     background-color: #6CC5EB;
 }
 
+.file-msg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+}
+
+
 .btn-mywhite{
     line-height: 0%;
     border: 1px solid rgb(0, 21, 49);

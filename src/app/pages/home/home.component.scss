@@ -96,6 +96,16 @@
 }
 
 
+.btn-primary{
+    height: 40px;
+    border-radius: 5px;
+}
+
+.edit-div{
+    margin-left: 40px;
+}
+
+
 // Navegación de la tabla
 
 .nav-tabla div{
@@ -122,6 +132,10 @@
 @media screen and (max-width: 767px){
     .busqueda input{
         font-size: 25px;
+    }
+
+    .edit-div{
+        margin-left: 0px;
     }
 }
 

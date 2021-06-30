@@ -124,13 +124,17 @@ export class HomeComponent implements OnInit {
     return Math.ceil(this.ejercicios.length / this.saltos);
   }
 
+  get estaAuth(){
+    return this.authServices.estaAutenticado();
+  }
+
 
   verEjercicio(id:any){
-    if (this.authServices.estaAutenticado()) {
-      this.router.navigate(["/ejercicioMod", id]);
-    }else{
-      this.router.navigate(["/ejercicioVer", id]);
-    }
+    this.router.navigate(["/ejercicioVer", id]);
+  }
+  
+  editarEjercicio(id:any){    
+    this.router.navigate(["/ejercicioMod", id]);
   }
 
 }

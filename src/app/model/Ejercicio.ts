@@ -6,13 +6,15 @@ export interface Ejercicio{
     creator : string;
     details : string;
     examples : Ejemplo[];
+    file? : File;
+    fileUrl? : string;
     level : number;
     name : string;
     ratings? : number[];
     section : string;
     solution : {
         code : string;
-        inputs : IO[];
+        inputs? : IO[];
         outputs : IO[];
     };
 }

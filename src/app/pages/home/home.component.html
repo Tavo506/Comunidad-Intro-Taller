@@ -157,6 +157,9 @@
                         <i class="fas fa-star" [ngClass]="{'no-star': ejercicio.level<4}"></i>
                         <i class="fas fa-star" [ngClass]="{'no-star': ejercicio.level<5}"></i>
                     </span>
+                    <div class="edit-div" *ngIf="estaAuth">
+                        <button type="button" (click)="editarEjercicio(ejercicio.$key)" class="btn btn-primary btn-block">Editar</button>
+                    </div>
                 </div>
             </div>
 

@@ -1,0 +1,2967 @@
+{
+  "Ejercicios" : {
+    "00001" : {
+      "call" : "cantidadDeDigitos (num)",
+      "code" : "00001",
+      "created" : "2021-04-03",
+      "creator" : "Natalia Vargas",
+      "details" : "Realice un programa que determine cuantos dígitos decimales tiene un número entero positivo o cero",
+      "examples" : [ {
+        "call" : "cantidadDeDigitos(12345)",
+        "comment" : "",
+        "result" : "5"
+      }, {
+        "call" : "cantidadDeDigitos(0)",
+        "comment" : "Cero tiene un digito",
+        "result" : "1"
+      }, {
+        "call" : "cantidadDeDigitos(9)",
+        "comment" : "",
+        "result" : "1"
+      } ],
+      "level" : "1",
+      "name" : "Cantidad de digitos",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def cantidadDigitos (num):\n\n    if num == 0: # El 0 es una excepción\n        return 1\n    num = abs(num) #lo hace positivo siempre\n    contador = 0\n    while num > 0:\n        contador = contador + 1\n        num = num // 10\n    return contador",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "numero entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "numero entero"
+        } ]
+      }
+    },
+    "00002" : {
+      "call" : "cantidadPares(num)",
+      "code" : "00002",
+      "created" : "2021-05-01",
+      "creator" : "Natalia Vargas",
+      "details" : "Realice un programa que determine la cantidad de dígitos pares de un número entero positivo, considerando 0 como no par",
+      "examples" : [ {
+        "call" : "cantidadPares(16890742)",
+        "comment" : "",
+        "result" : "4"
+      }, {
+        "call" : "cantidadPares(912345678)",
+        "comment" : "",
+        "result" : "4"
+      }, {
+        "call" : "cantidadPares(0712304488)",
+        "comment" : "Cero se toma como impar",
+        "result" : "5"
+      } ],
+      "level" : "1",
+      "name" : "Cantidad de pares",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def cantidadPares (num):\n\n    num = abs(num)\n    contador = 0\n    iteracion = 1\n    while num > 0:\n        print ('iteracion no. ', iteracion, '     contador = ', contador, 'numero = ', num)\n        if num%2 == 0 and num%10 != 0:\n            contador = contador + 1\n\n        num = num // 10\n        iteracion +=1\n    return contador",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "numero entero positivo"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "numero entero positivo"
+        } ]
+      }
+    },
+    "00003" : {
+      "call" : "sumaDigitos(num)",
+      "code" : "00003",
+      "created" : "2021-05-05",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que sume todos los digitos de un número entero positivo",
+      "examples" : [ {
+        "call" : "sumaDigitos(12345)",
+        "comment" : "",
+        "result" : "15"
+      }, {
+        "call" : "sumaDigitos(6661)",
+        "comment" : "",
+        "result" : "19"
+      }, {
+        "call" : "sumaDigitos(010)",
+        "comment" : "",
+        "result" : "1"
+      } ],
+      "level" : "1",
+      "name" : "Suma dígitos",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def sumaDigitos(num):\n\n    resultado = 0\n    while  num > 0 :\n        resultado = resultado + num%10\n        num = num//10\n\n    return resultado",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un numero entero postivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un numero entero"
+        } ]
+      }
+    },
+    "00004" : {
+      "call" : "sumaDigitosConSigno(num)",
+      "code" : "00004",
+      "created" : "2021-04-03",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que dé el resultado de la suma de los dígitos pares (incluyendo el cero) y la resta de los impares.",
+      "examples" : [ {
+        "call" : "sumaDigitosConSigno (169304)",
+        "comment" : "(-1+6-9-3+0+4 = -3)",
+        "result" : "-3"
+      }, {
+        "call" : "sumaDigitosConSigno (457101)",
+        "comment" : "(+4-5-7-1+0-1 = -10)",
+        "result" : "-10"
+      }, {
+        "call" : "sumaDigitosConSigno (12683)",
+        "comment" : "(+2+6+8-3 = 13)",
+        "result" : "13"
+      } ],
+      "level" : "1",
+      "name" : "Suma dígitos con signo",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def sumaDigitosConSigno(num):\n\n    resultado = 0\n    while  num > 0 :\n        if num % 2 == 0:\n            resultado = resultado + num%10\n        else:\n            resultado = resultado - num%10\n        num = num//10\n    return resultado",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un numero entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un número"
+        } ]
+      }
+    },
+    "00005" : {
+      "call" : "esBinario(num)",
+      "code" : "00005",
+      "created" : "2021-04-03",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que diga si un número es binario o no.",
+      "examples" : [ {
+        "call" : "esBinario (101002)",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "esBinario (111001110)",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "esBinario (101001000)",
+        "comment" : "",
+        "result" : "True"
+      } ],
+      "level" : "1",
+      "name" : "Es binario",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def esBinario(num):\n    \n    while num > 0:\n        if num % 10 == 1 or  num%10 == 0:\n            num = num //10\n        else:        \n            return False\n    return True",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Booleano"
+        } ]
+      }
+    },
+    "00006" : {
+      "call" : "sumaImpares(num)",
+      "code" : "00006",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que sume los dígitos impares de un número.",
+      "examples" : [ {
+        "call" : "sumaImpares(8532)",
+        "comment" : "",
+        "result" : "8"
+      }, {
+        "call" : "sumaImpares(13372)",
+        "comment" : "",
+        "result" : "14"
+      }, {
+        "call" : "sumaImpares(246822)",
+        "comment" : "",
+        "result" : "0"
+      } ],
+      "level" : "1",
+      "name" : "Suma de impares",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def sumaImpares(num):\n\n    resultado = 0\n    while  num > 0 :\n        if num % 2 == 1:\n            resultado += num%10\n        num = num//10\n    return resultado",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un número"
+        } ]
+      }
+    },
+    "00007" : {
+      "call" : "sumaPares(num)",
+      "code" : "00007",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que sume los dígitos impares de un número.",
+      "examples" : [ {
+        "call" : "sumaPares(8532)",
+        "comment" : "",
+        "result" : "10"
+      }, {
+        "call" : "sumaPares (13372)",
+        "comment" : "",
+        "result" : "2"
+      }, {
+        "call" : "sumaPares (246822)",
+        "comment" : "",
+        "result" : "24"
+      } ],
+      "level" : "1",
+      "name" : "Suma de pares",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def sumaPares(num):\n\n    resultado = 0\n    while  num > 0 :\n        if num % 2 == 0:\n            resultado += num%10\n        num = num//10\n    return resultado",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un número"
+        } ]
+      }
+    },
+    "00008" : {
+      "call" : "todosPares(num)",
+      "code" : "00008",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que diga si todos los dígitos de un número son pares o no.",
+      "examples" : [ {
+        "call" : "todosPares(8532) ",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "todosPares (402)",
+        "comment" : "Se toma 0 como par",
+        "result" : "True"
+      }, {
+        "call" : "todosPares (246822)",
+        "comment" : "",
+        "result" : "True"
+      } ],
+      "level" : "1",
+      "name" : "Todos pares",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def todosPares(num):\n\n    if num == 0:\n        return False\n\n    while  num > 0 :\n        if num%2 == 1 or num%10 == 0:\n            return False\n        num = num//10\n    return True\n",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Booleano"
+        } ]
+      }
+    },
+    "00009" : {
+      "call" : "estanOrdenados(num)",
+      "code" : "00009",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que verifique si los dígitos de un número están ordenados de mayor a menor.",
+      "examples" : [ {
+        "call" : "estanOrdenados(8532)",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "estanOrdenados(13372)",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "estanOrdenados(864322)",
+        "comment" : "",
+        "result" : "True"
+      } ],
+      "level" : "1",
+      "name" : "Números ordenados",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "\ndef estanOrdenados(num):\n\n    digitoAnterior = num % 10\n    while num > 0:\n        if num%10 < digitoAnterior:\n            return False\n        digitoAnterior = num%10\n        num = num // 10\n    return True",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Booleano"
+        } ]
+      }
+    },
+    "00010" : {
+      "call" : "enPosicionesPares(num)",
+      "code" : "00010",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que verifique si todos los dígitos en posiciones pares del número, empezando en 1 de derecha a izquierda, son digitos pares.",
+      "examples" : [ {
+        "call" : "enPosicionesPares(94322)",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "enPosicionesPares(23296689)",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "enPosicionesPares(963422)",
+        "comment" : "",
+        "result" : "False"
+      } ],
+      "level" : "1",
+      "name" : "En posiciones pares",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def enPosicionesPares(num):\n\n    pos = 1\n    while num > 0:\n        #si estoy en posicion par y el numero no es par\n        if pos % 2 == 0 and num % 2 != 0:  \n            return False\n        pos = pos + 1   #incrementa la posicion\n        num = num//10\n\n    return True\n",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Booleano"
+        } ]
+      }
+    },
+    "00011" : {
+      "call" : "weirdSum(num)",
+      "code" : "00011",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que recorra cada dígito de un múmero y sume 20 si es un 1 o un 0, reste 3 si es multiplo de 3, sume la multiplicación del dígito con 2 solo si es multiplo de 4, sume el dígito si este es 5 o 7, en otro caso sume 1..",
+      "examples" : [ {
+        "call" : "weirdSum(1234)",
+        "comment" : "",
+        "result" : "26"
+      }, {
+        "call" : "weirdSum(6700234)",
+        "comment" : "",
+        "result" : "50"
+      }, {
+        "call" : "weirdSum(963422)",
+        "comment" : "",
+        "result" : "1"
+      } ],
+      "level" : "1",
+      "name" : "Suma con condiciones",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def weirdSum(num):\n\n    acumulador = 0\n    while num > 0:\n        digito = num%10\n        if digito == 0 or digito == 1:\n            acumulador += 20\n        elif digito % 3 == 0 :\n            acumulador += -3\n        elif digito % 4 == 0 :\n            acumulador += digito * 2\n        elif digito > 3 and (digito == 5 or digito == 7):\n            acumulador += digito\n        else:\n            acumulador += 1\n        num = num // 10\n    #fuera del while retorna lo que acumulo\n    return acumulador",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "acumulador",
+          "type" : "Número"
+        } ]
+      }
+    },
+    "00012" : {
+      "call" : "cantidadDivisiblesPor(num, divisor)",
+      "code" : "00012",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que indique la cantidad de dígitos divibles por un divisor (entero positivo menor a 10) dado para un número dado",
+      "examples" : [ {
+        "call" : "antidadDivisiblesPor(66, 6)",
+        "comment" : "",
+        "result" : "2"
+      }, {
+        "call" : "cantidadDivisiblesPor(84265, 2)",
+        "comment" : "",
+        "result" : "4"
+      }, {
+        "call" : "cantidadDivisiblesPor(649610, 3)",
+        "comment" : "El dígito cero se toma como divisible",
+        "result" : "4"
+      } ],
+      "level" : "1",
+      "name" : "Cantidad de divisibles",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def cantidadDivisiblesPor(num, divisor):\n\n    if divisor == 0 or divisor > 9:\n        return 0\n    contador = 0\n    while num > 0:\n        digito = num%10\n        if digito % divisor == 0:  #si el dígito es divisible\n            contador += 1\n        num = num // 10\n\n    return contador",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        }, {
+          "name" : "divisor",
+          "type" : "Un número entero positivo"
+        } ],
+        "outputs" : [ {
+          "name" : "contador",
+          "type" : "Un número entero"
+        } ]
+      }
+    },
+    "00013" : {
+      "call" : "ceroIntercalados(num)",
+      "code" : "00013",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que verifique si un número tiene ceros intercalados.",
+      "examples" : [ {
+        "call" : "ceroIntercalados(908040) ",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "ceroIntercalados(918040)",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "ceroIntercalados(010504020)",
+        "comment" : "Un entero decimal no puede empezar con cero en python",
+        "result" : "Error"
+      } ],
+      "level" : "1",
+      "name" : "Ceros intercalados",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def ceroIntercalados(num):\n\n    mustBeZero = num % 10 == 0\n    while num > 0:\n        if mustBeZero == True and num % 10 != 0:\n            return False\n        mustBeZero = not mustBeZero\n        num = num //10\n\n    return True",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Booleano"
+        } ]
+      }
+    },
+    "00014" : {
+      "call" : "countDivisores(num)",
+      "code" : "00014",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que cuente los divisores de un número dado.",
+      "examples" : [ {
+        "call" : "countDivisores(5)",
+        "comment" : "",
+        "result" : "2"
+      }, {
+        "call" : "countDivisores(30)",
+        "comment" : "",
+        "result" : "8"
+      }, {
+        "call" : "countDivisores(67)",
+        "comment" : "",
+        "result" : "2"
+      } ],
+      "level" : "1",
+      "name" : "Contar divisores",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def countDivisores(num):\n\n    resultado = 0\n    divisor = 1\n\n    while divisor <= num :\n        if num % divisor == 0:\n            print(divisor,\"es divisor de\",num)\n            resultado += 1\n        divisor += 1\n    return resultado",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un número entero positivo "
+        } ]
+      }
+    },
+    "00015" : {
+      "call" : "sumaParImpar(num)",
+      "code" : "00015",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que sume los dígitos pares e impares de un dígito y diga si ambas sumas dan lo mismo",
+      "examples" : [ {
+        "call" : "sumaParImpar(32982)",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "sumaParImpar(1113)",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "sumaParImpar(67125342)",
+        "comment" : "",
+        "result" : "False"
+      } ],
+      "level" : "1",
+      "name" : "Sumar pares e impares",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def sumaParImpar(num):\n\n    sumaPares = 0\n    sumaImpares = 0\n    while num > 0:\n        if num % 2 == 0:\n            sumaPares += num%10\n        else:\n            sumaImpares += num%10\n        num = num // 10\n\n    return sumaPares == sumaImpares",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Booleano"
+        } ]
+      }
+    },
+    "00016" : {
+      "call" : "quitarPares(num)",
+      "code" : "00016",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : " Realice un programa quite los dígitos pares de número y devuelva solo los impares",
+      "examples" : [ {
+        "call" : "quitarPares(12345678)",
+        "comment" : "",
+        "result" : "1357 "
+      }, {
+        "call" : "quitarPares(9852156)",
+        "comment" : "",
+        "result" : "9515"
+      }, {
+        "call" : "quitarPares(392403581)",
+        "comment" : "",
+        "result" : "39351"
+      } ],
+      "level" : "2",
+      "name" : "Quitar pares",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def quitarPares (num):\n\n    resultado = 0\n    exponente = 0\n    while num > 0:\n        if num % 2 == 1:\n            print (\"Exponente es :\", exponente, \"     num = \", num, \"     r+= \", (num%10)*(10**exponente))\n            resultado += (num%10)*(10**exponente)\n            exponente += 1\n        else:\n            print (\"Exponente es :\", exponente, \"     num = \", num, \"     NO SUMA\")\n        num = num // 10\n\n    return resultado",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un número compuesto solo por dígitos impares"
+        } ]
+      }
+    },
+    "00017" : {
+      "call" : "eliminar(dig, num)",
+      "code" : "00017",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que elimine todas las apariciones de un dígito en un número.",
+      "examples" : [ {
+        "call" : "eliminar(0,1280138104)",
+        "comment" : "",
+        "result" : "12813814"
+      }, {
+        "call" : "eliminar(1,231412831)",
+        "comment" : "",
+        "result" : "234283"
+      }, {
+        "call" : "eliminar(9,937292699)",
+        "comment" : "",
+        "result" : "37226"
+      } ],
+      "level" : "2",
+      "name" : "Eliminar dígitos",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def eliminar(dig, num):    \n\n    exponente = 0\n    resultado = 0\n    while num > 0:\n        if num%10 != dig:\n            resultado += (num%10) * (10**exponente)\n            exponente += 1\n        num = num // 10\n    return resultado",
+        "inputs" : [ {
+          "name" : "dig",
+          "type" : "Un dígito decimal"
+        }, {
+          "name" : "num",
+          "type" : "Un número entero positivo"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un número entero positivo"
+        } ]
+      }
+    },
+    "00018" : {
+      "call" : "eliminarPrimera(dig, num)",
+      "code" : "00018",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que elimine la primera aparición de dígito en el número, de derecha a izquierda.",
+      "examples" : [ {
+        "call" : "eliminarPrimera(4,94344234)",
+        "comment" : "",
+        "result" : "9434423"
+      }, {
+        "call" : "eliminarPrimera(8,2834748)",
+        "comment" : "",
+        "result" : "283474"
+      }, {
+        "call" : "eliminarPrimera(0,1240300)",
+        "comment" : "",
+        "result" : "124030"
+      } ],
+      "level" : "2",
+      "name" : "Elimina primera aparición",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def eliminarPrimera(dig, num):    \n\n    exponente = 0\n    resultado = 0\n\n    while num > 0:\n        if num%10 != dig:\n            resultado += (num%10) * (10**exponente)\n            exponente += 1\n        else:\n            return (num//10)*(10**exponente) + resultado\n\n        num = num // 10\n        \n    return resultado",
+        "inputs" : [ {
+          "name" : "dig",
+          "type" : "Un dígito decimal"
+        }, {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un número"
+        } ]
+      }
+    },
+    "00019" : {
+      "call" : "apariciones(dig, num)",
+      "code" : "00019",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que cuente la cantidad de apariciones de un dígito en un número.",
+      "examples" : [ {
+        "call" : "apariciones(5,9554356)",
+        "comment" : "",
+        "result" : "3"
+      }, {
+        "call" : "apariciones(4,9554356)",
+        "comment" : "",
+        "result" : "1"
+      }, {
+        "call" : "apariciones(0,1323)",
+        "comment" : "El dígito no aparece ninguna vez",
+        "result" : "0"
+      } ],
+      "level" : "1",
+      "name" : "Apariciones",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def apariciones(dig, num):\n\n    num = abs(num)\n    if dig ==  num:\n        return 1\n    resultado = 0\n    \n    while num > 0:\n        if num%10 == dig:\n            resultado += 1\n        num = num // 10\n\n    return resultado",
+        "inputs" : [ {
+          "name" : "dig",
+          "type" : "Un dígito decimal"
+        }, {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un número"
+        } ]
+      }
+    },
+    "00020" : {
+      "call" : "maximoDigito(num)",
+      "code" : "00020",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que dé el dígito mayor de un número.",
+      "examples" : [ {
+        "call" : "maximoDigito (823546)",
+        "comment" : "",
+        "result" : "8"
+      }, {
+        "call" : "maximoDigito (7539)",
+        "comment" : "",
+        "result" : "9"
+      }, {
+        "call" : "maximoDigito (10)",
+        "comment" : "",
+        "result" : "1"
+      } ],
+      "level" : "1",
+      "name" : "Máximo dígito",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def maximoDigito (num):\n\n    maxActual = 0 \n    while num > 0:\n        if num%10 > maxActual:\n            maxActual = num%10\n        num = num // 10\n\n    return maxActual",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "maxActual",
+          "type" : "Un número"
+        } ]
+      }
+    },
+    "00021" : {
+      "call" : "sustituir(digOriginal, digNuevo, num)",
+      "code" : "00021",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que dado un dígito a sustituir, un dígito sustituyente y número, sustituya el nuevo por el dado.",
+      "examples" : [ {
+        "call" : "sustituir(1,2,12891)",
+        "comment" : "",
+        "result" : "22892"
+      }, {
+        "call" : "sustituir(2,4,21246291)",
+        "comment" : "",
+        "result" : "41446491"
+      }, {
+        "call" : "sustituir(1,0,21246291)",
+        "comment" : "",
+        "result" : "20246290"
+      } ],
+      "level" : "2",
+      "name" : "Sustituir dígito",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def sustituir(digOriginal, digNuevo, num):\n\n    signo = 1\n    if num < 0:\n        signo = -1\n    num = abs(num)\n\n    exponente = 0\n    resultado = 0\n    \n    while num > 0:\n        if num%10 == digOriginal:\n            resultado += digNuevo * (10**exponente)\n        else:\n            resultado += (num%10) * (10**exponente)\n        exponente += 1\n        num = num // 10\n\n    return resultado * signo",
+        "inputs" : [ {
+          "name" : "digOriginal",
+          "type" : "Un dígito decimal"
+        }, {
+          "name" : "digNuevo",
+          "type" : "Un dígito decimal"
+        }, {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Booleano"
+        } ]
+      }
+    },
+    "00022" : {
+      "call" : "invertir (num)",
+      "code" : "00022",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que invierta los dígitos de un número.",
+      "examples" : [ {
+        "call" : "invertir(1232)",
+        "comment" : "",
+        "result" : "2321"
+      }, {
+        "call" : "invertir(456891)",
+        "comment" : "",
+        "result" : "198654"
+      }, {
+        "call" : "invertir(129010)",
+        "comment" : "El primero cero lo omite pues un numero entero no puede empezar con cero",
+        "result" : "10921"
+      } ],
+      "level" : "2",
+      "name" : "Invertir número",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def invertir (num):\n\n    resultado = 0\n    exponente = cantidadDigitos(num) - 1  # Se hace uso de un función ya existente\n    while num > 0:\n        resultado += (num%10)*(10**exponente)\n        exponente -= 1\n        num = num // 10\n    return resultado",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un número"
+        } ]
+      }
+    },
+    "00023" : {
+      "call" : "esPalindromo(num)",
+      "code" : "00023",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que verifique si un número es palíndromo, es decir que se sea el mismo de izquierda a derecha y viceversa.",
+      "examples" : [ {
+        "call" : "esPalindromo(1234321)",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "esPalindromo(6754576)",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "esPalindromo(6752454)",
+        "comment" : "",
+        "result" : "False"
+      } ],
+      "level" : "2",
+      "name" : "Es palíndromo",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "#Solución 1\ndef esPalindromo(num):\n\n    expMayor = cantidadDigitos(num) - 1   # Se hace uso de un función ya existente\n    expMenor = 0\n\n    while expMayor > -1:\n        digitoDerecha = (num // (10**expMayor)) % 10\n        digitoIzquierda = (num // (10**expMenor)) % 10\n\n        if  digitoDerecha !=  digitoIzquierda:\n            return False\n        \n        expMayor -= 1\n        expMenor += 1\n        \n    return True\n\n#Solución 2\ndef esPalindromo2(num):\n\n    while num > 0:\n        divisionEntera = cantidadDigitos(num) - 1\n        if num%10 != (num//10**divisionEntera) % 10:\n            return False\n        num = num%(10**divisionEntera) #quitar mas significativo\n        num = num // 10   #quitar el menos significativo\n    return True",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Booleano"
+        } ]
+      }
+    },
+    "00024" : {
+      "call" : "esPrimo(num)",
+      "code" : "00024",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que diga si un número es primo.",
+      "examples" : [ {
+        "call" : "esPrimo(18)",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "esPrimo(23)",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "esPrimo(97)",
+        "comment" : "",
+        "result" : "True"
+      } ],
+      "level" : "1",
+      "name" : "Es primo",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def esPrimo(num):\n\n    divisor = 2\n    while divisor < num:\n        print (num, \"%\",divisor)\n        if num % divisor == 0:\n            return False\n        divisor += 1\n\n    return True\n",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Booleano"
+        } ]
+      }
+    },
+    "00025" : {
+      "call" : "esConjunto(num)",
+      "code" : "00025",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que verifique si un número no tiene dígitos repetidos, es decir, que sea conjunto.",
+      "examples" : [ {
+        "call" : "esConjunto(12356)",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "esConjunto(815429)",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "esConjunto(3742857)",
+        "comment" : "",
+        "result" : "False"
+      } ],
+      "level" : "1",
+      "name" : "Es conjunto",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def esConjunto(num):\n\n    while num >= 10:\n        if esta(num%10, num//10):\n            return False\n        num = num // 10\n\n    return True\n\n\n# Verificar si el dígito está en el número\n# después de haberlo sacado\ndef esta(dig, num):\n\n    if dig == num:\n        return True\n    while num > 0:\n        if dig == num%10:\n            return True\n        num = num // 10\n\n    return False",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Booleano"
+        } ]
+      }
+    },
+    "00026" : {
+      "call" : "borrarPosicion(num, pos)",
+      "code" : "00026",
+      "created" : "2021-05-15",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que borre el dígito de un número en una posición dada, de derecha a izquierda comenzando en la posición 1, y retorne el nuevo número.",
+      "examples" : [ {
+        "call" : "borrarPosicion(348528, 6)",
+        "comment" : "",
+        "result" : "48528 "
+      }, {
+        "call" : "borrarPosicion(324342, 3)",
+        "comment" : "",
+        "result" : "32442"
+      }, {
+        "call" : "borrarPosicion(10, 1)",
+        "comment" : "",
+        "result" : "1"
+      } ],
+      "level" : "2",
+      "name" : "Borrar en posición",
+      "section" : "Algoritmos numéricos",
+      "solution" : {
+        "code" : "def borrarPosicion(num, pos):\n\n    exp = 0\n    resultado = 0\n    while num > 0:\n        print (num, pos, resultado, exp)\n        if pos == 1:\n            return resultado + (num//10)* (10**exp)\n\n        resultado += (num%10) * (10**exp)\n        pos = pos - 1\n        exp = exp + 1\n        num = num // 10\n\n    return resultado\n",
+        "inputs" : [ {
+          "name" : "num",
+          "type" : "Un número entero positivo o cero"
+        }, {
+          "name" : "pos",
+          "type" : "Un número entero positivo o cero"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un número"
+        } ]
+      }
+    },
+    "00027" : {
+      "call" : "largo (lista)",
+      "code" : "00027",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne el largo de una lista.",
+      "examples" : [ {
+        "call" : "largo ([3,5,7,8,[[1],2]])",
+        "comment" : "[[1],2] cuenta como un elemento",
+        "result" : "5"
+      }, {
+        "call" : "largo ([7,2,[1]]) ",
+        "comment" : "La sublista [1] es un elemento",
+        "result" : "3"
+      }, {
+        "call" : "largo ([\"A\",\"E\",\"I\",2,3])",
+        "comment" : "Se pueden combinar los tipos de datos que tiene la lista",
+        "result" : "5"
+      } ],
+      "level" : "1",
+      "name" : "Largo de una lista",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "\n# Forma 1\ndef largo (lista):\n\n    resultado = 0\n\n    while lista != []:\n        resultado += 1\n        lista = lista[1:]\n\n    return resultado\n\n# Forma 2\ndef largoFor (lista):\n    resultado = 0\n    \n    for elem in lista:\n        resultado += 1\n\n    return resultado",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un entero positivo o cero"
+        } ]
+      }
+    },
+    "00028" : {
+      "call" : "sumatoria(lista)",
+      "code" : "00028",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que sume todos los elementos numéricos de una lista.",
+      "examples" : [ {
+        "call" : "sumatoria([1,5,9,4])",
+        "comment" : "",
+        "result" : "19"
+      }, {
+        "call" : "sumatoria([5,9,8,8])",
+        "comment" : "",
+        "result" : "30"
+      }, {
+        "call" : "sumatoria([1,5,8.9,4])",
+        "comment" : "",
+        "result" : "18.9"
+      } ],
+      "level" : "1",
+      "name" : "Sumatoria",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "# Forma 1    \ndef sumatoria(lista):\n\n    resultado = 0\n    while lista != []:\n        resultado += lista[0]\n        lista = lista[1:]\n\n    return resultado\n\n\n# Forma 2\ndef sumatoriaFor(listaEnteros):\n\n    resultado = 0\n    for numero in listaEnteros:\n        resultado += numero\n\n    return resultado",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un entero positivo o cero"
+        } ]
+      }
+    },
+    "00029" : {
+      "call" : "todosPares(lista)",
+      "code" : "00029",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne True si todos los elementos son pares.",
+      "examples" : [ {
+        "call" : "todosPares([1,4,6,2])",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "todosPares([8,6,2,12])",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "todosPares([16,26,6,4,2])",
+        "comment" : "",
+        "result" : "True"
+      } ],
+      "level" : "1",
+      "name" : "Elementos pares",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def todosPares (lista):\n    for elem in lista:\n        if elem % 2 == 1:\n            return False\n\n    return True",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Un booleno"
+        } ]
+      }
+    },
+    "00030" : {
+      "call" : "sumaImpares(lista)",
+      "code" : "00030",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que sume los números impares de una lista.",
+      "examples" : [ {
+        "call" : "sumaImpares([8,7,3,1])",
+        "comment" : "",
+        "result" : "11"
+      }, {
+        "call" : "sumaImpares([4,6,9,1])",
+        "comment" : "",
+        "result" : "10"
+      }, {
+        "call" : "sumaImpares([2,12,88,54])",
+        "comment" : "",
+        "result" : "0"
+      } ],
+      "level" : "1",
+      "name" : "Suma impares",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def sumaImpares (lista):\n    res = 0\n    for elem in lista:\n        if elem % 2 == 1:\n            res += elem\n\n    return res\n",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "res",
+          "type" : "Un número entero positivo o cero"
+        } ]
+      }
+    },
+    "00031" : {
+      "call" : "divisoresDe (lista, divisor)",
+      "code" : "00031",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que dada una lista y un divisor, cuente cuantos números son divisibles entre ese divisor.",
+      "examples" : [ {
+        "call" : "divisoresDe ([4,7,2,9], 3)",
+        "comment" : "",
+        "result" : "1"
+      }, {
+        "call" : "divisoresDe ([28,4,7,42,112,9], 14)",
+        "comment" : "28,42 y 112 son divisibles entre 14",
+        "result" : "3"
+      }, {
+        "call" : "divisoresDe ([8,14,7,63,112,1], 7)",
+        "comment" : "",
+        "result" : "4"
+      } ],
+      "level" : "1",
+      "name" : "Cantidad de divisores",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def divisoresDe (lista, divisor):\n    if divisor == 0:\n        return 0\n    contador = 0\n\n    for elem in lista:\n        if elem % divisor == 0:\n            contador += 1\n\n    return contador",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista"
+        }, {
+          "name" : "divisor",
+          "type" : "Un número entero positivo"
+        } ],
+        "outputs" : [ {
+          "name" : "contardor",
+          "type" : "Un número entero positivo o cero"
+        } ]
+      }
+    },
+    "00032" : {
+      "call" : "eliminar(elemento,lista)",
+      "code" : "00032",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que elimine las apariciones de un elemento en una lista.",
+      "examples" : [ {
+        "call" : "eliminar('a',[5,'a',10.2,True,'a','c'])",
+        "comment" : "",
+        "result" : "[5,10.2,True,'c']"
+      }, {
+        "call" : "eliminar(True,[True,1,5,'A',True,[True]])",
+        "comment" : "El True de la sublista no se borra precisamente por estar en una sublista",
+        "result" : "[1,5,'A',[True]]"
+      }, {
+        "call" : "eliminar(2,['r',3,7,2,'Active',2])",
+        "comment" : "",
+        "result" : "['r',3,7,'Active']"
+      } ],
+      "level" : "1",
+      "name" : "Eliminar apariciones",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def eliminar (elemento, lista):\n    listaResultado = []\n    for elementoEnLista  in lista:\n        if elementoEnLista != elemento or type(elementoEnLista) != type(elemento):\n            listaResultado += [elementoEnLista]\n\n    return listaResultado\n",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista"
+        }, {
+          "name" : "elemento",
+          "type" : "elemento de cualquier tipo"
+        } ],
+        "outputs" : [ {
+          "name" : "listaResultado",
+          "type" : "Una lista"
+        } ]
+      }
+    },
+    "00033" : {
+      "call" : "eliminarPrimera(elemento, lista)",
+      "code" : "00033",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que elimine la primer aparición de un elemento en una lista.",
+      "examples" : [ {
+        "call" : "eliminarPrimera('a',[5,'a',10.2,True,'a','c'])",
+        "comment" : "",
+        "result" : "[5,10.2,True,'a','c'] "
+      }, {
+        "call" : "eliminarPrimera(True,[True,1,5,'A',True,[True]])",
+        "comment" : "",
+        "result" : "[1,5,'A',True,[True]]"
+      }, {
+        "call" : "eliminarPrimera(2,['r',3,7,2,'Active',2])",
+        "comment" : "",
+        "result" : "['r',3,7,'Active',2]"
+      } ],
+      "level" : "1",
+      "name" : "Eliminar primera aparicion",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "# Forma 1\ndef eliminarPrimera (elemento, lista):\n    listaResultado = []\n    encontroPrimero = False\n    \n    for elementoEnLista  in lista:\n        if encontroPrimero or elementoEnLista != elemento:\n            listaResultado += [elementoEnLista]\n        else:   # esto se cumple solo cuando lo encontro y es la primera vez, \n            encontroPrimero = True  #cambia el valor de la bandera\n\n    return listaResultado\n\n# Forma 2\ndef eliminarPrimera2 (elemento, lista):\n    listaResultado = []\n    index = 0\n    for elementoEnLista  in lista:\n        if elementoEnLista != elemento:\n            listaResultado += [elementoEnLista]\n        else:\n            return listaResultado + lista[index+1:]\n        index += 1\n\n    return listaResultado\n",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista"
+        }, {
+          "name" : "elemento",
+          "type" : "elemento de cualquier tipo"
+        } ],
+        "outputs" : [ {
+          "name" : "listaResultado",
+          "type" : "Una lista"
+        } ]
+      }
+    },
+    "00034" : {
+      "call" : "getMax(lista)",
+      "code" : "00034",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne el numero mayor de una lista sin usar la función MAX.",
+      "examples" : [ {
+        "call" : "getMax([6,8,2,10])",
+        "comment" : "",
+        "result" : "10"
+      }, {
+        "call" : "getMax([76,8,2,19,18])",
+        "comment" : "",
+        "result" : "76"
+      }, {
+        "call" : "getMax([0,5,1,7,43,21])",
+        "comment" : "",
+        "result" : "43"
+      } ],
+      "level" : "1",
+      "name" : "Mayor en lista",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def getMax(lista):\n\n    currentMax = lista[0]\n\n    for num in lista[1:]:\n        if num > currentMax:\n            currentMax = num\n\n    return currentMax",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "currentMax",
+          "type" : "Un número entero positivo o cero"
+        } ]
+      }
+    },
+    "00035" : {
+      "call" : "getMin(lista)",
+      "code" : "00035",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne el numero menor de la lista sin usar MIN.",
+      "examples" : [ {
+        "call" : "getMin([6,8,2,10])",
+        "comment" : "",
+        "result" : "2"
+      }, {
+        "call" : "getMin([76,8,2,19,18])",
+        "comment" : "",
+        "result" : "2"
+      }, {
+        "call" : "getMin([0,5,1,7,43,21])",
+        "comment" : "",
+        "result" : "0"
+      } ],
+      "level" : "1",
+      "name" : "Menor en lista",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def getMin(lista):\n\n    currentMin = lista[0]\n\n    for num in lista[1:]:\n        if num < currentMin:\n            currentMin = num\n\n    return currentMin\n",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "currentMin",
+          "type" : "Un número entero positivo o cero"
+        } ]
+      }
+    },
+    "00036" : {
+      "call" : "substitute(original, newValue, sequence)",
+      "code" : "00036",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que sustituya un elemento por otro, en una lista. ",
+      "examples" : [ {
+        "call" : "substitute('a', 65, [1, 'a', 'a', True, 2, 56])",
+        "comment" : "",
+        "result" : "[1, 65, 65, True, 2, 56] "
+      }, {
+        "call" : "substitute(10, 'X', [10, 'XI', 'XII', 13, 10, 10])",
+        "comment" : "",
+        "result" : "['X', 'XI', 'XII', 13, 'X', 'X']"
+      }, {
+        "call" : "substitute(5, 'Cinco', ['1', 2, '5', 5, 6, 'Cinco'])",
+        "comment" : "",
+        "result" : "['1', 2, '5', 'Cinco', 6, 'Cinco']"
+      } ],
+      "level" : "1",
+      "name" : "Sustituir",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def substitute(original, newValue, sequence):\n    result = []\n    for element in sequence:\n        if element == original:\n            result += [newValue]\n        else:\n            result += [element]\n\n    return result",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "result",
+          "type" : "Una lista"
+        } ]
+      }
+    },
+    "00037" : {
+      "call" : "toNumber(sequence)",
+      "code" : "00037",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que una una lista de números en un solo número, los elementos deben ser números enteros positivos o negativos.",
+      "examples" : [ {
+        "call" : "toNumber([-10,-256,32,10,0,1])",
+        "comment" : "",
+        "result" : "10256321001"
+      }, {
+        "call" : "toNumber([909,-87,431,11])",
+        "comment" : "",
+        "result" : "9098743111"
+      }, {
+        "call" : "toNumber([5,-3,-90,-1,-9]) ",
+        "comment" : "",
+        "result" : "539019"
+      } ],
+      "level" : "1",
+      "name" : "Convertir a un solo número",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "\ndef toNumber (sequence):\n    result = 0\n\n    for number in sequence:\n        result = result * (10**getNumberLength(abs(number))) + abs(number)\n\n    return result\n\n#integer number digits count\ndef getNumberLength(num):\n    counter = 1\n    while num >= 10:\n        counter += 1\n        num //= 10\n    return counter\n",
+        "inputs" : [ {
+          "name" : "sequence",
+          "type" : "Una lista de números enteros positivos o negativos."
+        } ],
+        "outputs" : [ {
+          "name" : "result",
+          "type" : "Un número entero positivo"
+        } ]
+      }
+    },
+    "00038" : {
+      "call" : "descomponer(lista)",
+      "code" : "00038",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que descomponga un lista en una lista de positivos, una de negativos y una de ceros, y las retorne en una sola lista. ",
+      "examples" : [ {
+        "call" : "descomponer([909,-87,431,11,0])",
+        "comment" : "",
+        "result" : "[[-87], [0], [909, 431, 11]]"
+      }, {
+        "call" : "descomponer([0,-9,0,11,0,4,98,-25])",
+        "comment" : "",
+        "result" : "[[-9, -25], [0, 0, 0], [11, 4, 98]"
+      }, {
+        "call" : "descomponer([-76,-90,-2,0,1,0,3,0,82.2])",
+        "comment" : "Puden haber números con fracción decimal",
+        "result" : "[[-76, -90, -2], [0, 0, 0], [1, 3, 82.2]]"
+      } ],
+      "level" : "1",
+      "name" : "Descomponer lista",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def descomponer(lista):\n    negativos = []\n    positivos = []\n    ceros = []\n\n    for num in lista:\n        if num > 0:\n            positivos.append(num) # positivos += [num]\n        elif num < 0:\n            negativos.append(num) # negativos += [num]\n        else:\n            ceros.append(num)  # ceros += [num]\n\n    return [negativos, ceros, positivos]\n",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista con números"
+        } ],
+        "outputs" : [ {
+          "name" : "Una lista",
+          "type" : "Lista con tres listas"
+        } ]
+      }
+    },
+    "00039" : {
+      "call" : "crearLista (elemento, veces)",
+      "code" : "00039",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne una lista con un elemento repetido n veces",
+      "examples" : [ {
+        "call" : "crearLista(3, 6)",
+        "comment" : "",
+        "result" : "[3, 3, 3, 3, 3]"
+      }, {
+        "call" : "crearLista('Hello world', 3)",
+        "comment" : "",
+        "result" : "['Hello world', 'Hello world', 'Hello world']"
+      }, {
+        "call" : "crearLista(['IC1802'], 4)",
+        "comment" : "",
+        "result" : "[['IC1802'], ['IC1802'], ['IC1802'], ['IC1802']]"
+      } ],
+      "level" : "1",
+      "name" : "Crear lista",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "Forma 1\ndef crearLista (elemento, veces):\n    resultado = []\n    while veces > 0:\n        resultado += [elemento]\n        veces -= 1\n    return resultado\n\n# Forma 2\ndef crearListaFor (elemento, veces):\n    resultado = []\n    for i in range (veces):\n        resultado += [elemento]\n        \n    return resultado\n",
+        "inputs" : [ {
+          "name" : "elemento",
+          "type" : "Elemento de cualquier tipo"
+        }, {
+          "name" : "veces",
+          "type" : "Un número entero positivo"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Una lista"
+        } ]
+      }
+    },
+    "00040" : {
+      "call" : "multiplicar(lista, elemBuscado, veces)",
+      "code" : "00040",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que multiplique un elemento de una lista, n veces.",
+      "examples" : [ {
+        "call" : "multiplicar([1,2,34], 2, 5)",
+        "comment" : "",
+        "result" : "[1, 2, 2, 2, 2, 2, 34]"
+      }, {
+        "call" : "multiplicar(['j',6,8,10,'a'],'a', 3)",
+        "comment" : "",
+        "result" : "['j', 6, 8, 10, 'a', 'a', 'a']"
+      }, {
+        "call" : "multiplicar([3,[4],5,'six',True],True,2)",
+        "comment" : "",
+        "result" : "[3, [4], 5, 'six', True, True]"
+      } ],
+      "level" : "1",
+      "name" : "Multiplicar elemento",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def multiplicar(lista, elemBuscado, veces):\n    resultado = []\n    for elem in lista:\n        if elem == elemBuscado:\n            resultado += [elem]*veces #crearLista(elem, veces)\n        else:\n            resultado += [elem]\n\n    return resultado",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista"
+        }, {
+          "name" : "elemBuscado",
+          "type" : "elemento de cualquier tipo"
+        }, {
+          "name" : "veces",
+          "type" : "Un número entero positivo"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Una lista"
+        } ]
+      }
+    },
+    "00041" : {
+      "call" : "getGradesAverage(listaDeNotas)",
+      "code" : "00041",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne el promedio de los valores de la lista.",
+      "examples" : [ {
+        "call" : "getGradesAverage([90,80,100,90,100,45])",
+        "comment" : "",
+        "result" : "84.16 "
+      }, {
+        "call" : "getGradesAverage([60,45,69,100])",
+        "comment" : "",
+        "result" : "68.5"
+      }, {
+        "call" : "getGradesAverage([90,54,92,100,98])",
+        "comment" : "",
+        "result" : "86.8"
+      } ],
+      "level" : "1",
+      "name" : "Obtener promedio",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def getGradesAverage(listaDeNotas):\n    if len(listaDeNotas) != 0:\n        return sumatoria (listaDeNotas) / len (listaDeNotas)\n    return 0\n    ",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista de notas"
+        } ],
+        "outputs" : [ {
+          "name" : "Un número",
+          "type" : "Un número fraccionario o cero"
+        } ]
+      }
+    },
+    "00042" : {
+      "call" : "getAverage(lista)",
+      "code" : "00042",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que obtenga la suma de todas las notas,cantidad de notas y saque el promedio general.\nRecibe una lista con formato estudiante, es decir [[\"Nombre\", \"Estado(En curso/Aprobado/Reprobado)\", [Nota1,Nota2,Nota3,...], NotaFinal]], donde las notas son número enteros o fraccionarios.",
+      "examples" : [ {
+        "call" : "getAverage([[\"Diego\", \"En curso\", [90,80,100,90], 90],[\"Ana\", \"En curso\", [90,0,0,80], 90]])",
+        "comment" : "",
+        "result" : "66.25"
+      }, {
+        "call" : "getAverage([[\"Fede\", \"En curso\", [70,70,70,0], 90],[\"Allen\", \"En curso\", [90,90,90,90], 90]])",
+        "comment" : "",
+        "result" : "71.25"
+      }, {
+        "call" : "getAverage([[\"Allen\", \"En curso\", [90,90,90,90], 90],[\"Tony\", \"En curso\", [85,80,95,99], 90],[\"Lucas\", \"En curso\", [100,100,100,97], 90]])",
+        "comment" : "",
+        "result" : "93.0"
+      } ],
+      "level" : "1",
+      "name" : "Obtener promedio general",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def getAverage(lista):\n\n    sumaDeNotas = 0\n    cantidadDeNotas = 0\n\n    for estudiante in lista:\n        # Se hacer uso de una funcion que anteriormente se había programado, sumatoria(lista).\n        sumaDeNotas += sumatoria (estudiante[2])\n        cantidadDeNotas += len(estudiante[2])\n\n    if cantidadDeNotas > 0:\n        return sumaDeNotas / cantidadDeNotas\n    else:\n        return 0",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista con formato estudiante"
+        } ],
+        "outputs" : [ {
+          "name" : "Un número",
+          "type" : "Un número fraccionario o cero"
+        } ]
+      }
+    },
+    "00043" : {
+      "call" : "actualizarEstado(lista)",
+      "code" : "00043",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que actualice el estado y la nota final del curso de cada estudiante según su promedio, haciendo uso de la función getGradesAverage(listaDeNotas) realizada en un ejercicio anterior.\nRecibe una lista con formato estudiante, es decir [[\"Nombre\", \"Estado(En curso/Aprobado/Reprobado)\", [Nota1,Nota2,Nota3,...], NotaFinal]], donde las notas son número enteros o fraccionarios.",
+      "examples" : [ {
+        "call" : "actualizarEstado([[\"Diego\", \"En curso\", [90,80,100,90], 90],[\"Ana\", \"En curso\", [90,0,0,80], 90]])",
+        "comment" : "",
+        "result" : "[['Diego', 'Aprobado', [90, 80, 100, 90], 90.0], ['Ana', 'Reprobado', [90, 0, 0, 80], 42.5]]"
+      }, {
+        "call" : "actualizarEstado([[\"Fede\", \"En curso\", [70,70,70,0], 90],[\"Allen\", \"En curso\", [90,90,90,90], 90]])",
+        "comment" : "",
+        "result" : "[['Fede', 'Reprobado', [70, 70, 70, 0], 52.5], ['Allen', 'Aprobado', [90, 90, 90, 90], 90.0]]"
+      }, {
+        "call" : "actualizarEstado([[\"Allen\", \"En curso\", [90,90,90,90], 90],[\"Tony\", \"En curso\", [85,80,95,99], 90],[\"Lucas\", \"En curso\", [100,100,100,97], 90]])",
+        "comment" : "",
+        "result" : "[['Allen', 'Aprobado', [90, 90, 90, 90], 90.0], ['Tony', 'Aprobado', [85, 80, 95, 99], 89.75], ['Lucas', 'Aprobado', [100, 100, 100, 97], 99.25]]"
+      } ],
+      "level" : "1",
+      "name" : "Actulizar estado",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def actualizarEstado(lista):\n    for estudiante in lista:\n        estudiante[3] = getGradesAverage(estudiante[2])\n        if estudiante[3] >= 67.5:\n            estudiante[1] = 'Aprobado'\n        else:\n            estudiante[1] = 'Reprobado'\n\n    return lista",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista con formato estudiante"
+        } ],
+        "outputs" : [ {
+          "name" : "lista",
+          "type" : "La lista actualizada"
+        } ]
+      }
+    },
+    "00044" : {
+      "call" : "apariciones (elemento, lista)",
+      "code" : "00044",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne la cantidad de veces que aparece un elemento en una lista.",
+      "examples" : [ {
+        "call" : "apariciones('a',[5,'a',10.2,True,'a','c'])",
+        "comment" : "",
+        "result" : "2"
+      }, {
+        "call" : "apariciones(True,[True,1,5,'A',True,[True]])",
+        "comment" : "",
+        "result" : "3"
+      }, {
+        "call" : "apariciones(2,['r',2,2,3,7,2,'Active',2])",
+        "comment" : "",
+        "result" : "4"
+      } ],
+      "level" : "1",
+      "name" : "Cantidad de apariciones",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def apariciones (elemento, lista):\n\n    resultado = 0\n    for elem in lista:\n        if elem == elemento:\n            resultado += 1\n    return resultado",
+        "inputs" : [ {
+          "name" : "elemento",
+          "type" : "Un elemento de cualquier tipo"
+        }, {
+          "name" : "lista",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un número entero positivo o cero"
+        } ]
+      }
+    },
+    "00045" : {
+      "call" : "esConjunto (lista)",
+      "code" : "00045",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorna si la lista es conjunto , es decir si no tiene elementos repetidos",
+      "examples" : [ {
+        "call" : "esConjunto ([1,5,7,3,2])",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "esConjunto ([1,5,[1,7],[1,7],0,[9]])",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "esConjunto ([7,3,2,90,56])",
+        "comment" : "",
+        "result" : "True"
+      } ],
+      "level" : "1",
+      "name" : "Es conjunto",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def esConjunto (lista):\n\n    for elem in lista:\n        # Usando una función programada en un ejercicio anterior\n        if apariciones(elem,lista)>1:\n            return False\n    return True",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Un booleano"
+        } ]
+      }
+    },
+    "00046" : {
+      "call" : "sonIguales(conjunto1,conjunto2)",
+      "code" : "00046",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne True si los dos conjuntos son iguales",
+      "examples" : [ {
+        "call" : "sonIguales([898,65,3,8,0],[65,3,8,0,898])",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "sonIguales(['r',4,7,'r'],['r',4,7,'r'])",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "sonIguales([87,9,1,2,4],[87,9,3,2,4])",
+        "comment" : "",
+        "result" : "False"
+      } ],
+      "level" : "1",
+      "name" : "Conjuntos iguales",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def sonIguales(conjunto1,conjunto2):\n    #Usando la funcion esConjunto(lista) anteriormente realizada\n    if(esConjunto(conjunto1) and esConjunto(conjunto2)):\n        if len(conjunto1) != len (conjunto2):\n            return False\n        for elem in conjunto1:\n            if elem not in conjunto2:\n                return False\n        return True\n    return False",
+        "inputs" : [ {
+          "name" : "conjunto1",
+          "type" : "Una lista"
+        }, {
+          "name" : "conjunto2",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "rue o False",
+          "type" : "Un booleano"
+        } ]
+      }
+    },
+    "00047" : {
+      "call" : "unionConjuntos(conjunto1,conjunto2)",
+      "code" : "00047",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que genera un conjunto constituido por la union de los dos conjuntos",
+      "examples" : [ {
+        "call" : "unionConjuntos([1,2,3,4,5],[5,6,7])",
+        "comment" : "",
+        "result" : "[1, 2, 3, 4, 5, 6, 7] "
+      }, {
+        "call" : "unionConjuntos(['e',[4],8,0,'i'],['a','o',[4],8,0,'u'])",
+        "comment" : "",
+        "result" : "['e', [4], 8, 0, 'i', 'a', 'o', 'u']"
+      }, {
+        "call" : "unionConjuntos([87,9,1,2,4],[87,9,3,2,4])",
+        "comment" : "",
+        "result" : "[87, 9, 1, 2, 4, 3]"
+      } ],
+      "level" : "1",
+      "name" : "Union de dos conjuntos",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "# Forma 1\ndef unionConjuntos(conjunto1,conjunto2):\n    \n    sumando = []\n    for elem in conjunto2:\n        if elem not in conjunto1:\n            sumando += [elem]\n    return conjunto1 + sumando\n\n# Forma 2\ndef union (conj1, conj2):\n    \n    resultado = conj1\n    for elem in conj2:\n        #Si no esta (elem, resultado):\n        if elem not in resultado:\n            resultado += [elem]\n            #Lo mismo que --> resultado.append(elem)\n\n    return resultado",
+        "inputs" : [ {
+          "name" : "conjunto1",
+          "type" : "Una lista"
+        }, {
+          "name" : "conjunto2",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "conjunto",
+          "type" : "Una lista"
+        } ]
+      }
+    },
+    "00048" : {
+      "call" : "interseccionConjuntos(conjunto1,conjunto2)",
+      "code" : "00048",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que genere un conjunto constituido por la interseccion de los dos conjuntos ",
+      "examples" : [ {
+        "call" : "interseccionConjuntos([1,2,3,4,5],[9,6,7])",
+        "comment" : "",
+        "result" : "[]"
+      }, {
+        "call" : "interseccionConjuntos(['e',[4],8,0,'i'],['a','o',[4],8,0,'u'])",
+        "comment" : "",
+        "result" : "[[4], 8, 0]"
+      }, {
+        "call" : "interseccionConjuntos([87,9,1,2,4],[87,9,3,2,4])",
+        "comment" : "",
+        "result" : "[87, 9, 2, 4]"
+      } ],
+      "level" : "1",
+      "name" : "Interseccion de conjuntos",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def interseccionConjuntos(conjunto1,conjunto2):\n    sumando = []\n    for elem in conjunto2:\n        if elem in conjunto1:\n            sumando += [elem]\n            #Lo mismo que --> resultado.append (elem)\n    return sumando",
+        "inputs" : [ {
+          "name" : "conjunto1",
+          "type" : "Una lista"
+        }, {
+          "name" : "conjunto2",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "conjunto",
+          "type" : "Una lista"
+        } ]
+      }
+    },
+    "00049" : {
+      "call" : "restrestaConjuntos(conjunto1,conjunto2)",
+      "code" : "00049",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que genere un conjunto constituido por la resta de los elementos del primer conjunto que esten en el segundo conjunto",
+      "examples" : [ {
+        "call" : "restaConjuntos(['e',[4],8,0,'i'],['a','o',[4],8,0,'u'])",
+        "comment" : "",
+        "result" : "['e', 'i']"
+      }, {
+        "call" : "restaConjuntos([5,78,2,90,3],[78,9,3,21])",
+        "comment" : "",
+        "result" : "[5, 2, 90]"
+      }, {
+        "call" : "restaConjuntos([12,54,67,90],[54,90,12,67])",
+        "comment" : "",
+        "result" : "[]"
+      } ],
+      "level" : "1",
+      "name" : "Resta de conjuntos",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def restaConjuntos(conjunto1,conjunto2):\n    sumando = []\n    for elem in conjunto1:\n        if elem not in conjunto2:\n            sumando += [elem]\n            #Lo mismo que --> resultado.append (elem) \n\n    return sumando",
+        "inputs" : [ {
+          "name" : "conjunto1",
+          "type" : "Una lista"
+        }, {
+          "name" : "conjunto2",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "conjunto",
+          "type" : "Una lista"
+        } ]
+      }
+    },
+    "00050" : {
+      "call" : "vectoresIguales (v1, v2)",
+      "code" : "00050",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que verifique si dos vectores son iguales",
+      "examples" : [ {
+        "call" : "vectoresIguales ([6,8,3],[6,8,3])",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "vectoresIguales ([6,8,3],[6,8,2])",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "vectoresIguales ([7,4,5],[1,5,90])",
+        "comment" : "",
+        "result" : "False"
+      } ],
+      "level" : "1",
+      "name" : "Vectores iguales",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def vectoresIguales (v1, v2):\n    return v1 == v2",
+        "inputs" : [ {
+          "name" : "v1",
+          "type" : "Una lista"
+        }, {
+          "name" : "v2",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Un booleano"
+        } ]
+      }
+    },
+    "00051" : {
+      "call" : "esVectorNulo (vector)",
+      "code" : "00051",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que verifique si un vector es nulo.",
+      "examples" : [ {
+        "call" : "esVectorNulo ([])",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "esVectorNulo ([1])",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "esVectorNulo ([0,1])",
+        "comment" : "",
+        "result" : "False"
+      } ],
+      "level" : "1",
+      "name" : "Vector nulo",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def esVectorNulo (vector):\n\n    for i in vector:\n        if i != 0:\n            return False\n    return True\n\n",
+        "inputs" : [ {
+          "name" : "lista",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Un booleano"
+        } ]
+      }
+    },
+    "00052" : {
+      "call" : "sumarVectores (v1, v2)",
+      "code" : "00052",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne la suma de dos vectores de igual orden",
+      "examples" : [ {
+        "call" : "sumarVectores ([1,2,3],[10,11,12])",
+        "comment" : "",
+        "result" : "[11,13,15]"
+      }, {
+        "call" : "sumarVectores ([4,6,7],[23,65,1])",
+        "comment" : "",
+        "result" : "[27, 71, 8]"
+      }, {
+        "call" : "sumarVectores ([6,34,1,8],[0,6,43,2])",
+        "comment" : "",
+        "result" : "[6, 40, 44, 10]"
+      } ],
+      "level" : "1",
+      "name" : "Suma de vectores",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def sumarVectores (v1, v2):\n    resultado = []\n\n    for i in range(len (v1)):\n        #print (\"i: \", i, v1[i] , v2[i], v1[i] + v2[i])\n        resultado.append(v1[i] + v2[i])\n        #Lo mismo que --> resultado += [v1[i] + v2[i]]\n\n    return resultado\n",
+        "inputs" : [ {
+          "name" : "v1",
+          "type" : "Una lista"
+        }, {
+          "name" : "v2",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Un booleano"
+        } ]
+      }
+    },
+    "00053" : {
+      "call" : "multiplicarVectores (v1, v2)",
+      "code" : "00053",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne la multiplicacion de dos vectores de mismo orden",
+      "examples" : [ {
+        "call" : "multiplicarVectores ([1,2,3],[10,11,12])",
+        "comment" : "",
+        "result" : "68"
+      }, {
+        "call" : "multiplicarVectores ([4,6,7],[23,65,1])",
+        "comment" : "",
+        "result" : "489"
+      }, {
+        "call" : "multiplicarVectores ([6,34,1,8],[0,6,43,2]) ",
+        "comment" : "",
+        "result" : "263"
+      } ],
+      "level" : "1",
+      "name" : "Multiplicacion de vectores",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def multiplicarVectores (v1, v2):\n    resultado = 0\n\n    for i in range(len(v1)):\n        resultado += v1[i] * v2[i]\n        #print (\"i: \", i, v1[i] , v2[i], v1[i] * v2[i], resultado)\n\n    return resultado",
+        "inputs" : [ {
+          "name" : "v1",
+          "type" : "Una lista"
+        }, {
+          "name" : "v2",
+          "type" : "Una lista"
+        } ],
+        "outputs" : [ {
+          "name" : "resultado",
+          "type" : "Un número"
+        } ]
+      }
+    },
+    "00054" : {
+      "call" : "esCuadrada(matriz)",
+      "code" : "00054",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne True si la matriz es cuadrada",
+      "examples" : [ {
+        "call" : "esCuadrada([[1,2,3],[4,5,7],[9,10,11]])",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "esCuadrada([[1,2],[4,5,7],[9,10,11]])",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "esCuadrada([[1,2],[5,7]])",
+        "comment" : "",
+        "result" : "True"
+      } ],
+      "level" : "1",
+      "name" : "Matriz cuadrada",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def esCuadrada(matriz):\n    return len(matriz) == len (matriz[0])",
+        "inputs" : [ {
+          "name" : "matriz",
+          "type" : "Una matriz"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Un booleano"
+        } ]
+      }
+    },
+    "00055" : {
+      "call" : "getDiagonal (matriz)",
+      "code" : "00055",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne la diagonal de una matriz cuadrada",
+      "examples" : [ {
+        "call" : "getDiagonal([[1,2,3],[4,5,7],[9,10,11]])",
+        "comment" : "",
+        "result" : "[1, 5, 11] "
+      }, {
+        "call" : "getDiagonal([[1,2],[5,7]])",
+        "comment" : "",
+        "result" : "[1, 7]"
+      }, {
+        "call" : "getDiagonal([[1,5,3,4],[1,8,5,73],[4,9,10,11],[5,2,1,0]])",
+        "comment" : "",
+        "result" : "[1, 8, 10, 0]"
+      } ],
+      "level" : "1",
+      "name" : "Obtener diagonal",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def getDiagonal (matriz):\n    diagonal = []\n    for i in range (len(matriz)):\n        diagonal.append(matriz[i][i])\n        #Es lo mismo que --> diagonal += [matriz[i][i]]\n    return diagonal\n",
+        "inputs" : [ {
+          "name" : "matriz",
+          "type" : "Una matriz cuadrada"
+        } ],
+        "outputs" : [ {
+          "name" : "diagonal",
+          "type" : "Una lista"
+        } ]
+      }
+    },
+    "00056" : {
+      "call" : "validarMatriz(matriz)",
+      "code" : "00056",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne True si todas las filas tienen la misma cantidad de columnas",
+      "examples" : [ {
+        "call" : "validarMatriz([[1,2,3],[4,5,7],[9,10,11]])",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "validarMatriz([[2,3],[4,5,7],[9,10,11]])",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "validarMatriz([[5,78,9,3],[4,5,7,5],[9,1,0,78]])",
+        "comment" : "",
+        "result" : "True"
+      } ],
+      "level" : "1",
+      "name" : "Validar matriz",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "# Foma 1\ndef validarMatriz(matriz):\n    if len(matriz) == 0:\n        return False\n\n    tamano = len(matriz[0])\n    for fila in matriz:\n        if len(fila) != tamano or fila == []:\n            return False\n\n    return True\n\n# Foma 2\ndef validarMatriz2(M):\n    if len(M) == 0:\n        return False\n\n    for i in range(len(M)-1):\n        print (i, i+1, M[i], M[i+1], len(M[i]), len(M[i+1]))\n        if len(M[i]) != len(M[i+1]):\n            return False\n    return True\n",
+        "inputs" : [ {
+          "name" : "matriz",
+          "type" : "Una matriz "
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Un booleano"
+        } ]
+      }
+    },
+    "00057" : {
+      "call" : "getContradiagonal(M)",
+      "code" : "00057",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne la contra diagonal de la matriz cuadrada ",
+      "examples" : [ {
+        "call" : "getContradiagonal([[1,2,3],[4,5,7],[9,10,11]])",
+        "comment" : "",
+        "result" : "[3, 5, 9]"
+      }, {
+        "call" : " getContradiagonal([[1,2],[5,7]])",
+        "comment" : "",
+        "result" : "[2, 5]"
+      }, {
+        "call" : "getContradiagonal([[1,5,3,4],[1,8,5,73],[4,9,10,11],[5,2,1,0]])",
+        "comment" : "",
+        "result" : "[4, 5, 9, 5]"
+      } ],
+      "level" : "2",
+      "name" : "Diagonal inversa",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "\n# Forma 1\ndef getContradiagonal(M):\n    fila = 0\n    columna = len(M)-1\n    contraD = []\n\n    for i in range(len(M)):\n        #print (fila, columna, M[fila][columna])\n        contraD.append(M[fila][columna])\n        fila += 1\n        columna -= 1\n\n    return contraD\n\n# Forma 2\ndef getContradiagonal2(M):\n    columna = len(M)-1\n    contraD = []\n\n    for fila in M:\n        #print (fila, columna, fila[columna])\n        contraD.append(fila[columna])\n        columna -= 1\n\n    return contraD\n\n# Forma 3\ndef getContradiagonal3(M):\n    contraD = []\n    for i in range(len(M)):\n        #print (i, (len(M)-1)-i, M[i][(len(M)-1)-i], \"len(M)-1)-i\")\n        contraD.append(M[i][(len(M)-1)-i])\n    return contraD\n",
+        "inputs" : [ {
+          "name" : "M",
+          "type" : "Una matriz cuadrada"
+        } ],
+        "outputs" : [ {
+          "name" : "contraD",
+          "type" : "Una lista"
+        } ]
+      }
+    },
+    "00058" : {
+      "call" : "getColumn(M, columnNbr)",
+      "code" : "00058",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que retorne una columna solicitada",
+      "examples" : [ {
+        "call" : "getColumn([[1,2,3],[4,5,7],[9,10,11]],2)",
+        "comment" : "",
+        "result" : "[3, 7, 11]"
+      }, {
+        "call" : "getColumn([[1,5,3,4],[1,8,5,73],[4,9,10,11],[5,2,1,0]],1)",
+        "comment" : "",
+        "result" : "[5, 8, 9, 2]"
+      }, {
+        "call" : "getColumn([[11,15,32,5],[6,84,5,7])",
+        "comment" : "",
+        "result" : "[11, 6]"
+      } ],
+      "level" : "1",
+      "name" : "Obtener columna",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def getColumn(M, columnNbr):\n    column = []\n\n    for fila in M:\n        column.append(fila[columnNbr])\n    return column\n",
+        "inputs" : [ {
+          "name" : "M",
+          "type" : "Una matriz"
+        }, {
+          "name" : "columnNbr",
+          "type" : "Un número entero que indica la columna"
+        } ],
+        "outputs" : [ {
+          "name" : "column",
+          "type" : "Una lista "
+        } ]
+      }
+    },
+    "00059" : {
+      "call" : "vectorPorMatriz (vector, M)",
+      "code" : "00059",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que multiplique un vector por una matriz, recordando la propiedad que permite la multiplicación de matrices.",
+      "examples" : [ {
+        "call" : "vectorPorMatriz([3,5,6],[[1,2,3],[4,5,7],[9,10,11]])",
+        "comment" : "",
+        "result" : "[77, 91, 110] "
+      }, {
+        "call" : "vectorPorMatriz([3,6],[[3,5],[3,7],[2,1],[0,9]])",
+        "comment" : "",
+        "result" : "[27, 57]"
+      }, {
+        "call" : "vectorPorMatriz([3,6,6,1],[[2,1],[12,9],[67,3],[0,0]])",
+        "comment" : "",
+        "result" : "[480, 75]"
+      } ],
+      "level" : "2",
+      "name" : "Multiplicación vector-matriz",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def vectorPorMatriz (vector, M):\n\n    #obtiene el largo de la fila 0 que es las columans\n    cantidadColumnas = len(M[0])\n    vectorResultado = []\n    for col in range (cantidadColumnas):\n        columnaActual = getColumn(M, col)\n        multiplicacion = multiplicarVectores (vector, columnaActual)\n        vectorResultado.append (multiplicacion)\n        print (col, columnaActual, multiplicacion, vectorResultado)\n\n    return vectorResultado",
+        "inputs" : [ {
+          "name" : "V",
+          "type" : "Una lista"
+        }, {
+          "name" : "M",
+          "type" : "Una matriz"
+        } ],
+        "outputs" : [ {
+          "name" : "vectorResultado",
+          "type" : "Una lista"
+        } ]
+      }
+    },
+    "00060" : {
+      "call" : "multiplicarMatrices (M1, M2)",
+      "code" : "00060",
+      "created" : "2021-06-09",
+      "creator" : "Diego Mora",
+      "details" : "Realice un programa que multiplique dos matrices nxp y pxm, puede hacer uso de alguno de los programas hechos anteriormente.\n",
+      "examples" : [ {
+        "call" : "multiplicarMatrices([[1,2,3],[4,5,7]],[[9,10],[91,0],[1,2]])",
+        "comment" : "",
+        "result" : "[[194, 16], [498, 54]]"
+      }, {
+        "call" : "multiplicarMatrices([[2,0],[5,9]],[[0,1,2,3,4],[1,0,3,12,5]])",
+        "comment" : "",
+        "result" : "[[0, 2, 4, 6, 8], [9, 5, 37, 123, 65]]"
+      }, {
+        "call" : "multiplicarMatrices([[1,1,1,1],[0,5,2,1]],[[4,10],[6,0],[1,2],[0,0]])",
+        "comment" : "",
+        "result" : "[[11, 12], [32, 4]]"
+      } ],
+      "level" : "2",
+      "name" : "Multiplica matrices",
+      "section" : "Listas, vectores y matrices",
+      "solution" : {
+        "code" : "def multiplicarMatrices (M1, M2):\n    res = []\n\n    for fila in M1:\n        res.append(vectorPorMatriz(fila, M2))\n    return res",
+        "inputs" : [ {
+          "name" : "M1",
+          "type" : "Una matriz"
+        }, {
+          "name" : "M2",
+          "type" : "Una matriz"
+        } ],
+        "outputs" : [ {
+          "name" : "res",
+          "type" : "Una matriz"
+        } ]
+      }
+    },
+    "00061" : {
+      "call" : "arbol (centro, hijoizquierdo, hijoderecho)",
+      "code" : "00061",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que retorne una lista que simboliza un árbol, por lo que se conforma por hijo derecha e izquierdo y el valor que simboliza la raíz.",
+      "examples" : [ {
+        "call" : "arbol(100,[],[])",
+        "comment" : "En este caso este árbol aún no tiene hijos",
+        "result" : "100"
+      }, {
+        "call" : "arbol(100,[90,80],[110,105])",
+        "comment" : "",
+        "result" : "[10, [5, 4, 6], [7, 8, 9]]"
+      }, {
+        "call" : "arbol(10,[5,4,6],[7,8,9])",
+        "comment" : "",
+        "result" : "[10, [5, 4, 6], [7, 8, 9]]"
+      } ],
+      "level" : "1",
+      "name" : "Árbol",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def arbol (centro, hijoizquierdo, hijoderecho):\n    if hijoizquierdo == [] and hijoderecho == []:\n        return centro\n    else:\n        return [centro] + [hijoizquierdo] + [hijoderecho]\n\n",
+        "inputs" : [ {
+          "name" : "centro",
+          "type" : "Un valor para la raiz"
+        }, {
+          "name" : "hijoizquierdo",
+          "type" : "Una lista de un subarbol izquierdo"
+        }, {
+          "name" : "hijoderecho",
+          "type" : "Una lista de un subarbol derecho"
+        } ],
+        "outputs" : [ {
+          "name" : "Una lista",
+          "type" : "Lista que representa un árbol"
+        } ]
+      }
+    },
+    "00062" : {
+      "call" : "atomo(x)",
+      "code" : "00062",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que retorne True si el parámetro dado no es lista, y False si es lista; ésta servirá para otras funciones del árbol para saber  si es un valor o un subarbol",
+      "examples" : [ {
+        "call" : "atomo([100, [80, 70, 85], [120, 110, 125]])",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "atomo([100, 1]) ",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "atomo(100)",
+        "comment" : "",
+        "result" : "True"
+      } ],
+      "level" : "1",
+      "name" : "Átomo",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def atomo(x):\n    return not isinstance (x, list)\n",
+        "inputs" : [ {
+          "name" : "x",
+          "type" : "Un valor o un subárbol"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Un booleano"
+        } ]
+      }
+    },
+    "00063" : {
+      "call" : "raiz (arbol)",
+      "code" : "00063",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que devuelva la raiz de un árbol.",
+      "examples" : [ {
+        "call" : "raiz([100, [80, [70, 65, []], 85], [120, 110, 125]])",
+        "comment" : "",
+        "result" : "100"
+      }, {
+        "call" : "raiz([40, 30, 45])",
+        "comment" : "",
+        "result" : "40"
+      }, {
+        "call" : "raiz([1, [3,5,2], [12,11,[14,13,15]]])",
+        "comment" : "",
+        "result" : "1"
+      } ],
+      "level" : "1",
+      "name" : "Raiz de un árbol",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def raiz (arbol):\n    if atomo(arbol):\n        return arbol\n    else:\n        return arbol[0]\n",
+        "inputs" : [ {
+          "name" : "arbol",
+          "type" : "Árbol o valor"
+        } ],
+        "outputs" : [ {
+          "name" : "valor",
+          "type" : "Valor que representa la raíz"
+        } ]
+      }
+    },
+    "00064" : {
+      "call" : "hijoizq(arbol)",
+      "code" : "00064",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que retorne el hijo izquierdo de un árbol.",
+      "examples" : [ {
+        "call" : "hijoizq([100, [80, [70, 65, []], 85], [120, 110, 125]])",
+        "comment" : "",
+        "result" : "[80, [70, 65, []], 85] "
+      }, {
+        "call" : "hijoizq([40, 30, 45])",
+        "comment" : "",
+        "result" : "30"
+      }, {
+        "call" : "hijoizq([1, [3,5,2], [12,11,[14,13,15]]])",
+        "comment" : "",
+        "result" : "[3, 5, 2]"
+      } ],
+      "level" : "1",
+      "name" : "Hijo izquierdo",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def hijoizq(arbol):\n    if atomo(arbol):\n        return []\n    else:\n        return arbol[1]\n",
+        "inputs" : [ {
+          "name" : "arbol",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "subarbol",
+          "type" : "Lista que representa hijo izquierdo"
+        } ]
+      }
+    },
+    "00065" : {
+      "call" : "hijoder(arbol)",
+      "code" : "00065",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que retorne el hijo derecho de un árbol.",
+      "examples" : [ {
+        "call" : "hijoder([100, [80, [70, 65, []], 85], [120, 110, 125]])",
+        "comment" : "",
+        "result" : "[120, 110, 125]"
+      }, {
+        "call" : "hijoder([40, 30, 45])",
+        "comment" : "",
+        "result" : "45"
+      }, {
+        "call" : "hijoder([1, [3,5,2], [12,11,[14,13,15]]])",
+        "comment" : "",
+        "result" : "[12, 11, [14, 13, 15]]"
+      } ],
+      "level" : "1",
+      "name" : "Hijo derecho",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def hijoder(arbol):\n    if atomo(arbol):\n        return []\n    else:\n        return arbol[2]\n",
+        "inputs" : [ {
+          "name" : "arbol",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "subarbol",
+          "type" : "Lista que representa hijo izquierdo"
+        } ]
+      }
+    },
+    "00066" : {
+      "call" : "hoja(nodo)",
+      "code" : "00066",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que indique si un árbol o nodo es hoja, es decir, no tiene ni hijo izquierdo ni hijo derecho.",
+      "examples" : [ {
+        "call" : "hoja([10,[],[]])",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "hoja([40, 30, 45])",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "hoja([10,[4],[]])",
+        "comment" : "",
+        "result" : "False"
+      } ],
+      "level" : "1",
+      "name" : "Hoja",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def hoja(nodo):\n    if nodo == []:\n        return False\n    elif atomo(nodo):\n        return True\n    elif hijoizq(nodo) == [] and hijoder(nodo) == []:\n        return True\n    else:\n        return False",
+        "inputs" : [ {
+          "name" : "nodo",
+          "type" : "árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Una lista",
+          "type" : "Lista que representa un árbol"
+        } ]
+      }
+    },
+    "00067" : {
+      "call" : "insertar (ele, arb)",
+      "code" : "00067",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que inserte un elemento en un árbol, puede probar para el arbol  [100, [80, 70, 85], [120, 110, 125]].",
+      "examples" : [ {
+        "call" : "insertar (65, [100, [80, 70, 85], [120, 110, 125]])",
+        "comment" : "",
+        "result" : "[100, [80, [70, 65, []], 85], [120, 110, 125]]"
+      }, {
+        "call" : "insertar (124, [100, [80, [70, 65, []], 85], [120, 110, 125]])",
+        "comment" : "",
+        "result" : "[100, [80, [70, 65, []], 85], [120, 110, [125, 124, []]]]"
+      }, {
+        "call" : "insertar (126,[100, [80, [70, 65, []], 85], [120, 110, [125, 124, []]]])",
+        "comment" : "",
+        "result" : "[100, [80, [70, 65, []], 85], [120, 110, [125, 124, 126]]]"
+      } ],
+      "level" : "1",
+      "name" : "Insertar en árbol binario",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def insertar (ele, arb):\n    if arb == []:\n        return ele\n    elif ele <= raiz(arb):\n        return arbol (raiz(arb), insertar(ele, hijoizq(arb)),\n                      hijoder(arb))\n    else:\n        return arbol (raiz(arb), hijoizq(arb), insertar(ele,hijoder(arb)))\n",
+        "inputs" : [ {
+          "name" : "ele",
+          "type" : "elemento identificador del nodo del árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Una lista",
+          "type" : "Lista que representa un árbol"
+        } ]
+      }
+    },
+    "00068" : {
+      "call" : "enOrden(arbol)",
+      "code" : "00068",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que haga un recorrido en orden de un árbol (hijoizq-raiz-hijoder) y lo imprima.",
+      "examples" : [ {
+        "call" : "enOrden([100, [80, [70, 65, []], 85], [120, 110, 125]])",
+        "comment" : "",
+        "result" : "65 - 70 - 80 - 85 - 100 - 110 - 120 - 125"
+      }, {
+        "call" : "enOrden([40, 30, 45])",
+        "comment" : "",
+        "result" : "30 - 40 - 45"
+      }, {
+        "call" : "enOrden([1, [3,5,2], [12,11,[14,13,15]]])",
+        "comment" : "",
+        "result" : "5 - 3 - 2 - 1 - 11 - 12 - 13 - 14 - 15"
+      } ],
+      "level" : "1",
+      "name" : "Recorrido en orden",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def enOrden(arbol):\n    if arbol != []:\n        enOrden(hijoizq(arbol))\n        print(raiz(arbol),end=' - ')\n        enOrden(hijoder(arbol))\n",
+        "inputs" : [ {
+          "name" : "arbol",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Una lista",
+          "type" : "Lista que representa un árbol"
+        } ]
+      }
+    },
+    "00069" : {
+      "call" : "inOrden(arbol)",
+      "code" : "00069",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que haga un recorrido en orden de un árbol (hijoizq+raiz+hijoder) y lo devuelva en una lista.",
+      "examples" : [ {
+        "call" : "inOrden([100, [80, [70, 65, []], 85], [120, 110, 125]])",
+        "comment" : "",
+        "result" : "[65, 70, 80, 85, 100, 110, 120, 125]"
+      }, {
+        "call" : "inOrden([40, 30, 45]) ",
+        "comment" : "",
+        "result" : "[30, 40, 45]"
+      }, {
+        "call" : "inOrden([1, [3,5,2], [12,11,[14,13,15]]])",
+        "comment" : "",
+        "result" : "[5, 3, 2, 1, 11, 12, 13, 14, 15]"
+      } ],
+      "level" : "1",
+      "name" : "Recorrido en orden ",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def inOrden(arbol):\n    if arbol!=[]:\n        return inOrden(hijoizq(arbol)) + [raiz(arbol)] + inOrden(hijoder(arbol))\n    return []",
+        "inputs" : [ {
+          "name" : "arbol",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Una lista",
+          "type" : "Lista que representa un árbol"
+        } ]
+      }
+    },
+    "00070" : {
+      "call" : "pre_orden(arbol)",
+      "code" : "00070",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que haga un recorrido en preorden de un árbol (raiz+hijoizq+hijoder) y lo devuelva en una lista.\n",
+      "examples" : [ {
+        "call" : "pre_orden([100, [80, [70, 65, []], 85], [120, 110, 125]])",
+        "comment" : "",
+        "result" : "[100, 80, 70, 65, 85, 120, 110, 125]"
+      }, {
+        "call" : "pre_orden([40, 30, 45])",
+        "comment" : "",
+        "result" : "[40, 30, 45]"
+      }, {
+        "call" : "pre_orden([1, [3,5,2], [12,11,[14,13,15]]]) ",
+        "comment" : "",
+        "result" : "[1, 3, 5, 2, 12, 11, 14, 13, 15]"
+      } ],
+      "level" : "1",
+      "name" : "Preorden",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def pre_orden(arbol):\n    if arbol == []:\n        return []\n    elif atomo(arbol):\n        return [arbol]\n    else:\n        return [raiz(arbol)] + pre_orden(hijoizq(arbol)) + pre_orden(hijoder(arbol))\n\n",
+        "inputs" : [ {
+          "name" : "arbol",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Una lista",
+          "type" : "Lista que representa un árbol"
+        } ]
+      }
+    },
+    "00071" : {
+      "call" : "post_orden(arbol)",
+      "code" : "00071",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que haga un recorrido en post-orden de un árbol (hijoizq+hijoder+raiz) y lo devuelva en una lista.",
+      "examples" : [ {
+        "call" : "post_orden([100, [80, [70, 65, []], 85], [120, 110, 125]])",
+        "comment" : "",
+        "result" : "[65, 70, 85, 80, 110, 125, 120, 100]"
+      }, {
+        "call" : "post_orden([40, 30, 45])",
+        "comment" : "",
+        "result" : "[30, 45, 40]"
+      }, {
+        "call" : "post_orden([1, [3,5,2], [12,11,[14,13,15]]])",
+        "comment" : "",
+        "result" : "[5, 2, 3, 11, 13, 15, 14, 12, 1]"
+      } ],
+      "level" : "1",
+      "name" : "Postorden",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def post_orden(arbol):\n    if arbol == []:\n        return []\n    elif atomo(arbol):\n        return [arbol]\n    else:\n        return post_orden(hijoizq(arbol)) + post_orden(hijoder(arbol)) + [raiz(arbol)]\n\n",
+        "inputs" : [ {
+          "name" : "arbol",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Una lista",
+          "type" : "Lista que representa un árbol"
+        } ]
+      }
+    },
+    "00072" : {
+      "call" : "plastar (arbol)",
+      "code" : "00072",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que convierta un árbol en una lista.",
+      "examples" : [ {
+        "call" : "aplastar([100, [80, [70, 65, []], 85], [120, 110, 125]])",
+        "comment" : "",
+        "result" : "[100, 80, 70, 65, 85, 120, 110, 125]"
+      }, {
+        "call" : "aplastar([52, [30, 15, [35, [], 38]], [70, [60, [], 65], 80]])",
+        "comment" : "",
+        "result" : "[52, 30, 15, 35, 38, 70, 60, 65, 80]"
+      }, {
+        "call" : "aplastar([1, [3,5,2], [12,11,[14,13,15]]])",
+        "comment" : "",
+        "result" : "[1, 3, 5, 2, 12, 11, 14, 13, 15]"
+      } ],
+      "level" : "1",
+      "name" : "Aplastar árbol",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def aplastar(arbol):\n    if arbol == []:\n        return []\n    else:\n        return [raiz(arbol)]+aplastar(hijoizq(arbol))+ aplastar(hijoder(arbol))\n\n",
+        "inputs" : [ {
+          "name" : "arbol",
+          "type" : "Lista que representa un árbol."
+        } ],
+        "outputs" : [ {
+          "name" : "Una lista",
+          "type" : "Un árbol representado como una lista."
+        } ]
+      }
+    },
+    "00073" : {
+      "call" : "cantidadHojas(arbol)",
+      "code" : "00073",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que cuántas hojas tiene un árbol.",
+      "examples" : [ {
+        "call" : "cantidadHojas([52, [30, 15, [35, [], 38]], [70, [60, [], 65], 80]])",
+        "comment" : "",
+        "result" : "4"
+      }, {
+        "call" : "cantidadHojas([100, [80, [70, 65, 74], 85], [120, 110, 125]])",
+        "comment" : "",
+        "result" : "5"
+      }, {
+        "call" : "cantidadHojas([100, [80, [70, 65, 74], 85], [120, 110, [125, 124, 126]]])",
+        "comment" : "",
+        "result" : "4"
+      } ],
+      "level" : "1",
+      "name" : "Cantidad de hojas",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def cantidadHojas(arbol):\n        if arbol == []:\n                return 0\n        elif hoja(arbol):\n                return 1\n        else:\n                return cantidadHojas(hijoizq(arbol))+ cantidadHojas(hijoder(arbol))\n        ",
+        "inputs" : [ {
+          "name" : "arbol",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Una lista",
+          "type" : "Lista que representa un árbol"
+        } ]
+      }
+    },
+    "00074" : {
+      "call" : "esta(valor, arbol)",
+      "code" : "00074",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que verifique si un nodo se encuentra en un árbol.",
+      "examples" : [ {
+        "call" : "esta(60, [52, [30, 15, [35, [], 38]], [70, [60, [], 65], 80]])",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "esta(126, [100, [80, [70, 65, 74], 85], [120, 110, 125]])",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "esta(5, [20,[10, 5, 15],[30, 25, 35]])",
+        "comment" : "",
+        "result" : "True"
+      } ],
+      "level" : "1",
+      "name" : "Está en árbol",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def esta(valor, arbol):\n        if arbol == []:\n                return False\n        elif raiz(arbol) == valor:\n                return True\n        elif raiz(arbol) < valor:\n                return esta(valor, hijoder(arbol))\n        else:\n                return esta(valor,hijoizq(arbol))\n  ",
+        "inputs" : [ {
+          "name" : "valor",
+          "type" : "Un número entero que representa un nodo en el árbol"
+        }, {
+          "name" : "arbol",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Un booleano"
+        } ]
+      }
+    },
+    "00075" : {
+      "call" : "localizar(ele, arb)",
+      "code" : "00075",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que imprima hacia qué lado debe ir en cada sub-árbol para llegar a un determinado nodo.",
+      "examples" : [ {
+        "call" : "localizar(60, [52, [30, 15, [35, [], 38]], [70, [60, [], 65], 80]])",
+        "comment" : "",
+        "result" : "60  en arbol  [52, [30, 15, [35, [], 38]], [70, [60, [], 65], 80]] se va a la derecha            60  en arbol  [70, [60, [], 65], 80] se va a la izquierda. True"
+      }, {
+        "call" : "localizar(126, [100, [80, [70, 65, 74], 85], [120, 110, 125]]) ",
+        "comment" : "",
+        "result" : "126  en arbol  [100, [80, [70, 65, 74], 85], [120, 110, 125]] se va a la derecha            126  en arbol  [120, 110, 125] se va a la derecha            126  en arbol  125 se va a la derecha. False"
+      }, {
+        "call" : "localizar(5, [20,[10, 5, 15],[30, 25, 35]]) ",
+        "comment" : "",
+        "result" : "5  en arbol  [20, [10, 5, 15], [30, 25, 35]] se va a la izquierda            5  en arbol  [10, 5, 15] se va a la izquierda. True"
+      } ],
+      "level" : "1",
+      "name" : "Localizar nodo",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def localizar(ele, arb):\n    if arb == []:\n        return False\n    elif ele == raiz (arb):\n        return True\n    elif ele < raiz(arb):\n        print (ele, \" en arbol \", arb, \"se va a la izquierda\")\n        return localizar(ele, hijoizq(arb))\n    else:\n        print (ele, \" en arbol \", arb, \"se va a la derecha\")\n        return localizar(ele, hijoder(arb))\n\n",
+        "inputs" : [ {
+          "name" : "ele",
+          "type" : "Un número entero que representa un nodo en el árbol"
+        }, {
+          "name" : "arb",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Un booleano"
+        } ]
+      }
+    },
+    "00076" : {
+      "call" : "mayor(arbol)",
+      "code" : "00076",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que determine el nodo mayor de un árbol binario ordenado.",
+      "examples" : [ {
+        "call" : "mayor([52, [30, 15, [35, [], 38]], [70, [60, [], 65], 80]])",
+        "comment" : "",
+        "result" : "80"
+      }, {
+        "call" : "mayor([100, [80, [70, 65, 74], 85], [120, 110, []]])",
+        "comment" : "",
+        "result" : "120"
+      }, {
+        "call" : "mayor([20,[10, 5, 15],[30, 25, 35]])",
+        "comment" : "",
+        "result" : "35"
+      } ],
+      "level" : "1",
+      "name" : "Nodo mayor",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def mayor(arbol):\n    if hijoder(arbol) == []:\n        return raiz(arbol)\n    else:\n        return mayor(hijoder(arbol))",
+        "inputs" : [ {
+          "name" : "arbol",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Un número",
+          "type" : "Un número entero que representa un nodo"
+        } ]
+      }
+    },
+    "00077" : {
+      "call" : "eliminar(ele, a)",
+      "code" : "00077",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que elimine un nodo de un árbol, tomando en cuenta los siguientes casos:\ncaso1: Borrar un nodo sin hijos, se borra simplemente.\ncaso2: Borrar un nodo con 1 hijo, el hijo lo sustituye.\ncaso3: Sustituirlo por el mayor de los menores o el menor de los mayores.",
+      "examples" : [ {
+        "call" : "eliminar(30, [52, [30, 15, [35, [], 38]], [70, [60, [], 65], 80]])",
+        "comment" : "",
+        "result" : "[52, [15, [], [35, [], 38]], [70, [60, [], 65], 80]]"
+      }, {
+        "call" : "eliminar(120,[100, [80, [70, 65, 74], 85], [120, 110, []]])",
+        "comment" : "",
+        "result" : "[100, [80, [70, 65, 74], 85], 110]"
+      }, {
+        "call" : "eliminar(35, [20,[10, 5, 15],[30, 25, 35]])",
+        "comment" : "",
+        "result" : "[20, [10, 5, 15], [30, 25, []]]"
+      } ],
+      "level" : "3",
+      "name" : "Eliminar nodo",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def eliminar(ele, a):\n    if a == []:\n        return []\n    elif ele < raiz(a):\n        return arbol (raiz(a), eliminar(ele, hijoizq(a)),hijoder(a))\n    elif ele > raiz(a):\n        print(raiz(a),hijoizq(a),hijoder(a))\n        return arbol (raiz(a),hijoizq(a), eliminar(ele, hijoder(a)))\n    # nodo no tiene hijos\n    elif hijoder(a) == [] and hijoizq(a) == []:\n        return []\n    # nodo no tiene hijo izquierdo\n    elif hijoizq(a) == []:\n        return hijoder(a)\n    # nodo no tiene hijo derecho\n    elif hijoder(a) == []:\n        return hijoizq(a)\n    else:\n        return arbol(mayor(hijoizq(a)),eliminar(mayor(hijoizq(a)),hijoizq(a)),hijoder(a)) ",
+        "inputs" : [ {
+          "name" : "ele",
+          "type" : "Un número entero que representa un nodo en el árbol"
+        }, {
+          "name" : "a",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Una lista",
+          "type" : "Lista que representa un árbol"
+        } ]
+      }
+    },
+    "00078" : {
+      "call" : "cant_nodos(arb)",
+      "code" : "00078",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que cuente cuántos nodos hay en un árbol.",
+      "examples" : [ {
+        "call" : "cant_nodos([52, [30, 15, [35, [], 38]], [70, [60, [], 65], 80]])",
+        "comment" : "",
+        "result" : "9"
+      }, {
+        "call" : "cant_nodos([100, [80, [70, 65, 74], 85], 120])",
+        "comment" : "",
+        "result" : "7"
+      }, {
+        "call" : "cant_nodos([20,[10, 5, 15],[30, 25, 35]])",
+        "comment" : "",
+        "result" : "7"
+      } ],
+      "level" : "1",
+      "name" : "Cantidad de nodos",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def cant_nodos(arb):\n    if arb == []:\n        return 0\n    else:\n        return 1 + cant_nodos(hijoder(arb)) +  cant_nodos(hijoizq(arb))",
+        "inputs" : [ {
+          "name" : "arb",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Un número",
+          "type" : "Un número entero positivo o cero"
+        } ]
+      }
+    },
+    "00079" : {
+      "call" : "profundidad (arb)",
+      "code" : "00079",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que devuelva la profundidad de un árbol.",
+      "examples" : [ {
+        "call" : "profundidad([52, [30, 15, [35, [], 38]], [70, [60, [], 65], 80]])",
+        "comment" : "",
+        "result" : "4"
+      }, {
+        "call" : "profundidad([100, [80, [70, 65, 74], 85], 120])",
+        "comment" : "",
+        "result" : "4"
+      }, {
+        "call" : "profundidad([20,[10, 5, 15],[30, 25, 35]])",
+        "comment" : "",
+        "result" : "3"
+      } ],
+      "level" : "2",
+      "name" : "Profubdidad de un árbol",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def profundidad (arb):\n    if arb == []:\n        return 0\n    else:\n        return 1 + max (profundidad(hijoder(arb)), profundidad(hijoizq(arb)))\n",
+        "inputs" : [ {
+          "name" : "arb",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Un número",
+          "type" : "Un número entero positivo o cero"
+        } ]
+      }
+    },
+    "00080" : {
+      "call" : "altura(a)",
+      "code" : "00080",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que devuelva la altura de un árbol.",
+      "examples" : [ {
+        "call" : "altura([52, [30, 15, [35, [], 38]], [70, [60, [], 65], 80]])",
+        "comment" : "",
+        "result" : "3"
+      }, {
+        "call" : "altura([100, [80, [70, 65, 74], 85], 120])",
+        "comment" : "",
+        "result" : "3"
+      }, {
+        "call" : "altura([20,[10, 5, 15],[30, 25, 35]])",
+        "comment" : "",
+        "result" : "2"
+      } ],
+      "level" : "1",
+      "name" : "Altura de un árbol",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def altura(a):\n    return profundidad (a) -1\n",
+        "inputs" : [ {
+          "name" : "a",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Un número",
+          "type" : "Un número entero positivo o cero"
+        } ]
+      }
+    },
+    "00081" : {
+      "call" : "apariciones(ele, arb)",
+      "code" : "00081",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que determine cuántas veces aparece un elemento en un árbol.",
+      "examples" : [ {
+        "call" : "apariciones(60,[52, [30, 15, [35, [], 38]], [70, [60, 60, 65], 80]])",
+        "comment" : "",
+        "result" : "2"
+      }, {
+        "call" : "apariciones(100,[100, [80, [70, 65, 74], 85], 120])",
+        "comment" : "",
+        "result" : "1"
+      }, {
+        "call" : "apariciones(35,[20, [10, 5, 15], [30, 25, [35, [35, 35, []], []]]])",
+        "comment" : "",
+        "result" : "2"
+      } ],
+      "level" : "1",
+      "name" : "Apariciones",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def apariciones(ele, arb):\n    if arb == []:\n        return 0\n    elif raiz(arb) == ele:\n        return 1 + apariciones(ele,hijoder(arb)) +  apariciones(ele,hijoizq(arb))\n    else:        \n        return 0 + apariciones(ele,hijoder(arb)) +  apariciones(ele,hijoizq(arb))",
+        "inputs" : [ {
+          "name" : "ele",
+          "type" : "Un número entero que representa un nodo en el árbol"
+        }, {
+          "name" : "arb",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Un número",
+          "type" : "Un número entero positivo o cero"
+        } ]
+      }
+    },
+    "00082" : {
+      "call" : "apareceUnaVez (ele, arb)",
+      "code" : "00082",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que determine si uel valor de un nodo aparece una única vez.",
+      "examples" : [ {
+        "call" : "apareceUnaVez(60,[52, [30, 15, [35, [], 38]], [70, [60, 60, 65], 80]])",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "apareceUnaVez(100,[100, [80, [70, 65, 74], 85], 120])",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "apareceUnaVez(35,[20, [10, 5, 15], [30, 25, [35, [35, 35, []], []]]])",
+        "comment" : "",
+        "result" : "False"
+      } ],
+      "level" : "1",
+      "name" : "Aparece una vez",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def apareceUnaVez (ele, arb):\n    return apariciones(ele,arb) <= 1",
+        "inputs" : [ {
+          "name" : "ele",
+          "type" : "Un número entero que representa un nodo en el árbol"
+        }, {
+          "name" : "arb",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Una lista ",
+          "type" : "Lista que representa un árbol"
+        } ]
+      }
+    },
+    "00083" : {
+      "call" : "esConjunto(a)",
+      "code" : "00083",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función o funcines para determinar si un árbol es conjunto, es decir si no tiene valores de nodos repetidos.",
+      "examples" : [ {
+        "call" : "esConjunto([52, [30, 15, [35, [], 38]], [70, [60, 60, 65], 80]])",
+        "comment" : "",
+        "result" : "False"
+      }, {
+        "call" : "esConjunto([100, [80, [70, 65, 74], 85], 120])",
+        "comment" : "",
+        "result" : "True"
+      }, {
+        "call" : "esConjunto([20, [10, 5, 15], [30, 25, 35]])",
+        "comment" : "",
+        "result" : "True"
+      } ],
+      "level" : "3",
+      "name" : "Es conjunto",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def esConjunto(a):\n    if a == []:\n        return True\n    return esConjuntoAux(a,a)\n\n#Función auxiliar\ndef esConjuntoAux (a1,a2):\n    if (a1 == []):\n        return True\n    else:\n        return apareceUnaVez(raiz(a1), a2) and esConjuntoAux(hijoizq(a1),a2) and esConjuntoAux(hijoder(a1),a2)\n",
+        "inputs" : [ {
+          "name" : "a",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "True o False",
+          "type" : "Un booleano"
+        } ]
+      }
+    },
+    "00084" : {
+      "call" : "mayor(arbol)",
+      "code" : "00084",
+      "created" : "2021-06-17",
+      "creator" : "Diego Mora",
+      "details" : "Realice una función que determine el nodo mayor de un árbol binario desordenado.",
+      "examples" : [ {
+        "call" : "mayorABD([52, [30, 15, [35, [], 38]], [70, [60, [], 65], 80]])",
+        "comment" : "",
+        "result" : "80"
+      }, {
+        "call" : "mayorABD([100, [80, [70, 65, 74], 85], [120, 110, []]])",
+        "comment" : "",
+        "result" : "120"
+      }, {
+        "call" : "mayorABD([20,[10, 5, 15],[30, 25, 35]])",
+        "comment" : "",
+        "result" : "35"
+      } ],
+      "level" : "3",
+      "name" : "Nodo mayor",
+      "section" : "Árboles",
+      "solution" : {
+        "code" : "def mayorABD(arbol):\n\n    #Si es un valor\n    if atomo(arbol):\n        return arbol\n    elif hijoizq(arbol) != [] and hijoder(arbol) != []:\n        return max(raiz(arbol), mayorABD(hijoizq(arbol)), mayorABD(hijoder(arbol)))\n    elif hijoizq(arbol) != []:\n        return max(raiz(arbol), mayorABD(hijoizq(arbol)))\n    else:\n        return max(raiz(arbol), mayorABD(hijoder(arbol)))",
+        "inputs" : [ {
+          "name" : "arbol",
+          "type" : "Lista que representa un árbol"
+        } ],
+        "outputs" : [ {
+          "name" : "Un número",
+          "type" : "Un número entero que representa un nodo"
+        } ]
+      }
+    }
+  },
+  "Usuarios" : {
+    "FmpkTurEiXSYPLbZ251C7L4HLEH2" : {
+      "email" : "ejemplo@gmail.com",
+      "nombre" : "Usuario Ejemplo"
+    },
+    "wKZo000UABaJLh9cSUJsBXvuYHF3" : {
+      "email" : "eje6@gmail.com",
+      "nombre" : "Ejemplo 6"
+    },
+    "xrsu9sMbFoToZcIdzwSINHKKoDD3" : {
+      "email" : "tavoba2015@gmail.com",
+      "nombre" : "Gustavo Blanco Alfaro"
+    }
+  }
+}

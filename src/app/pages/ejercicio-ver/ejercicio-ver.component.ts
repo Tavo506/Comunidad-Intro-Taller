@@ -49,6 +49,9 @@ export class EjercicioVerComponent implements OnInit {
     }
 
 
+  get tieneArchivo(){
+    return this.ejercicio.file;
+  }
   
   ngOnInit(): void {
   }
