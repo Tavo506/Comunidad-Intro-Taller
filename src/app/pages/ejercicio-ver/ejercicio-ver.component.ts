@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   selector: 'app-ejercicio-ver',
   templateUrl: './ejercicio-ver.component.html',
   styleUrls: ['./ejercicio-ver.component.scss'],
-  
+
 })
 export class EjercicioVerComponent implements OnInit {
 
@@ -20,13 +20,18 @@ export class EjercicioVerComponent implements OnInit {
   calificacion!: number;
 
   constructor(
-    private ejercicioService : EjerciciosService,
-    private highlights : CodeHighlightService,
-    private activatedRouter : ActivatedRoute
-    ) {
-      this.activatedRouter.params.subscribe(params => {
-        var aux = this.ejercicioService.getEjercicio(params["id"]).subscribe(e => {
-          this.ejercicio = e[0];
+    private ejercicioService: EjerciciosService,
+    private highlights: CodeHighlightService,
+    private activatedRouter: ActivatedRoute
+  ) {
+    this.activatedRouter.params.subscribe(params => {
+      var aux = this.ejercicioService.getEjercicio(params["id"]).subscribe(e => {
+        this.ejercicio = e[0];
+
+        if (this.ejercicio) {
+
+
+
           this.calificacion = this.ejercicio.level;
 
           this.ejercicio.examples.forEach((e, i) => {
@@ -34,34 +39,34 @@ export class EjercicioVerComponent implements OnInit {
             if (e.comment != "") {
               this.ejemplos += `${e.comment}\n`;
             }
-            if (i < this.ejercicio.examples.length-1) {
+            if (i < this.ejercicio.examples.length - 1) {
               this.ejemplos += "\n";
             }
-              
+
           })
 
           setTimeout(() => {
             this.highlights.renderCode();
-            
+
           }, 1);
-          
-           
-            
-        });
-        
-      })
-    }
+
+        }
+
+      });
+
+    })
+  }
 
 
-  get tieneArchivo(){
+  get tieneArchivo() {
     return this.ejercicio.fileUrl;
   }
-  
+
   ngOnInit(): void {
   }
 
 
-  async descargar(){
+  async descargar() {
     if (this.ejercicio.fileUrl && this.ejercicio.fileName) {
       const file = await fetch(this.ejercicio.fileUrl)
       const fileBlog = await file.blob()
@@ -78,36 +83,36 @@ export class EjercicioVerComponent implements OnInit {
 
   setNivel(lvl: number) {
     if (this.nuevaCalificacion) {
-      
+
       this.nuevaCalificacion = false;
       this.calificacion = lvl;
-      
+
       if (this.ejercicio.ratings) {
         this.ejercicio.ratings.push(lvl);
-      }else{
+      } else {
         this.ejercicio.ratings = [lvl];
       }
-      
-      this.ejercicio.level = Math.round(this.ejercicio.ratings.reduce((a,b) => a+b, 0) / this.ejercicio.ratings.length);
+
+      this.ejercicio.level = Math.round(this.ejercicio.ratings.reduce((a, b) => a + b, 0) / this.ejercicio.ratings.length);
       console.log(this.ejercicio.level);
 
       this.ejercicioService.editlvl(this.ejercicio)
-        .then(()=>{
+        .then(() => {
           Swal.fire("¡Calificación realizada!");
         });
-      
+
     }
 
   }
 
 
-  mostrarSolucion(){
+  mostrarSolucion() {
     this.solucion = !this.solucion;
-      
+
     setTimeout(() => {
       this.highlights.renderCode();
     }, 1);
-  
+
 
   }
 
