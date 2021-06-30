@@ -7,6 +7,7 @@ export interface Ejercicio{
     details : string;
     examples : Ejemplo[];
     file? : File;
+    fileName? : string;
     fileUrl? : string;
     level : number;
     name : string;

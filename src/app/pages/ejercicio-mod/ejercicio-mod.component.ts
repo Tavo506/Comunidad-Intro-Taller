@@ -20,6 +20,10 @@ export class EjercicioModComponent implements OnInit {
   fileUploaded!: File;
   id!: string;
 
+  inicioConFile! : Boolean;
+  cambioFile : Boolean = false;
+  primera : Boolean = true;
+
   newEjercicio(): Ejercicio {
     var today = new Date();
     var dd = String(today.getDate() + 1).padStart(2, '0');
@@ -35,6 +39,7 @@ export class EjercicioModComponent implements OnInit {
       examples: [],
       level: 1,
       name: "",
+      ratings: [],
       section: "",
       solution: {
         code: "",
@@ -101,6 +106,12 @@ export class EjercicioModComponent implements OnInit {
 
           this.form.patchValue(e[0]);
           this.cargarListas(e[0]);
+
+
+          if (this.ejercicio) {
+            this.inicioConFile = this.ejercicio.fileUrl ? true : false;
+          }
+          
         });
 
       } else {
@@ -124,16 +135,19 @@ export class EjercicioModComponent implements OnInit {
 
 
   cargarListas(ejercicio: Ejercicio) {
-    ejercicio.examples.forEach(valor => this.examples.push(this.fb.group(
-      {
-        call: [valor.call, [Validators.required]],
-        result: [valor.result, [Validators.required]],
-        comment: [valor.comment]
+    if (ejercicio) {
+      
+      ejercicio.examples.forEach(valor => this.examples.push(this.fb.group(
+        {
+          call: [valor.call, [Validators.required]],
+          result: [valor.result, [Validators.required]],
+          comment: [valor.comment]
+        }
+        )));
+        ejercicio.solution.inputs?.forEach(valor => (this.form.get('solution.inputs') as FormArray).push(this.fb.group(valor)));
+        ejercicio.solution.outputs.forEach(valor => (this.form.get('solution.outputs') as FormArray).push(this.fb.group(valor)));
       }
-    )));
-    ejercicio.solution.inputs?.forEach(valor => (this.form.get('solution.inputs') as FormArray).push(this.fb.group(valor)));
-    ejercicio.solution.outputs.forEach(valor => (this.form.get('solution.outputs') as FormArray).push(this.fb.group(valor)));
-  }
+    }
 
 
   ngOnInit(): void {
@@ -274,7 +288,12 @@ export class EjercicioModComponent implements OnInit {
 
   selectFile(event: any) {
     this.fileUploaded = event.target.files.item(0);
+    this.cambioFile = true;
+  }
 
+
+  resetFile(valor : any){
+    this.fileUploaded = valor;
   }
 
 
@@ -289,7 +308,7 @@ export class EjercicioModComponent implements OnInit {
         cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.isConfirmed) {
-          this.ejercicioService.deleteEjercicio(this.id);
+          this.ejercicioService.deleteEjercicio(this.id, this.ejercicio.fileName ? this.ejercicio.fileName : "");
           this.router.navigate(["/home"]);
           Swal.fire(
             '¡Ejercicio eliminado!'
@@ -347,7 +366,6 @@ export class EjercicioModComponent implements OnInit {
 
 
     this.ejercicio.call = this.form.get("call")?.value;
-    this.ejercicio.created = this.form.get("created")?.value;
     this.ejercicio.details = this.form.get("details")?.value;
     this.ejercicio.name = this.form.get("name")?.value;
     this.ejercicio.section = this.form.get("section")?.value;
@@ -357,10 +375,11 @@ export class EjercicioModComponent implements OnInit {
 
 
 
-    if (this.esNuevo) {
+    if (this.esNuevo) { // Si el ejercicio es nuevo
       this.ejercicio.creator = this.form.get("creator")?.value;
       this.ejercicio.level = this.form.get("level")?.value;
-      console.log(this.ejercicio);
+      this.ejercicio.ratings = [this.ejercicio.level];
+
 
       var codigo;
       var aux = this.ejercicioService.getNewCode().subscribe(res => {
@@ -370,14 +389,16 @@ export class EjercicioModComponent implements OnInit {
         aux.unsubscribe();
 
 
-      if (this.fileUploaded) {
+      if (this.fileUploaded) {  //  Si el ejercicio tiene archivo adjunto
+
         this.ejercicio.file = this.fileUploaded;
+        this.ejercicio.fileName = this.fileUploaded.name;
 
         this.ejercicioService.addEjercicioF(this.ejercicio)
           .subscribe(resp => {
-
+            
             if (resp == 100) {
-              Swal.close();
+              Swal.fire("¡Ejercicio creado!");
               this.router.navigateByUrl('/home');
             }
 
@@ -389,11 +410,12 @@ export class EjercicioModComponent implements OnInit {
             });
           });
 
-      } else {
+      } else {  // Si el ejercicio no tiene archivo adjunto
+
         this.ejercicioService.addEjercicio(this.ejercicio)
           .then((resp: any) => {
 
-            Swal.close();
+            Swal.fire("¡Ejercicio creado!");
             this.router.navigateByUrl('/home');
 
           }, (err: any) => {
@@ -406,7 +428,53 @@ export class EjercicioModComponent implements OnInit {
       }
     });
 
-    } else {
+
+    } else {  // Si el ejercicio no es nuevo (modificar)
+
+      this.ejercicio.call = this.form.get("call")?.value;
+      this.ejercicio.details = this.form.get("details")?.value;
+      this.ejercicio.name = this.form.get("name")?.value;
+      this.ejercicio.section = this.form.get("section")?.value;
+  
+      this.ejercicio.examples = this.form.get("examples")?.value;
+      this.ejercicio.solution = this.form.get("solution")?.value;
+
+
+      if (this.fileUploaded) {  // Si tiene un archivo para modificar
+        this.ejercicio.file = this.fileUploaded;
+
+        this.ejercicioService.editEjercicioF(this.ejercicio, this.id)
+        .subscribe(resp => {
+            
+          if (resp == 100) {
+            Swal.fire("¡Modificación exitosa!");
+            this.router.navigateByUrl('/home');
+          }
+
+        }, (err) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al editar el ejercicio',
+            text: err.error.error.message
+          });
+        });
+
+      }else{  // Si no hay archivo para subir / modificar
+
+        this.ejercicioService.editEjercicio(this.ejercicio, this.id, this.cambioFile)
+          .then(res => {
+            Swal.fire("¡Modificación exitosa!")
+            this.router.navigateByUrl('/home');
+          }, (err) =>{
+            Swal.fire({
+              icon: 'error',
+              title: 'Error al editar el ejercicio',
+              text: err.error.error.message
+            });
+          })
+
+      }
+
 
     }
   }

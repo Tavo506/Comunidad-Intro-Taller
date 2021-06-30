@@ -9,11 +9,11 @@
         <div class="row mb-2">
             <div class="col-5 dificultad mt-1">
                 <span class="level">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star" [ngClass]="{'no-star': ejercicio.level==1}"></i>
-                    <i class="fas fa-star" [ngClass]="{'no-star': ejercicio.level<3}"></i>
-                    <i class="fas fa-star" [ngClass]="{'no-star': ejercicio.level<4}"></i>
-                    <i class="fas fa-star" [ngClass]="{'no-star': ejercicio.level<5}"></i>
+                    <i (click)="setNivel(1)" class="fas fa-star" [ngClass]="{'clickeable' : nuevaCalificacion}"></i>
+                    <i (click)="setNivel(2)" class="fas fa-star" [ngClass]="{'no-star': calificacion==1, 'clickeable' : nuevaCalificacion}"></i>
+                    <i (click)="setNivel(3)" class="fas fa-star" [ngClass]="{'no-star': calificacion<3, 'clickeable' : nuevaCalificacion}"></i>
+                    <i (click)="setNivel(4)" class="fas fa-star" [ngClass]="{'no-star': calificacion<4, 'clickeable' : nuevaCalificacion}"></i>
+                    <i (click)="setNivel(5)" class="fas fa-star" [ngClass]="{'no-star': calificacion<5, 'clickeable' : nuevaCalificacion}"></i>
                 </span>
             </div>
             <div class="col-7 text-right mt-1">

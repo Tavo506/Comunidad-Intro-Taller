@@ -58,31 +58,21 @@ export class EjerciciosService {
 
   addEjercicioF(ejercicio: Ejercicio): Observable<any> {
 
-    var codigo!: string;
+  
+    const filePath = `${ejercicio.code}/${ejercicio.file?.name}`;
+    const storageRef = this.storage.ref(filePath);
+    const uploadTask = this.storage.upload(filePath, ejercicio.file);
 
-    var aux = this.getNewCode().subscribe(res => {
-      codigo = "00000" + (+res + 1);
-      codigo = codigo.slice(-5);
-      ejercicio.code = codigo;
-      aux.unsubscribe();
+    uploadTask.snapshotChanges().pipe(
+      finalize(() => {
+        storageRef.getDownloadURL().subscribe(downloadURL => {
+          ejercicio.fileUrl = downloadURL;
+          this.ejerciciosDB.set(ejercicio.code, ejercicio)
+        });
+      })
+    ).subscribe();
+    return uploadTask.percentageChanges();
 
-
-      const filePath = `${codigo}/${ejercicio.file?.name}`;
-      const storageRef = this.storage.ref(filePath);
-      const uploadTask = this.storage.upload(filePath, ejercicio.file);
-
-      uploadTask.snapshotChanges().pipe(
-        finalize(() => {
-          storageRef.getDownloadURL().subscribe(downloadURL => {
-            ejercicio.fileUrl = downloadURL;
-            this.ejerciciosDB.set(codigo, ejercicio)
-          });
-        })
-      ).subscribe();
-      return uploadTask.percentageChanges();
-
-    });
-    return new Observable;
   }
 
 
@@ -92,9 +82,72 @@ export class EjerciciosService {
 
   }
 
-  deleteEjercicio(id: string) {
-    //? Que base de datos afectaremos? Jugadores.
-    //? El id del jugador que deseamos eliminar.
-    this.ejerciciosDB.remove(id);
+  deleteEjercicio(id: string, fileName: string) {
+
+    this.ejerciciosDB.remove(id)
+      .then(() => {
+        if (fileName != "") {
+          this.deleteFileStorage(id, fileName);
+        }
+      })
+      .catch(error => console.log(error));
   }
+
+  editlvl(ejercicio : Ejercicio){
+    var id = "0"
+    if (ejercicio.$key) {
+      id = ejercicio.$key;
+    }
+    delete ejercicio.$key;
+    return this.ejerciciosDB.update(id, ejercicio);
+
+  }
+
+
+  editEjercicio(ejercicio : Ejercicio, id:string, eliminarFile : Boolean) {
+
+    if (eliminarFile && ejercicio.fileName) {
+      this.deleteFileStorage(id, ejercicio.fileName);
+      ejercicio.fileName = "";
+      ejercicio.fileUrl = "";
+    }
+
+    delete ejercicio.$key;
+    return this.ejerciciosDB.update(id, ejercicio);
+  }
+
+
+  editEjercicioF(ejercicio : Ejercicio, id:string) {
+
+    if (ejercicio.fileName) {
+      this.deleteFileStorage(id, ejercicio.fileName);
+      delete ejercicio.fileUrl;
+    }
+    
+    ejercicio.fileName = ejercicio.file?.name;
+
+    const filePath = `${ejercicio.code}/${ejercicio.file?.name}`;
+    const storageRef = this.storage.ref(filePath);
+    const uploadTask = this.storage.upload(filePath, ejercicio.file);
+
+    uploadTask.snapshotChanges().pipe(
+      finalize(() => {
+        storageRef.getDownloadURL().subscribe(downloadURL => {
+          ejercicio.fileUrl = downloadURL;
+          delete ejercicio.$key;
+          this.ejerciciosDB.update(id, ejercicio);
+        });
+      })
+    ).subscribe();
+    return uploadTask.percentageChanges();
+
+  }
+
+
+  private deleteFileStorage(id: string, name: string): void {
+    const storageRef = this.storage.ref(`/${id}`);
+    storageRef.child(name).delete();
+  }
+
+
 }
