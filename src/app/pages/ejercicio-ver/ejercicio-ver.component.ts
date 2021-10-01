@@ -81,29 +81,38 @@ export class EjercicioVerComponent implements OnInit {
     }
   }
 
+  //calc nivel
+  calcularNivel(lvl: number, ratings: number[] | undefined){
+    if (ratings) {
+      ratings.push(lvl);
+    } else {
+      ratings = [lvl];
+    }
+
+    return Math.round(ratings.reduce((a, b) => a + b, 0) / ratings.length);
+  }
+
+  //guarda nivel
+  guardarNivel(){
+    this.ejercicioService.editlvl(this.ejercicio)
+    .then(() => {
+      Swal.fire("¡Calificación realizada!");
+    });
+  }
+
+  //controlador de set nivel
   setNivel(lvl: number) {
     if (this.nuevaCalificacion) {
 
       this.nuevaCalificacion = false;
       this.calificacion = lvl;
 
-      if (this.ejercicio.ratings) {
-        this.ejercicio.ratings.push(lvl);
-      } else {
-        this.ejercicio.ratings = [lvl];
-      }
+      this.ejercicio.level = this.calcularNivel(lvl, this.ejercicio.ratings);
 
-      this.ejercicio.level = Math.round(this.ejercicio.ratings.reduce((a, b) => a + b, 0) / this.ejercicio.ratings.length);
-      console.log(this.ejercicio.level);
-
-      this.ejercicioService.editlvl(this.ejercicio)
-        .then(() => {
-          Swal.fire("¡Calificación realizada!");
-        });
-
+      this.guardarNivel();
     }
-
   }
+
 
 
   mostrarSolucion() {
