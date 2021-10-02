@@ -18,7 +18,7 @@ export class EjercicioVerComponent implements OnInit {
   ejemplos: string = "";
   solucion: boolean = false;
   nuevaCalificacion: boolean = true;
-  calificacion!: number;
+  calificacion: number = 1;
 
   constructor(
     private ejercicioService: EjerciciosService,
@@ -84,35 +84,38 @@ export class EjercicioVerComponent implements OnInit {
   }
 
   //calc nivel
-  calcularNivel(lvl: number, ratings: number[] | undefined){
-    if (ratings) {
-      ratings.push(lvl);
-    } else {
-      ratings = [lvl];
-    }
-
+  calcularNivel(ratings: number[]){
     return Math.round(ratings.reduce((a, b) => a + b, 0) / ratings.length);
   }
 
   //guarda nivel
-  guardarNivel(){
-    this.ejercicioService.editlvl(this.ejercicio)
+  guardarNivel(ejercicio:Ejercicio){
+    this.ejercicioService.editlvl(ejercicio)
     .then(() => {
-      Swal.fire("¡Calificación realizada!");
+      console.log("¡Calificación realizada!");
     });
   }
 
   //controlador de set nivel
   setNivel(lvl: number) {
+    var nivel = -1;
     if (this.nuevaCalificacion) {
 
       this.nuevaCalificacion = false;
       this.calificacion = lvl;
 
-      this.ejercicio.level = this.calcularNivel(lvl, this.ejercicio.ratings);
+      if (this.ejercicio.ratings) {
+        this.ejercicio.ratings.push(lvl);
+      } else {
+        this.ejercicio.ratings = [lvl];
+      }
 
-      this.guardarNivel();
+      nivel = this.calcularNivel(this.ejercicio.ratings);
+      this.ejercicio.level = nivel;
+
+      this.guardarNivel(this.ejercicio);
     }
+    return nivel;
   }
 
 
