@@ -3,7 +3,6 @@ import { BehaviorSubject } from 'rxjs';
 import { EjerciciosService } from 'src/app/services/ejercicios.service';
 
 import { EjercicioVerComponent } from './ejercicio-ver.component';
-// import { EjercicioVerFunctions } from './ejercicio-ver-functions';
 import { of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Ejercicio } from 'src/app/model/Ejercicio';
@@ -67,9 +66,7 @@ const FirestoreStub = {
 
 describe('EjercicioVerComponent', () => {
   let component: EjercicioVerComponent;
-  // let componentF: EjercicioVerFunctions;
   let fixture: ComponentFixture<EjercicioVerComponent>;
-  // let fixtureF: ComponentFixture<EjercicioVerFunctions>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -92,12 +89,6 @@ describe('EjercicioVerComponent', () => {
     });
   });
 
-  // beforeEach(() => {
-
-  //   fixtureF = TestBed.createComponent(EjercicioVerFunctions);
-  //   componentF = fixtureF.componentInstance;
-  //   fixtureF.detectChanges();
-  // });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EjercicioVerComponent);
