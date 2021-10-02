@@ -4,6 +4,7 @@ import { Ejercicio } from 'src/app/model/Ejercicio';
 import { CodeHighlightService } from 'src/app/services/code-highlight.service';
 import { EjerciciosService } from 'src/app/services/ejercicios.service';
 import Swal from 'sweetalert2';
+// import { EjercicioVerFunctions } from "src/app/pages/ejercicio-ver/ejercicio-ver-functions";
 
 @Component({
   selector: 'app-ejercicio-ver',
@@ -22,7 +23,8 @@ export class EjercicioVerComponent implements OnInit {
   constructor(
     private ejercicioService: EjerciciosService,
     private highlights: CodeHighlightService,
-    private activatedRouter: ActivatedRoute
+    private activatedRouter: ActivatedRoute,
+    // private funcions: EjercicioVerFunctions
   ) {
     this.activatedRouter.params.subscribe(params => {
       var aux = this.ejercicioService.getEjercicio(params["id"]).subscribe(e => {
